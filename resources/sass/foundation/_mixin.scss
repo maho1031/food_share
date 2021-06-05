@@ -1,0 +1,53 @@
+// -----------------------------------------------------------------
+// breakpoint
+// -----------------------------------------------------------------
+@mixin _mq-up($breakpoint: md) {
+    @media #{map-get($_breakpoint-up, $breakpoint)} {
+      @content;
+    }
+  }
+  
+  @mixin _mq-down($breakpoint: md) {
+    @media #{map-get($_breakpoint-down, $breakpoint)} {
+      @content;
+    }
+  }
+  
+  
+  // -----------------------------------------------------------------
+  // マウスオーバーなどのイベントをまとめて指定
+  // -----------------------------------------------------------------
+  @mixin _on-event($self: false) {
+    @if $self {
+      &,
+      &:hover,
+      &:active,
+      &:focus {
+        @content;
+      }
+    } @else {
+      &:hover,
+      &:active,
+      &:focus {
+        @content;
+      }
+    }
+  }
+  
+  // -----------------------------------------------------------------
+  // container
+  // -----------------------------------------------------------------
+  @mixin container-l(){
+    max-width: 1040px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  // -----------------------------------------------------------------
+  // flexcenter
+  // -----------------------------------------------------------------
+  @mixin _flex-center(){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

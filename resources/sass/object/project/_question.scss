@@ -1,0 +1,28 @@
+.p-question{
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1200px;
+
+}
+.p-question__header{
+        // width: 81%;
+        // margin: 0 auto;
+        // text-align: center; 
+    }
+.p-question__item{
+    // font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+.p-question__q{
+    background-color: #f6f5f1;
+    font-weight: bold;
+    padding: 10px 5px;
+    margin-bottom: 0;
+}
+.p-question__a{
+    padding: 10px 5px;
+    border-bottom: 1px solid #e3af99;
+    // border-bottom: 1px solid #223A59;
+    margin-bottom: 0;
+}

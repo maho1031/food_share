@@ -1,0 +1,42 @@
+.p-auth{
+    // position: relative;
+    background-color: #fff;
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px 10px;
+    box-sizing: border-box;
+    letter-spacing: .12em;
+    // z-index: -2;
+
+    // min-height: calc(100vh - 350px);
+}
+.p-auth__title{
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+    // margin: 0 0 60px;
+    color: #76babb;
+    text-align: center;
+    // z-index: 0;
+}
+.p-auth__inner{
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 21.5px 10px;
+    min-height: 300px;
+}
+.p-auth__form{
+    padding: 20px 0 0;
+    text-align: left;
+}
+.p-auth__text{
+    color: #1f1f1f;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 1.5em;
+}
+.p-auth__passReset{
+    text-align: center;
+    font-size: 10px;
+    line-height: 12px;
+}

@@ -1,0 +1,45 @@
+// -----------------------------------------------------------------
+// breakpoint
+// -----------------------------------------------------------------
+// min-width
+$_breakpoint-up: (
+  'sm': 'screen and (min-width: 415px)',
+  'md': 'screen and (min-width: 768px)',
+  'lg': 'screen and (min-width: 1000px)',
+  'xl': 'screen and (min-width: 1200px)',
+) !default;
+
+// max-width
+$_breakpoint-down: (
+  'sm': 'screen and (max-width: 414px)',
+  'md': 'screen and (max-width: 767px)',
+  'lg': 'screen and (max-width: 999px)',
+  'xl': 'screen and (max-width: 1199px)',
+) !default;
+
+
+// -----------------------------------------------------------------
+// Color
+// -----------------------------------------------------------------
+// base color
+$_color-text: #000 !default;
+$_color-bg: #f6f5f1 !default;
+$_color-line: #dbdbdb !default;
+$_color-inputbg: #dbdbdb !default;
+$_color-signup: #ec5252 !default;
+
+// link color
+$_color-link: #fabe00 !default;
+$_color-link--visited: null !default;
+$_color-link--hover: lighten($_color-link, 15%) !default;
+
+//error color
+$_color-error: #f15252;
+$_color-error-bg: #ffeded;
+
+
+// -----------------------------------------------------------------
+// font-family
+// -----------------------------------------------------------------
+$_font-family-text: 'Montserrat', 'Noto Sans JP', sans-serif;
+$_font-family-title: 'Montserrat', sans-serif;

@@ -1,0 +1,44 @@
+.p-btnContainer{
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    margin: 16px 0 16px 0;
+    border: none;
+
+}
+.p-btnContainer__btn{
+    width: 190px;
+    height: 37px;
+    border-radius: 3px;
+    padding: 11px 24px;
+    font-size: 14px;
+    background: #76babb;
+    text-align: center;
+    color: #fff;
+    // line-height: 1.2em;
+
+}
+.is-seller{
+    // background: #e3af99;
+    background: #fff;
+    border: 2px solid #76babb;
+    color: #76babb;
+
+    &:hover{
+        background: #76babb;
+    }
+ }
+.is-prof, .is-cansel, .is-detail{
+    width: 190px;
+}
+.is-detail{
+    background: #e6bb44;
+}
+.is-cansel{
+    background: #ea352d;
+}
+.is-more{
+    background: #e3af99;
+}

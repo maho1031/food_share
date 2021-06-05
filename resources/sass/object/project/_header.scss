@@ -1,0 +1,170 @@
+.p-header{
+    // position: relative;
+    position: fixed;
+    width: 100%;
+    // height: 100%;
+    margin: 0 auto;
+    min-height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    padding: 20px;
+    overflow-y: visible;
+    // position: absolute;
+    // top: 0;
+//     background-image: linear-gradient(
+// 315deg
+// , #f89b9e 0%, #c9d9ff 74%);
+//     background-color: #b8c6db;
+//     z-index: 1000;
+//     overflow-y: visible;
+
+}
+.p-header__logo{
+    display: flex;
+}
+
+.p-header__nav{
+    display: none;
+
+    @include _mq-up(){
+    display: flex;
+    position: absolute;
+    // top: 21px;
+    right: 20px;
+}
+      }
+
+// ハンバーガーメニューボタン
+.p-header__menuBtn{
+    position: absolute;
+    top: 16px;
+    right: 0;
+    width: 65px;
+    height: 50px;
+    display: flex;
+    text-align: center;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    z-index: 1002; 
+
+    @include _mq-up(){
+        display: none;
+       }
+}
+
+.p-header__menuBtnContainer{
+    &.is-active{
+        & > .p-header__menuLine{
+            &:nth-of-type(1){
+                transform: translateY(13px) rotate(-45deg);
+            }
+            &:nth-of-type(2){
+                opacity: 0;
+            }
+            &:nth-of-type(3){
+                transform: translateY(-7px) rotate(45deg);
+            }
+        }
+    }
+}
+
+// ハンバーガーメニューボタン
+.p-header__menuLine{
+    display: block;
+    width: 24px;
+    height: 2px;
+    margin: 0 auto 8px;
+    transition: all .4s ease;
+    background-color: #333;
+
+    @include _mq-up(){
+        display: none;
+       }
+}
+
+// スマホメニュー コンテンツ
+.p-header-spMenuContainer{
+    // visibility: hidden;
+    // display: none;
+    display: block;
+    // position: absolute;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #f6f5f1;
+    pointer-events: none;
+    width: 300px;
+    height: 100vh;
+    transition-timing-function: cubic-bezier(.215,.61,.355,1);
+    transition-duration: .4s;
+    transition-property: all;
+    // -webkit-transform: translateX(300px);
+    transform: translateX(300px);
+    padding-top: 150px;
+    z-index: 2;
+
+    @include _mq-up(){
+        display: none;
+      }
+
+
+     &.is-open{
+        // visibility: visible;
+        pointer-events: all;
+        transform: translateX(0);
+     }
+}
+.p-header__spGlobalMenu{
+    position: relative;
+    padding-top: 15px;
+    border-bottom: 1px solid #fff;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px 20px;
+}
+
+.p-header__btn{
+    width: 140px;
+    height: 37px;
+    border-radius: 3px;
+    padding: 11px 24px;
+    font-size: 14px;
+
+    &.is_login{
+        background: #76babb;
+        text-align: center;
+        margin-right: 10px;
+
+        & > a{
+            color: #fff;
+        }
+    }
+
+     &.is_signup{
+        background: #fff;
+        border: solid 1px #76babb;
+     }
+
+     & > a{
+        color: #76babb;
+    }
+}
+.p-header-spActiveMenu{
+    border-bottom: 1px solid #fff;
+    padding: 10px;
+    // z-index: 1000;
+}
+
+ .p-header-spActiveMenu__link{
+    display: block;
+    font-size: 16px;
+    line-height: 1;
+    padding: 8px;
+    cursor: pointer;
+    // z-index: 1002;
+}
+.p-header__list{
+    display: flex;
+}
