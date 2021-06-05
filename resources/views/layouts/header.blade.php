@@ -58,8 +58,7 @@
                         <a href="">新規登録</a>
                     </li>
                     @endauth
-
-                  
+                
                     @auth
                     <li class="c-btn p-header__btn is_login">
                         <a href="">マイページ</a>
@@ -71,6 +70,20 @@
                         {{ csrf_field() }}
                     </li>
                     @endauth
+
+                    
+                    @if(Auth::guard('shop')->check())
+                    <li class="c-btn p-header__btn is_login">
+                        <a href="">マイページ</a>
+                    </li>
+                    <li class="c-btn p-header__btn is_logout">
+                        <a href="{{route('shop.logout')}}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                        ログアウト</a>
+                        <form id="logout-form" action="{{ route('shop.logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </li>
+                    @endif
+                    
                 </ul>
                         
 

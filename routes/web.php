@@ -63,3 +63,24 @@ Route::get('/products', 'ProductController@index')->name('products.index');
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+
+// コンビニ側
+Route::group(['prefix' => 'shop', 'middleware' => 'guest:shop'], function() {
+    Route::get('/', function () {
+        return view('admin.home');
+    });
+    Route::get('login', 'Shop\Auth\LoginController@showLoginForm')->name('shop.login');
+    Route::post('login', 'Admin\Auth\LoginController@login')->name('shop.login');
+
+    Route::get('register', 'Shop\Auth\RegisterController@showRegisterForm')->name('shop.register');
+    Route::post('register', 'Shop\Auth\RegisterController@register')->name('shop.register');
+
+    Route::get('password/rest', 'Shop\Auth\ForgotPasswordController@showLinkRequestForm')->name('shop.password.request');
+
+
+ });
+
+Route::group(['prefix' => 'shop', 'middleware' => 'auth:shop'], function(){
+    Route::post('logout', 'Shop\Auth\LoginController@logout')->name('shop.logout');
+    Route::get('home', 'Shop\HomeController@index')->name('shop.home');
+ });
