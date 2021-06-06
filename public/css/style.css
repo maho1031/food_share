@@ -455,6 +455,12 @@ pre {
   left: 0;
 }
 
+.c-inputField__errorMsg {
+  color: #f15252;
+  margin-top: 5px;
+  display: inline-block;
+}
+
 .c-select {
   position: relative;
 }
@@ -602,11 +608,12 @@ pre {
 .is-seller {
   background: #fff;
   border: 2px solid #76babb;
-  color: #76babb;
+  color: #251e1c;
 }
 
 .is-seller:hover {
   background: #76babb;
+  color: #fff;
 }
 
 .is-prof,
@@ -625,6 +632,11 @@ pre {
 
 .is-more {
   background: #e3af99;
+}
+
+.is-register,
+.is-login {
+  background: #76babb;
 }
 
 .p-flow__cardList {

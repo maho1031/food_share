@@ -24,10 +24,11 @@
     // background: #e3af99;
     background: #fff;
     border: 2px solid #76babb;
-    color: #76babb;
+    color: #251e1c;
 
     &:hover{
         background: #76babb;
+        color: #fff;
     }
  }
 .is-prof, .is-cansel, .is-detail{
@@ -41,4 +42,7 @@
 }
 .is-more{
     background: #e3af99;
+}
+.is-register, .is-login{
+    background: #76babb;
 }

@@ -21,6 +21,9 @@ class CreateProductsTable extends Migration
             $table->string('comment');
             $table->string('pic1');
             $table->unsignedBigInteger('shop_id');
+            $table->unsignedBigInteger('buyer_id');
+            $table->boolean('sold_flg')->unsigned();
+            $table->boolean('delete_flg')->unsigned();
             $table->timestamps();
         });
     }
