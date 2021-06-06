@@ -11,16 +11,8 @@
 |
 */
 
-// Route::get('/', 'HomeController@index')->name('home');
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');
-
+// TOP画面
+Route::get('/home', 'HomeController@index')->name('home');
 // 商品一覧
 Route::get('/products', 'ProductController@index')->name('products.index');
 
@@ -58,7 +50,7 @@ Route::get('/products', 'ProductController@index')->name('products.index');
 
 // Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
+
 
 Auth::routes();
 
