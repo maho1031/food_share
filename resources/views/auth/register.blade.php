@@ -45,7 +45,7 @@
             </form>
 
             <div class="p-btnContainer">
-                    <a href="" class="c-btn p-btnContainer__btn is-seller u-mt30">出品者新規登録はこちら</a>
+                    <a href="{{ route('shop.register') }}" class="c-btn p-btnContainer__btn is-seller u-mt30">出品者新規登録はこちら</a>
             </div>
             
         </div>

@@ -67,10 +67,10 @@ Route::get('/', 'HomeController@index')->name('home');
 // コンビニ側
 Route::group(['prefix' => 'shop', 'middleware' => 'guest:shop'], function() {
     Route::get('/', function () {
-        return view('admin.home');
+        return view('shop.home');
     });
     Route::get('login', 'Shop\Auth\LoginController@showLoginForm')->name('shop.login');
-    Route::post('login', 'Admin\Auth\LoginController@login')->name('shop.login');
+    Route::post('login', 'Shop\Auth\LoginController@login')->name('shop.login');
 
     Route::get('register', 'Shop\Auth\RegisterController@showRegisterForm')->name('shop.register');
     Route::post('register', 'Shop\Auth\RegisterController@register')->name('shop.register');

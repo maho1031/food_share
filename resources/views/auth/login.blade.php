@@ -42,7 +42,7 @@
             </form>
 
             <div class="p-btnContainer">
-                    <a href="" class="c-btn p-btnContainer__btn is-seller u-mt30">出品者ログインはこちら</a>
+                    <a href="{{ route('shop.login') }}" class="c-btn p-btnContainer__btn is-seller u-mt30">出品者ログインはこちら</a>
             </div>
             
         </div>

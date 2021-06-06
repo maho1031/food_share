@@ -58,6 +58,9 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'conveni_id' => 'required',
+            'prefecture_id' => 'required',
+            'address' => 'required|string|max:255',
         ]);
     }
 
@@ -73,6 +76,10 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'conveni_id' => $data['conveni_id'],
+            'prefecture_id' => $data['prefecture_id'],
+            'address' => $data['address'],
+
         ]);
     }
 

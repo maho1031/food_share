@@ -589,8 +589,8 @@ pre {
 }
 
 .p-btnContainer__btn {
-  width: 190px;
-  height: 37px;
+  width: 210px;
+  height: 45px;
   border-radius: 3px;
   padding: 11px 24px;
   font-size: 14px;
@@ -946,7 +946,8 @@ pre {
   color: #fff;
 }
 
-.p-header__btn.is_signup {
+.p-header__btn.is_signup,
+.p-header__btn .is_logout {
   background: #fff;
   border: solid 1px #76babb;
 }

@@ -5,10 +5,10 @@
 <main class="l-main">
     <div class="c-container p-auth__container">
         <div class="p-auth__header">
-            <p class="p-auth__title">shopログイン</p>
+            <p class="p-auth__title">出品者ログイン</p>
         </div>
         <div class="p-auth__inner">
-            <form action="{{ route('login') }}" method="POST" class="p-auth__form">
+            <form action="{{ route('shop.login') }}" method="POST" class="p-auth__form">
                 @csrf
                 <div class="c-inputField u-mb30">
                     <label for="email" class="p-auth__text u-mb10">Email</label>
@@ -42,7 +42,7 @@
             </form>
 
             <div class="p-btnContainer">
-                    <a href="{{ route('shop.login') }}" class="c-btn p-btnContainer__btn is-seller u-mt30">出品者ログインはこちら</a>
+                    <a href="{{ route('login') }}" class="c-btn p-btnContainer__btn is-seller u-mt30">買い手ログインはこちら</a>
             </div>
             
         </div>

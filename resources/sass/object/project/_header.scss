@@ -142,7 +142,7 @@
         }
     }
 
-     &.is_signup{
+     &.is_signup, .is_logout{
         background: #fff;
         border: solid 1px #76babb;
      }
