@@ -412,7 +412,7 @@ pre {
   padding: 60px 10px 0px 10px;
 }
 
-.c-inpuField {
+.c-inputField {
   display: block;
 }
 
@@ -958,8 +958,12 @@ pre {
   color: #fff;
 }
 
-.p-header__btn.is_signup,
-.p-header__btn .is_logout {
+.p-header__btn.is_logout {
+  background: #fff;
+  border: solid 1px #76babb;
+}
+
+.p-header__btn.is_signup {
   background: #fff;
   border: solid 1px #76babb;
 }

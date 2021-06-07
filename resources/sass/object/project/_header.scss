@@ -142,7 +142,12 @@
         }
     }
 
-     &.is_signup, .is_logout{
+     &.is_logout,{
+        background: #fff;
+        border: solid 1px #76babb;
+     }
+
+     &.is_signup{
         background: #fff;
         border: solid 1px #76babb;
      }

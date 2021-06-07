@@ -8,9 +8,9 @@
         <div class="p-prof">
             <p class="c-title">マイページ</p>
             <div class="p-prof__conent">
-                <p class="p-prof__name">taroさん</p>
+                <p class="p-prof__name">{{auth()->user()->name}}さん</p>
                 <div class="p-btnContainer">
-                    <a href="" class="p-btnContainer__btn is-prof">ユーザー情報の編集</a>
+                    <a href="{{route('users.edit')}}" class="c-btn p-btnContainer__btn is-prof">ユーザー情報の編集</a>
                 </div>
             </div>
         </div>
@@ -21,7 +21,6 @@
                 </div>
                 <div class="p-product__list">
                     <div class="p-product__item">
-                        <!-- <div class="p-product__contents"> -->
                             <div class="p-product__image">
                                 <img src="{{asset('img/pro1.jpg')}}" alt="">
                                 <div class="p-product__soldOutBadge">
@@ -47,13 +46,12 @@
                             </div>
 
                             <div class="p-btnContainer">
-                                <a href="" class="p-btnContainer__btn is-cansel">購入をキャンセルする</a>
+                                <a href="" class="c-btn p-btnContainer__btn is-cansel">購入をキャンセルする</a>
 
                             </div>
                             <div class="p-btnContainer u-mb30">
-                                <a href="" class="p-btnContainer__btn is-detail">詳細を見る</a>
+                                <a href="" class="c-btn p-btnContainer__btn is-detail">詳細を見る</a>
                             </div>
-                        <!-- </div> -->
                     </div>
 
                     <div class="p-product__item">

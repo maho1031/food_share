@@ -22,12 +22,12 @@ Route::get('/products', 'ProductController@index')->name('products.index');
 
 // Route::group(['middleware' => 'auth'], function() {
 
-    // ユーザーマイページ画面
-    Route::get('/users', 'UserController@index')->name('user.index');
-    // ユーザー情報画面
+    // ユーザーマイページ
     Route::get('/users/show', 'UserController@show')->name('users.show');
     // ユーザー情報編集画面
     Route::get('/users/edit', 'UserController@edit')->name('users.edit');
+    // ユーザー情報更新
+    Route::post('/users/update', 'UserController@update')->name('users.update');
 
     // コンビニマイページ画面
     Route::get('/shops/edit', 'ShopController@edit')->name('shops.edit');

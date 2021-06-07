@@ -24,7 +24,7 @@
                 <!-- ログインあり -->
                 @auth
                 <li class="c-btn p-header__btn is_login">
-                    <a href="" class="">マイページ</a>
+                    <a href="{{route('users.show')}}" class="">マイページ</a>
                 </li>
                 <li class="c-btn p-header__btn is_logout">
                     <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="">ログアウト</a>
@@ -55,13 +55,13 @@
                         <a href="{{route('login')}}" class="">ログイン</a>
                     </li>
                     <li class="c-btn p-header__btn is_signup">
-                        <a href="">新規登録</a>
+                        <a href="{{route('register')}}">新規登録</a>
                     </li>
                     @endauth
                 
                     @auth
                     <li class="c-btn p-header__btn is_login">
-                        <a href="">マイページ</a>
+                        <a href="{{route('users.show')}}">マイページ</a>
                     </li>
                     <li class="c-btn p-header__btn is_logout">
                         <a href="{{route('logout')}}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">

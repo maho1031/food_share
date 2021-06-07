@@ -24,7 +24,7 @@
                     <label for="email" class="p-auth__text u-mb10">Email</label>
                     <input type="email" name="email" value="{{ old('email') }}" class="c-inputField__input @error('email') is-error @enderror" autocomplete="email" autofocus="autofocus" required>
                     @if ($errors->has('email'))
-                            <span class="ic-inputField__errorMsg" role="alert">
+                            <span class="c-inputField__errorMsg" role="alert">
                                 <strong>{{ $errors->first('email') }}</strong>
                             </span>
                     @endif
