@@ -61,9 +61,11 @@ Route::group(['prefix' => 'shop', 'middleware' => 'guest:shop'], function() {
     Route::get('/', function () {
         return view('shop.home');
     });
+    // コンビニ側ログイン
     Route::get('login', 'Shop\Auth\LoginController@showLoginForm')->name('shop.login');
     Route::post('login', 'Shop\Auth\LoginController@login')->name('shop.login');
 
+    // コンビニ側新規登録
     Route::get('register', 'Shop\Auth\RegisterController@showRegisterForm')->name('shop.register');
     Route::post('register', 'Shop\Auth\RegisterController@register')->name('shop.register');
 

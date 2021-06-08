@@ -1,4 +1,3 @@
-@include('layouts.head')
 @extends('layouts.app')
 @section('title', '店舗新規登録')
 @section('content')
@@ -19,11 +18,6 @@
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                      @endif
-                    <!-- @error('email')
-                    <span class="p-form__errorMsg" role="alert">
-                       
-                    </span>
-                    @enderror -->
                 </div>
 
                 <div  class="c-inputField u-mb30">
@@ -35,11 +29,6 @@
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
-                    <!-- @error('password')
-                    <span class="p-form__errorMsg" role="alert">
-                        
-                    </span>
-                    @enderror -->
                 </div>
 
                 <div class="c-inputField u-mb30">
@@ -47,14 +36,9 @@
                     <input type="password" name="password_confirmation" id="password_confirmation" class="c-inputField__input @error('password') is-error @enderror" autocomplete="new-password" autofocus="autofocus" required>
                     @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
-                    <!-- @error('password')
-                    <span class="p-form__errorMsg" role="alert">
-                        
-                    </span>
-                    @enderror -->
                 </div>
 
                 <div class="c-inputField u-mb30">
@@ -66,11 +50,6 @@
                         <option value="4">ミニストップ</option>
                         <option value="5">デイリーヤマザキ</option>
                     </select>
-                    <!-- @error('')
-                    <span class="p-form__errorMsg" role="alert">
-                        
-                    </span>
-                    @enderror -->
                 </div>
 
                 <div class="c-inputField u-mb30">

@@ -51,7 +51,11 @@ class UserController extends Controller
 
         $user = Auth::user();
 
-        $user->fill($request->all())->save();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+
+        $user->save();
 
 
         return redirect('/users/show/');

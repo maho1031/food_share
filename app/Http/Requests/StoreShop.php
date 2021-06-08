@@ -24,7 +24,9 @@ class StoreShop extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|max:20',
+            'email' => ['required', 'email',Rule::unique('users')->ignore(Auth::id())],
+            ''
         ];
     }
 }
