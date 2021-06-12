@@ -1,4 +1,3 @@
-@include('layouts.head')
 @extends('layouts.app')
 @section('title', 'ログイン')
 @section('content')

@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/shop/home';
+    protected $redirectTo = '/shop/show';
 
 
     // ログイン画面

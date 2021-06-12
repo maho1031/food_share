@@ -58,7 +58,7 @@ class ShopController extends Controller
      */
     public function show()
     {
-        return view('shops.show');
+        return view('shop.show');
     }
 
     /**

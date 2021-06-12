@@ -68,13 +68,14 @@ Route::group(['prefix' => 'shop', 'middleware' => 'guest:shop'], function() {
     // コンビニ側新規登録
     Route::get('register', 'Shop\Auth\RegisterController@showRegisterForm')->name('shop.register');
     Route::post('register', 'Shop\Auth\RegisterController@register')->name('shop.register');
-
     Route::get('password/rest', 'Shop\Auth\ForgotPasswordController@showLinkRequestForm')->name('shop.password.request');
-
 
  });
 
 Route::group(['prefix' => 'shop', 'middleware' => 'auth:shop'], function(){
     Route::post('logout', 'Shop\Auth\LoginController@logout')->name('shop.logout');
     Route::get('home', 'Shop\HomeController@index')->name('shop.home');
+
+    // コンビニマイページ
+    Route::get('show', 'ShopController@show')->name('shop.show');
  });

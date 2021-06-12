@@ -34,57 +34,59 @@
                 <div class="c-inputField u-mb30">
                     <label for="password" class="p-auth__text u-mb10">パスワード(確認)</label>
                     <input type="password" name="password_confirmation" id="password_confirmation" class="c-inputField__input @error('password') is-error @enderror" autocomplete="new-password" autofocus="autofocus" required>
-                    @if ($errors->has('email'))
+                            @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
-                                @endif
+                            @endif
                 </div>
 
                 <div class="c-inputField u-mb30">
                     <label for="conveni_id" class="p-auth__text u-mb10">コンビニ名</label>
-                    <select name="conveni_id" class="c-inputField__input">
-                        <option value="1">セブンイレブン</option>
-                        <option value="2">ファミリーマート</option>
-                        <option value="3">ローソン</option>
-                        <option value="4">ミニストップ</option>
-                        <option value="5">デイリーヤマザキ</option>
+                    <select type="text" name="conveni_id" class="c-inputField__input">
+                    @foreach(config('conveni') as $key => $score)
+                        <option value="{{ $key }}">{{ $score }}</option>
+                    @endforeach
                     </select>
+                    @if ($errors->has('conveni_id'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('conveni_id') }}</strong>
+                                    </span>
+                     @endif
                 </div>
 
                 <div class="c-inputField u-mb30">
                     <label for="name" class="p-auth__text u-mb10">支店名</label>
                     <input type="text" name="name" id="name" class="c-inputField__input @error('name') is-error @enderror" autocomplete="name" autofocus="autofocus" required placeholder="例：中目黒店">
-                    <!-- @error('name')
-                    <span class="p-form__errorMsg" role="alert">
-                        
-                    </span>
-                    @enderror -->
+                    @if ($errors->has('name'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                     @endif
                 </div>
 
                 <div  class="c-inputField u-mb30">
                     <label for="prefectures" class="p-auth__text u-mb10">都道府県</label>
                     <select name="prefecture_id" class="c-inputField__input">
-                        <option value="0">東京都</option>
-                        <option value="1">神奈川県</option>
-                        <option value="2">埼玉県</option>
-                        <option value="3">千葉県</option>
+                        @foreach(config('prefecture') as $key => $score)
+                            <option value="{{ $key }}">{{ $score }}</option>
+                        @endforeach
                     </select>
-                    <!-- @error('')
-                    <span class="p-form__errorMsg" role="alert">
-                        
-                    </span>
-                    @enderror -->
+                    @if ($errors->has('prefecture_id'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('prefecture_id') }}</strong>
+                                </span>
+                     @endif
                 </div>
 
                 <div type="text" class="c-inputField u-mb30">
                     <label for="address" class="p-auth__text u-mb10">住所</label>
-                    <input type="text" name="address" id="address" class="c-inputField__input @error('address') is-error @enderror" autocomplete="new-password" autofocus="autofocus" required placeholder="例：東京都目黒区中目黒0-0-0">
-                    <!-- @error('address')
-                    <span class="p-form__errorMsg" role="alert">
-                        
-                    </span>
-                    @enderror -->
+                    <input type="text" name="address" id="address" class="c-inputField__input @error('address') is-error @enderror" autocomplete="new-password" autofocus="autofocus" required placeholder="例：目黒区中目黒0-0-0">
+                    @if ($errors->has('address'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('address') }}</strong>
+                                </span>
+                     @endif
                 </div>
 
                 <div class="p-btnContainer u-mt20">
@@ -97,7 +99,7 @@
             </form>
 
             <div class="p-btnContainer">
-                    <a href="" class="c-btn p-btnContainer__btn is-seller u-mt30">買い手新規登録はこちら</a>
+                    <a href="{{route('login')}}" class="c-btn p-btnContainer__btn is-seller u-mt30">買い手新規登録はこちら</a>
             </div>
             
         </div>

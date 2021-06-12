@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreShop extends FormRequest
@@ -13,7 +15,7 @@ class StoreShop extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,9 +26,12 @@ class StoreShop extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:20',
             'email' => ['required', 'email',Rule::unique('users')->ignore(Auth::id())],
-            ''
+            'password' => 'required|string|min:8|confirmed',
+            'conveni_id' => 'required|integer',
+            'name' => 'required|string|max:50',
+            'prefecture_id' => 'required|integer',
+            'address' => 'required|string|max:50',
         ];
     }
 }

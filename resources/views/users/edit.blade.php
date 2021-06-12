@@ -1,14 +1,16 @@
 @extends('layouts.app')
 @section('title', 'アカウント情報編集')
 @section('content')
-<main class="l-main">
+
+    <main class="l-main">
     <div class="c-container p-auth__container">
         <div class="p-auth__header">
             <p class="p-auth__title">プロフィール編集</p>
         </div>
-        
-        <!-- <form method="post"></form> -->
+        <div id="app"></div>
+       
         <div class="p-auth__inner">
+            
             <form method="POST" action="{{ route('users.update') }}" class="p-auth__form">
                 @csrf
                 <input type="hidden" name="id" value="{{auth()->user()->id}}">
@@ -54,7 +56,7 @@
                     <button type="submit" class="c-btn p-btnContainer__btn">変更する</button>
                 </div>
             
-        <p class="p-productForm__txt"><a class="p-productForm__txt-link" href="">マイページへ戻る</a></p>
+            <p class="p-productForm__txt"><a href="" class="p-productForm__txt-link">マイページへ戻る</a></p>
         </form>
     </div>
  

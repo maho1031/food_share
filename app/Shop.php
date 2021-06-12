@@ -27,4 +27,14 @@ class Shop extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function convenis()
+    {
+        return $this->belongsTo('App\Conveni');
+    }
+
+    public function prefectures()
+    {
+        return $this->belongsTo('App\Prefecture');
+    }
 }

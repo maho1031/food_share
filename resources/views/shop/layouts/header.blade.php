@@ -21,23 +21,10 @@
                     <a href="{{'register'}}" class="">新規会員登録</a>
                 </li>
                 @endauth
-                <!-- ログインあり・買い手-->
-                @auth
-                <li class="c-btn p-header__btn is_login">
-                    <a href="{{route('users.show')}}" class="">マイページ</a>
-                </li>
-                <li class="c-btn p-header__btn is_logout">
-                    <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="">ログアウト</a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                {{ csrf_field() }}
-                </form>
-                </li>
-                @endauth
-
                 <!-- ログインあり・ショップ -->
                 @if(Auth::guard('shop')->check())
                     <li class="c-btn p-header__btn is_login">
-                        <a href="{{route('shops.show')}}">マイページ</a>
+                        <a href="{{route('shop.show')}}">マイページ</a>
                     </li>
                     <li class="c-btn p-header__btn is_logout">
                         <a href="{{route('shop.logout')}}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">
@@ -74,23 +61,10 @@
                     </li>
                     @endauth
                 
-                    @auth
-                    <li class="c-btn p-header__btn is_login">
-                        <a href="{{route('users.show')}}">マイページ</a>
-                    </li>
-                    <li class="c-btn p-header__btn is_logout">
-                        <a href="{{route('logout')}}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                        ログアウト</a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-                        </form>
-                    </li>
-                    @endauth
-
-                    
+    
                     @if(Auth::guard('shop')->check())
                     <li class="c-btn p-header__btn is_login">
-                        <a href="">マイページ</a>
+                        <a href="{{route('shop.show')}}">マイページ</a>
                     </li>
                     <li class="c-btn p-header__btn is_logout">
                         <a href="{{route('shop.logout')}}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">
