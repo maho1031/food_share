@@ -28,6 +28,11 @@ class Shop extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function products()
+    {
+        return $this->hasMany('App\Product');
+    }
+
     public function convenis()
     {
         return $this->belongsTo('App\Conveni');

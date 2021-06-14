@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Conveni;
+use App\Prefecture;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreShop;
 
 class ShopController extends Controller
 {
@@ -29,28 +33,6 @@ class ShopController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-        return view('shops.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -69,7 +51,10 @@ class ShopController extends Controller
      */
     public function edit()
     {
-        return view('shops.edit');
+        $convenis = Conveni::all();
+        $prefectures = Prefecture::all();
+
+        return view('shop.edit', compact('convenis', 'prefectures'));
     }
 
     /**
@@ -79,9 +64,22 @@ class ShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreShop $request)
     {
-        //
+        $user = Auth::user();
+
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->conveni_id = $request->conveni_id;
+        $user->name = $request->name;
+        $user->prefecture_id = $request->prefecture_id;
+        $user->address = $request->address;
+
+
+        $user->save();
+
+
+        return redirect('/shop/show/');
     }
 
     /**

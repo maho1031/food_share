@@ -9,10 +9,10 @@
             <p class="c-title">マイページ</p>
             <div class="p-prof__conent">
                 <div class="p-btnContainer">
-                    <a href="" class="c-btn p-btnContainer__btn is-prof">店舗情報の編集</a>
+                    <a href="{{route('shop.edit')}}" class="c-btn p-btnContainer__btn is-prof">店舗情報の編集</a>
                 </div>
                 <div class="p-btnContainer">
-                    <a href="" class="c-btn p-btnContainer__btn is-prof">商品の出品</a>
+                    <a href="{{route('products.create')}}" class="c-btn p-btnContainer__btn is-prof">商品の出品</a>
                 </div>
             </div>
         </div>

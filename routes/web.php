@@ -78,4 +78,11 @@ Route::group(['prefix' => 'shop', 'middleware' => 'auth:shop'], function(){
 
     // コンビニマイページ
     Route::get('show', 'ShopController@show')->name('shop.show');
+    // コンビニプロフィール編集
+    Route::get('/shop/edit', 'ShopController@edit')->name('shop.edit');
+    // コンビニプロフィール更新
+    Route::post('/shop/update', 'ShopController@update')->name('shop.update');
+
+    // 商品新規作成
+    Route::get('/products/create', 'ProductController@create')->name('products.create');
  });
