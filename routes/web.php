@@ -85,4 +85,6 @@ Route::group(['prefix' => 'shop', 'middleware' => 'auth:shop'], function(){
 
     // 商品新規作成
     Route::get('/products/create', 'ProductController@create')->name('products.create');
+    // 商品新規作成
+     Route::post('/products/store', 'ProductController@store')->name('products.store');
  });

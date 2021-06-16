@@ -13,7 +13,7 @@
                     <label for="email" class="p-auth__text u-mb10">Email</label>
                     <input type="email" name="email" id="email" value="{{ old('email') }}" class="c-inputField__input @error('email') is-error @enderror" autocomplete="email" autofocus="autofocus" required>
                     @if ($errors->has('email'))
-                            <span class="ic-inputField__errorMsg" role="alert">
+                            <span class="c-inputField__errorMsg" role="alert">
                                 <strong>{{ $errors->first('email') }}</strong>
                             </span>
                     @endif
@@ -24,7 +24,7 @@
                     <input type="password" name="password" id="password" class="c-inputField__input @error('password') is-error @enderror" autocomplete="current-password" autofocus="autofocus" required>
                     <span class="c-inputField__detail">半角英数字で8文字以上</span>
                     @if ($errors->has('password'))
-                            <span class="ic-inputField__errorMsg" role="alert">
+                            <span class="c-inputField__errorMsg" role="alert">
                                 <strong>{{ $errors->first('password') }}</strong>
                             </span>
                     @endif
