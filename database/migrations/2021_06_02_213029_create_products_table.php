@@ -17,13 +17,11 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->bigInteger('price');
-            $table->time('exp_date');
+            $table->datetime('exp_date');
             $table->string('comment');
             $table->string('pic1');
-            $table->unsignedBigInteger('shop_id');
-            $table->unsignedBigInteger('buyer_id');
-            $table->boolean('sold_flg')->unsigned();
-            $table->boolean('delete_flg')->unsigned();
+            $table->boolean('sold_flg')->unsigned()->default(0);
+            $table->boolean('delete_flg')->unsigned()->default(0);
             $table->timestamps();
         });
     }

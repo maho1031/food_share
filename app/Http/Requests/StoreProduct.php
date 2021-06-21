@@ -28,7 +28,8 @@ class StoreProduct extends FormRequest
             'price' => 'required|integer',
             'exp_date' => 'required',
             'comment' => 'required|string|max:255',
-            'pic1' => 'file|image|mimes:jpeg,png,jpg,gif|max:1024' 
+            'pic1' => 'file|image|mimes:jpeg,png,jpg,gif|max:1024',
+            'buyer_id' => 'integer|nullable'
 
         ];
     }

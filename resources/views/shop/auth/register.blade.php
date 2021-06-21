@@ -14,7 +14,7 @@
                     <label for="email" class="p-auth__text u-mb10">Email</label>
                     <input type="email" name="email" id="email" value="{{ old('email') }}" class="c-inputField__input @error('email') is-error @enderror" autocomplete="email" autofocus="autofocus" required>
                     @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="c-inputField__errorMsg" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                      @endif
@@ -25,7 +25,7 @@
                     <input type="password" name="password" id="password" class="c-inputField__input @error('password') is-error @enderror" autocomplete="current-password" autofocus="autofocus" required>
                     <span class="c-inputField__detail">半角英数字で8文字以上</span>
                     @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="c-inputField__errorMsg" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
@@ -35,7 +35,7 @@
                     <label for="password" class="p-auth__text u-mb10">パスワード(確認)</label>
                     <input type="password" name="password_confirmation" id="password_confirmation" class="c-inputField__input @error('password') is-error @enderror" autocomplete="new-password" autofocus="autofocus" required>
                             @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="c-inputField__errorMsg" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                             @endif
@@ -49,7 +49,7 @@
                     @endforeach
                     </select>
                     @if ($errors->has('conveni_id'))
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="c-inputField__errorMsg" role="alert">
                                         <strong>{{ $errors->first('conveni_id') }}</strong>
                                     </span>
                      @endif
@@ -59,7 +59,7 @@
                     <label for="name" class="p-auth__text u-mb10">支店名</label>
                     <input type="text" name="name" id="name" class="c-inputField__input @error('name') is-error @enderror" autocomplete="name" autofocus="autofocus" required placeholder="例：中目黒店">
                     @if ($errors->has('name'))
-                                <span class="invalid-feedback" role="alert">
+                                <span class="c-inputField__errorMsg" role="alert">
                                     <strong>{{ $errors->first('name') }}</strong>
                                 </span>
                      @endif
@@ -73,7 +73,7 @@
                         @endforeach
                     </select>
                     @if ($errors->has('prefecture_id'))
-                                <span class="invalid-feedback" role="alert">
+                                <span class="c-inputField__errorMsg" role="alert">
                                     <strong>{{ $errors->first('prefecture_id') }}</strong>
                                 </span>
                      @endif
@@ -83,7 +83,7 @@
                     <label for="address" class="p-auth__text u-mb10">住所</label>
                     <input type="text" name="address" id="address" class="c-inputField__input @error('address') is-error @enderror" autocomplete="new-password" autofocus="autofocus" required placeholder="例：目黒区中目黒0-0-0">
                     @if ($errors->has('address'))
-                                <span class="invalid-feedback" role="alert">
+                                <span class="c-inputField__errorMsg" role="alert">
                                     <strong>{{ $errors->first('address') }}</strong>
                                 </span>
                      @endif

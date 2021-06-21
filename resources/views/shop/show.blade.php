@@ -23,7 +23,6 @@
                 </div>
                 <div class="p-product__list">
                     <div class="p-product__item">
-                        <!-- <div class="p-product__contents"> -->
                             <div class="p-product__image">
                                 <img src="{{asset('img/pro1.jpg')}}" alt="">
                                 <div class="p-product__soldOutBadge">
@@ -33,19 +32,21 @@
                             
                             <div class="p-product__data">
                                 <ul class="p-product__name">
+                                @foreach(auth()->user()->products as $product)
                                     <li class="p-product__infomations">
-                                        <span class="p-product__sentense">商品名：なめらかプリンチョコ</span>
+                                        <span class="p-product__sentense">商品名：{{$product->name}}</span>
                                     </li>
                                     <li class="p-product__infomations">
-                                        <span class="p-product__sentense">価格：100円(税込)</span>
+                                        <span class="p-product__sentense">価格：{{$product->price}}円(税込)</span>
                                     </li>
                                     <li class="p-product__infomations">
-                                        <span class="p-product__sentense">コンビニ名：セブンイレブン</span>
+                                        <span class="p-product__sentense">コンビニ名：{{$product->conveni->name}}</span>
                                     </li>
                                     <li class="p-product__infomations">
                                         <span class="p-product__sentense">支店名：東京都目黒区支店</span>
                                     </li>
                                 </ul>
+                                @endforeach
                             </div>
 
                             <div class="p-btnContainer">
@@ -54,7 +55,6 @@
                             <div class="p-btnContainer u-mb30">
                                 <a href="" class="c-btn p-btnContainer__btn is-detail">詳細を見る</a>
                             </div>
-                        <!-- </div> -->
                     </div>
 
                     <div class="p-product__item">

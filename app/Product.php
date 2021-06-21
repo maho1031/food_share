@@ -16,4 +16,7 @@ public function shop(){
 public function buyers(){
     return $this->belongsTo('App\User');
 }
+public function conveni(){
+    return $this->belongsTo('App\Conveni');
+}
 }

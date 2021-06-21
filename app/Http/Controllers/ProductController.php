@@ -43,8 +43,12 @@ class ProductController extends Controller
     public function store(StoreProduct $request)
     {
         $product = new Product;
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->exp_date = $request->exp_date;
+        $product->comment = $request->comment;
 
-        $product->fill($request->all());
+        // $product->fill($request->all());
 
         // 送信された画像を格納
         $product_img = $request->file('pic1');

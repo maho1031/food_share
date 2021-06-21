@@ -19,8 +19,6 @@ class CreateShopsTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->unsignedBigInteger('conveni_id');
-            $table->unsignedBigInteger('prefecture_id');
             $table->string('address');
             $table->rememberToken();
             $table->timestamps();
@@ -34,6 +32,7 @@ class CreateShopsTable extends Migration
      */
     public function down()
     {
+        
         Schema::dropIfExists('shops');
     }
 }
