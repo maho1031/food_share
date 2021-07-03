@@ -444,7 +444,7 @@ pre {
   display: block;
   background-color: #f4f0e9;
   width: 400px;
-  height: 200px;
+  height: 230px;
   overflow: hidden;
 }
 
@@ -1083,6 +1083,7 @@ pre {
   line-height: 1.7em;
   background-color: #f6f5f1;
   font-size: 14px;
+  min-height: 75px;
 }
 
 .p-product__soldOutBadge::after {
@@ -1153,11 +1154,13 @@ pre {
 
 .p-productDetail__snsShare {
   font-size: 14px;
-  width: 170px;
+  width: 210px;
   margin: 0 auto;
+  vertical-align: middle;
 }
 
 .p-productDetail__snsShare-link {
+  height: 45px;
   background-color: #00acee;
   display: block;
   text-decoration: none;
@@ -1165,7 +1168,7 @@ pre {
   color: #fff;
   border-radius: 4px;
   border: 1px solid transparent;
-  padding: 10px 8px;
+  padding: 13px 8px;
 }
 
 .p-productDetail__content {

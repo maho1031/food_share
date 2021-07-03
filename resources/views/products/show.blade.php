@@ -1,6 +1,6 @@
 @include('layouts.head')
-@extends('layouts.app')
-@section('title', '商品情報編集')
+@extends('shop.layouts.app')
+@section('title', '商品詳細')
 @section('content')
 
 <main class="l-main">
@@ -8,7 +8,7 @@
         <div class="p-productDetail__item">
             <div class="p-productDetail__header">
                 <div class="p-productDetail__name">
-                    <h1>なめらかプリンチョコ</h1>
+                    <h1>{{$product->name}}</h1>
                 </div>
                 <div class="p-productDetail__img">
                     <img src="{{asset('img/pro1.jpg')}}" alt="">
@@ -16,13 +16,13 @@
             </div>
             <div class="p-productDetail__basicInfo">
                 <div class="p-productDetail__price">
-                    <span class="p-productDetail__price-main">¥200(税込)</span>
+                    <span class="p-productDetail__price-main">¥{{$product->price}}(税込)</span>
                 </div>
                 <div class="p-productDetail__foodDate">
-                    <span class="p-productDetail__foodDate-exp">賞味期限：2021/03/01</span>
+                    <span class="p-productDetail__foodDate-exp">賞味期限：{{$product->exp_date->format('Y-m-d')}}</span>
                 </div>
                 <div class="p-productDetail__comment">
-                    <p class="p-productDetail__comment-text">冷やすとさらに美味しいです！おすすめ！！</p>
+                    <p class="p-productDetail__comment-text">{{$product->comment}}</p>
                 </div>
             </div>
 
@@ -44,12 +44,12 @@
                 <dl class="p-productDetail__shopInfo">
                     <div class="p-productDetail__shopInfo-line">
                         <dt class="p-productDetail__shopInfo-dt">コンビニ名</dt>
-                        <dd class="p-productDetail__shopInfo-dd">セブンイレブン</dd>
+                        <dd class="p-productDetail__shopInfo-dd">{{$product->shop->convenis->name}}</dd>
                     </div>
 
                     <div class="p-productDetail__shopInfo-line">
                         <dt class="p-productDetail__shopInfo-dt">支店名</dt>
-                        <dd class="p-productDetail__shopInfo-dd">目黒支店</dd>
+                        <dd class="p-productDetail__shopInfo-dd">{{$product->shop->name}}</dd>
                     </div>
 
                     <div class="p-productDetail__shopInfo-line">

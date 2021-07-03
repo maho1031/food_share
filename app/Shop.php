@@ -35,7 +35,7 @@ class Shop extends Authenticatable
 
     public function convenis()
     {
-        return $this->belongsTo('App\Conveni');
+        return $this->belongsTo('App\Conveni','conveni_id','id');
     }
 
     public function prefectures()

@@ -4,6 +4,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
+
 class UsersTableSeeder extends Seeder
 {
     /**
@@ -18,7 +19,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'test@example.com',
             'password' => bcrypt('password'),
             'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
         ]);
     }
 }

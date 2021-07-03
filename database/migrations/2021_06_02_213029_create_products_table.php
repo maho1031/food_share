@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->bigInteger('price');
             $table->datetime('exp_date');
             $table->string('comment');
-            $table->string('pic1');
+            $table->string('pic1')->nullable();
             $table->boolean('sold_flg')->unsigned()->default(0);
             $table->boolean('delete_flg')->unsigned()->default(0);
             $table->timestamps();

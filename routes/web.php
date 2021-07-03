@@ -87,4 +87,10 @@ Route::group(['prefix' => 'shop', 'middleware' => 'auth:shop'], function(){
     Route::get('/products/create', 'ProductController@create')->name('products.create');
     // 商品新規作成
      Route::post('/products/store', 'ProductController@store')->name('products.store');
+    // 商品編集
+    Route::get('/products/{product_id}/edit', 'ProductController@edit')->name('products.edit');
+    // 商品更新
+    Route::post('/products/{product_id}/update', 'ProductController@update')->name('products.update');
+    // 商品詳細画面
+    Route::get('/products/{product_id}/show', 'ProductController@show')->name('products.show');
  });

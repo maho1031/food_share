@@ -17,8 +17,8 @@ class AddShopIdToProducts extends Migration
         Schema::table('products', function (Blueprint $table) {
             //既存のレコードを削除する
           DB::statement('DELETE FROM products');
-          $table->unsignedBigInteger('shop_id');
-        $table->unsignedBigInteger('buyer_id')->nullable();
+          $table->unsignedBigInteger('shop_id')->after('delete_flg');
+          $table->unsignedBigInteger('buyer_id')->nullable()->after('shop_id');
           $table->foreign('shop_id')->references('id')->on('shops');
           $table->foreign('buyer_id')->references('id')->on('users');
         });

@@ -1,10 +1,12 @@
 import $ from 'jquery';
+import Vue from 'vue'
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
 // ハンバーガーメニュー 
+// =======================================
 $('.js-menuTarget').on('click', function () {
     
     if($(this).hasClass('is-active')){
@@ -18,12 +20,14 @@ $('.js-menuTarget').on('click', function () {
    });
 
  //フッターを最下部に固定
+ // =======================================
 var $ftr = $('.js-footer');
 if( window.innerHeight > $ftr.offset().top + $ftr.outerHeight()){
  $ftr.attr({'style': 'position:fixed; top:' + (window.innerHeight - $ftr.outerHeight()) + 'px;'});
 }
 
 // 画像ライブプレビュー
+// =======================================
 var $dropArea = $('.js-pic');
 var $fileInput = $('.js-input-file');
 
