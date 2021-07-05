@@ -6,6 +6,7 @@
 <div class="c-container p-auth__container">
         <div class="p-auth__header">
             <p class="p-auth__title">店舗新規登録</p>
+            @include('error')
         </div>
         <div class="p-auth__inner">
             <form method="POST" action="{{ route('shop.register') }}" class="p-auth__form">

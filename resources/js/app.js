@@ -47,6 +47,8 @@ $fileInput.on('change', function(e){
 });
 
 
+
+
 window.Vue = require('vue');
 
 /**

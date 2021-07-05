@@ -30,6 +30,8 @@
                     @endif
                 </div>
 
+                <input type="hidden" name="remember" id="remember" value="on">
+
                 <div class="p-btnContainer">
                     <button type="submit" class="c-btn p-btnContainer__btn">ログイン</button>
                 </div>

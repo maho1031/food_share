@@ -3,14 +3,14 @@
         
         <div class="p-header__logo">
             <a href="/">
+            <!-- <img src="{{asset('img/logo.png')}}" alt="" class="p-header__logoImage"> -->
             <h1 class="p-header__title">Haiki Share</h1>
             <span></span>
             </a>
         </div>
 
         <!-- PC向けメニュー -->
-        <nav class="p-header__nav">
-            
+        <nav class="p-header__nav"> 
             <ul class="p-header__list">
                 <!-- ログインなし -->
                 @guest
@@ -21,6 +21,7 @@
                     <a href="{{'register'}}" class="">新規会員登録</a>
                 </li>
                 @endauth
+
                 <!-- ログインあり・買い手-->
                 @auth
                 <li class="c-btn p-header__btn is_login">

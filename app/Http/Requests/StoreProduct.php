@@ -33,4 +33,15 @@ class StoreProduct extends FormRequest
 
         ];
     }
+
+    public function attributes()
+{
+    return [
+        'name' => '商品名',
+        'price' => '金額',
+        'exp_date' => '賞味期限',
+        'comment' => 'コメント',
+        'pic1' => '商品',
+    ];
+}
 }

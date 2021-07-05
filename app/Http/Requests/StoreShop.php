@@ -34,4 +34,12 @@ class StoreShop extends FormRequest
             'address' => 'required|string|max:50',
         ];
     }
+
+    public function attributes()
+{
+    return [
+        'name' => '支店名',
+        'address' => '住所',
+    ];
+}
 }

@@ -13,11 +13,11 @@
                 <div class="c-inputField u-mb30">
                     <label for="email" class="p-auth__text u-mb10">Email</label>
                     <input type="email" name="email" id="email" value="{{ old('email') }}" class="c-inputField__input @error('email') is-error @enderror" autocomplete="email" autofocus="autofocus" required>
-                    <!-- @error('email')
-                    <span class="p-form__errorMsg" role="alert">
-                       
-                    </span>
-                    @enderror -->
+                    @if ($errors->has('email'))
+                            <span class="c-inputField__errorMsg" role="alert">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                    @endif
                 </div>
 
                 <div class="c-inputField u-mb30">

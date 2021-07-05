@@ -22,8 +22,15 @@
 <link rel="apple-touch-icon-precomposed" href="">
 <script src="https://kit.fontawesome.com/7f19bc1ee0.js" crossorigin="anonymous"></script>
 
- <!-- Styles -->
- <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<!-- Styles -->
+<link href="{{ asset('css/style.css') }}" rel="stylesheet">
+ <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"/> -->
+ <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> -->
+
 
    <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}" defer></script>

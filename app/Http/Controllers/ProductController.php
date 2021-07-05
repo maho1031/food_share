@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -19,8 +20,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
-        return view('products.index');
+        $products = Product::all()->sortByDesc('created_at');
+
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -119,10 +121,13 @@ class ProductController extends Controller
 
         $product = Product::find($product_id);
 
+        //自分が作成した商品のみ編集できる様にする
+        $this->authorize('edit', $product);
+
         // 認証情報の確認
-        if($product->shop_id !== auth()->id()){
-            abort(403);  
-        }
+        // if($product->shop_id !== auth()->id()){
+        //     abort(403);  
+        // }
 
         return view('products.edit',compact('product'));
     }
@@ -196,9 +201,20 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($product_id)
     {
-        //
+        if(!ctype_digit($product_id)){
+            return redirect('/');
+        }
+
+        $product = Product::find($product_id);
+
+        if($product->shop_id !== auth()->id()){
+            abort(403);  //認証情報
+        }
+        $product->delete();
+
+        return redirect()->route('shop.show');
     }
     
 }
