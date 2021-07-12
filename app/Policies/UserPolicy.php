@@ -39,9 +39,9 @@ class UserPolicy
      * @param  \App\User  $model
      * @return mixed
      */
-    public function update(User $user, User $model)
+    public function edit(User $user, User $model)
     {
-        //
+        return $user->id == $model->id;
     }
 
     /**
