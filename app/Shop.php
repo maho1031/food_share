@@ -40,6 +40,6 @@ class Shop extends Authenticatable
 
     public function prefectures()
     {
-        return $this->belongsTo('App\Prefecture');
+        return $this->belongsTo('App\Prefecture', 'prefecture_id', 'id');
     }
 }

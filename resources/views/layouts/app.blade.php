@@ -24,21 +24,23 @@
  <!-- Font Awesome -->
 <script src="https://kit.fontawesome.com/7f19bc1ee0.js" crossorigin="anonymous"></script>
 
-<!-- JQuery -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
  <!-- Styles -->
  <link href="{{ asset('css/style.css') }}" rel="stylesheet">
  <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"/> -->
  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> -->
 
-   <!-- Scripts -->
-<script src="{{ asset('js/app.js') }}" defer></script>
-
 </head>
 <body>
     @include('layouts.header')
-    @yield('content')
+    <div id="app">
+      @yield('content')
+    </div>
     @include('layouts.footer')
+
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <!-- Scripts -->
+ <script src="{{ mix('js/app.js') }}"></script> 
+ <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 </html>

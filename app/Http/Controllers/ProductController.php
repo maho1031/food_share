@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
 use Image;
+use App\Conveni;
 // use Faker\Provider\Image;
+use App\Product;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProduct;
@@ -21,8 +22,11 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all()->sortByDesc('created_at');
+        $convenis = Conveni::all();
 
-        return view('products.index', compact('products'));
+        // dd($products);
+
+        return view('products.index', compact('convenis', 'products'));
     }
 
     /**

@@ -12,9 +12,6 @@ class Conveni extends Model
         'name'
     ];
 
-    public function product()
-    {
-      return $this->belongsTo('App\Product');
-    }
+
 
 }

@@ -1,5 +1,7 @@
 import $ from 'jquery';
 import Vue from 'vue'
+import ProductList from './components/ProductList.vue'
+import ProductItem from './components/ProductItem.vue'
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -57,7 +59,14 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+//  Vue.component('product-index', require('./components/ProductIndex.vue').default);
+//  Vue.component('product-indexlist', require('./components/ProductIndexlist.vue').default);
+// Vue.component('product-indexitem', require('./components/ProductIndexitem.vue').default);
+
+// Vue.component('product-list', require('./components/ProductList.vue').default);
+Vue.component("ProductList", ProductList)
+Vue.component("ProductItem", ProductItem)
+// Vue.component('product-item', require('./components/ProductItem.vue').default);
 
 const app = new Vue({
     el: '#app'

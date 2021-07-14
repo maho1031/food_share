@@ -13,8 +13,12 @@
 
 // TOP画面
 Route::get('/home', 'HomeController@index')->name('home');
+
 // 商品一覧
 Route::get('/products', 'ProductController@index')->name('products.index');
+// 商品一覧(Ajax)
+Route::get('/ajax/products', 'Ajax\AjaxController@index')->name('ajaxs.index');
+
 // 商品詳細画面
 Route::get('/products/{product_id}/show', 'ProductController@show')->name('products.show');
 
