@@ -13,6 +13,6 @@ class AjaxController extends Controller
 {
     // 商品一覧ページ
     public function index(){
-        return Product::all()->sortByDesc('created_at');
+        return Product::with('shop')->with('conveni')->orderBy(Product::CREATED_AT, 'desc')->get();
     }
 }

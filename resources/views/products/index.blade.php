@@ -55,7 +55,7 @@
                 <div class="p-product__header">
                     <p class="c-title">商品一覧</p>
                 </div>
-                <div id="app">
+                <div id="app" class="p-product__wrapper">
                     <product-list></product-list>
                 </div>
             </div>

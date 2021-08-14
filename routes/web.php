@@ -83,7 +83,7 @@ Route::group(['prefix' => 'shop', 'middleware' => 'auth:shop'], function(){
     Route::get('home', 'Shop\HomeController@index')->name('shop.home');
 
     // コンビニマイページ
-    Route::get('show', 'ShopController@show')->name('shop.show');
+    Route::get('show', 'ShopController@show')->name('shops.show');
     // コンビニプロフィール編集
     Route::get('/shop/edit', 'ShopController@edit')->name('shop.edit');
     // コンビニプロフィール更新

@@ -20,6 +20,22 @@ $('.js-menuTarget').on('click', function () {
       $('.js-open-menu').addClass('is-open');
     }
    });
+// ヘッダー
+// =======================================
+var $window = $(window),
+$header = $('.p-header'),
+headerBottom;
+
+$window.on('scroll', function () {
+headerBottom = $header.height();
+if ($window.scrollTop() > headerBottom) {
+  $header.addClass('is-triggered');
+}
+else {
+  $header.removeClass('is-triggered');
+}
+});
+$window.trigger('scroll');
 
  //フッターを最下部に固定
  // =======================================
@@ -63,9 +79,10 @@ window.Vue = require('vue');
 //  Vue.component('product-indexlist', require('./components/ProductIndexlist.vue').default);
 // Vue.component('product-indexitem', require('./components/ProductIndexitem.vue').default);
 
-// Vue.component('product-list', require('./components/ProductList.vue').default);
+Vue.component('product-list', require('./components/ProductList.vue').default);
 Vue.component("ProductList", ProductList)
 Vue.component("ProductItem", ProductItem)
+
 // Vue.component('product-item', require('./components/ProductItem.vue').default);
 
 const app = new Vue({

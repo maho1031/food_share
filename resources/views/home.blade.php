@@ -1,5 +1,4 @@
 @extends('layouts.app')
-@include('layouts.head')
 @section('title', 'Haiki Share | コンビニ廃棄購入サービス')
 @section('description', 'Haiki Shareは、コンビニで廃棄された商品をリーズナブルなお値段で購入できるサイトです。')
 @section('keywords', 'コンビニ,廃棄商品,お買い得')
