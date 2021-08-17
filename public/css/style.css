@@ -13048,7 +13048,6 @@ pre {
 .p-product__wrapper {
   width: 100%;
   margin: 0 auto;
-  max-width: 600px;
 }
 
 .p-product__list {
@@ -13085,6 +13084,10 @@ pre {
   margin-bottom: 10px;
   -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
           box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+}
+
+.p-product__item > a {
+  color: #333;
 }
 
 @media screen and (min-width: 768px) {

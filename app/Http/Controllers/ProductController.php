@@ -110,6 +110,18 @@ class ProductController extends Controller
         return view('products.show',compact('product'));
     }
 
+    public function sshow($product_id)
+    {
+        // GETパラメータが数字かどうかチェックする
+        if(!ctype_digit($product_id)){
+            return redirect('/');
+        }
+
+        $product = Product::find($product_id);
+
+        return view('products.sshow',compact('product'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

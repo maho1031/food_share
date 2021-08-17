@@ -2,7 +2,7 @@
     <div class="p-product__list">
         <div
         v-for="product in products"
-        class=""
+        class="p-product__item"
         :key="product.id">
         <product-item
         :product="product"

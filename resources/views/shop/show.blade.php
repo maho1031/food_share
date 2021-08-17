@@ -1,4 +1,3 @@
-@include('layouts.head')
 @extends('shop.layouts.app')
 @section('title', 'マイページ')
 @section('content')

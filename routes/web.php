@@ -12,7 +12,7 @@
 */
 
 // TOP画面
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 // 商品一覧
 Route::get('/products', 'ProductController@index')->name('products.index');
@@ -26,7 +26,7 @@ Route::get('/products/{product_id}/show', 'ProductController@show')->name('produ
 //     return view('home');
 // })->name('login');
 
-// Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth'], function() {
 
     // ユーザーマイページ
     Route::get('/users/show', 'UserController@show')->name('users.show');
@@ -34,6 +34,9 @@ Route::get('/products/{product_id}/show', 'ProductController@show')->name('produ
     Route::get('/users/edit', 'UserController@edit')->name('users.edit');
     // ユーザー情報更新
     Route::post('/users/update', 'UserController@update')->name('users.update');
+
+    // 商品詳細画面
+    // Route::get('/products/{product_id}/show', 'ProductController@show')->name('products.show');
 
     // // コンビニマイページ画面
     // Route::get('/shops/edit', 'ShopController@edit')->name('shops.edit');
@@ -52,15 +55,15 @@ Route::get('/products/{product_id}/show', 'ProductController@show')->name('produ
     // // 商品詳細画面
     // Route::get('/products/show', 'ProductController@show')->name('products.show');
 
-// });
+});
 
-// Auth::routes();
+Auth::routes();
 
 
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+// Route::get('/', 'HomeController@index')->name('home');
 
 // コンビニ側
 Route::group(['prefix' => 'shop', 'middleware' => 'guest:shop'], function() {
@@ -76,6 +79,11 @@ Route::group(['prefix' => 'shop', 'middleware' => 'guest:shop'], function() {
     Route::post('register', 'Shop\Auth\RegisterController@register')->name('shop.register');
     Route::get('password/rest', 'Shop\Auth\ForgotPasswordController@showLinkRequestForm')->name('shop.password.request');
 
+    // 商品詳細画面
+    // Route::get('/products/{product_id}/show', 'ProductController@show')->name('products.show');
+
+     
+
  });
 
 Route::group(['prefix' => 'shop', 'middleware' => 'auth:shop'], function(){
@@ -83,7 +91,7 @@ Route::group(['prefix' => 'shop', 'middleware' => 'auth:shop'], function(){
     Route::get('home', 'Shop\HomeController@index')->name('shop.home');
 
     // コンビニマイページ
-    Route::get('show', 'ShopController@show')->name('shops.show');
+    Route::get('show', 'ShopController@show')->name('shop.show');
     // コンビニプロフィール編集
     Route::get('/shop/edit', 'ShopController@edit')->name('shop.edit');
     // コンビニプロフィール更新
@@ -98,7 +106,7 @@ Route::group(['prefix' => 'shop', 'middleware' => 'auth:shop'], function(){
     // 商品更新
     Route::post('/products/{product_id}/update', 'ProductController@update')->name('products.update');
     // 商品詳細画面
-    Route::get('/products/{product_id}/show', 'ProductController@show')->name('products.show');
+    Route::get('/products/{product_id}/show', 'ProductController@sshow')->name('products.sshow');
     // 商品削除
     Route::post('/products/{product_id}/destroy', 'ProductController@destroy')->name('products.destroy');
  });
