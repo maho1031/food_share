@@ -27,7 +27,13 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/shop/show';
+    protected $redirectTo = '/shop/home';
+    // protected $redirectTo = '/shop/show';
+
+    public function __construct()
+    {
+        $this->middleware('guest:shop')->except('logout'); //変更
+    }
 
 
     // ログイン画面
@@ -38,7 +44,7 @@ class LoginController extends Controller
 
     protected function guard()
     {
-        return \Auth::guard('shop'); //管理者認証のguardを指定
+        return Auth::guard('shop'); //管理者認証のguardを指定
     }
 
     /**
@@ -56,7 +62,7 @@ class LoginController extends Controller
 
         $request->session()->invalidate();
 
-        return $this->loggedOut($request) ?: redirect('/shop/');  // ログアウト後のリダイレクト先
+        return $this->loggedOut($request) ?: redirect('/shop/login');  // ログアウト後のリダイレクト先
     }
 
 }

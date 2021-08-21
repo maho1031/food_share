@@ -36,7 +36,12 @@ return [
     */
 
     'guards' => [
-        'user' => [
+        // 'user' => [
+        //     'driver' => 'session',
+        //     'provider' => 'users',
+        // ],
+
+        'web' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
@@ -45,6 +50,12 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+
+        'user' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+
         'shop' => [
             'driver' => 'session',
             'provider' => 'shops',

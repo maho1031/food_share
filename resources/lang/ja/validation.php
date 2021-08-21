@@ -117,7 +117,7 @@ return [
     */
 
     'attributes' => [
-        'name' => 'ユーザー名',
+        'name' => '名前',
         'email' => 'メールアドレス',
         'password' => 'パスワード',
         'token' => 'トークン'

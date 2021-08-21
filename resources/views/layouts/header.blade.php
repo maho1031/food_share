@@ -23,7 +23,7 @@
                 @endauth
 
                 <!-- ログインあり・買い手-->
-                @auth
+                @auth('user')
                 <li class="c-btn p-header__btn is_login">
                     <a href="{{route('users.show')}}" class="">マイページ</a>
                 </li>

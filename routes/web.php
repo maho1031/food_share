@@ -10,7 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
+// =======================================================
+// User認証不要
+// =======================================================
 // TOP画面
 Route::get('/', 'HomeController@index')->name('home');
 
@@ -18,7 +22,6 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/products', 'ProductController@index')->name('products.index');
 // 商品一覧(Ajax)
 Route::get('/ajax/products', 'Ajax\AjaxController@index')->name('ajaxs.index');
-
 // 商品詳細画面
 Route::get('/products/{product_id}/show', 'ProductController@show')->name('products.show');
 
@@ -26,14 +29,17 @@ Route::get('/products/{product_id}/show', 'ProductController@show')->name('produ
 //     return view('home');
 // })->name('login');
 
-Route::group(['middleware' => 'auth'], function() {
-
+// Userログイン後
+Route::group(['middleware' => 'auth:user'], function() {
     // ユーザーマイページ
     Route::get('/users/show', 'UserController@show')->name('users.show');
     // ユーザー情報編集画面
     Route::get('/users/edit', 'UserController@edit')->name('users.edit');
     // ユーザー情報更新
     Route::post('/users/update', 'UserController@update')->name('users.update');
+
+    // 商品詳細画面
+    Route::get('/products/{product_id}/show', 'ProductController@show')->name('products.show');
 
     // 商品詳細画面
     // Route::get('/products/{product_id}/show', 'ProductController@show')->name('products.show');
@@ -57,11 +63,11 @@ Route::group(['middleware' => 'auth'], function() {
 
 });
 
-Auth::routes();
 
 
 
-Auth::routes();
+
+
 
 // Route::get('/', 'HomeController@index')->name('home');
 
@@ -107,6 +113,9 @@ Route::group(['prefix' => 'shop', 'middleware' => 'auth:shop'], function(){
     Route::post('/products/{product_id}/update', 'ProductController@update')->name('products.update');
     // 商品詳細画面
     Route::get('/products/{product_id}/show', 'ProductController@sshow')->name('products.sshow');
+
+    // 商品詳細画面
+// Route::get('/products/{product_id}/show', 'ProductController@show')->name('products.show');
     // 商品削除
     Route::post('/products/{product_id}/destroy', 'ProductController@destroy')->name('products.destroy');
  });
