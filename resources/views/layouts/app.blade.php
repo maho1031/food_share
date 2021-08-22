@@ -38,7 +38,11 @@
 <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 <body>
+    @if(auth('shop')->user())
+    @include('shop.layouts.header')
+    @else
     @include('layouts.header')
+    @endif
     <div id="app">
       @yield('content')
     </div>

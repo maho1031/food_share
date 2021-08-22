@@ -27,8 +27,8 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/shop/home';
-    // protected $redirectTo = '/shop/show';
+    // protected $redirectTo = '/shop/home';
+    protected $redirectTo = '/shop/show';
 
     public function __construct()
     {
@@ -44,7 +44,7 @@ class LoginController extends Controller
 
     protected function guard()
     {
-        return Auth::guard('shop'); //管理者認証のguardを指定
+        return \Auth::guard('shop'); //管理者認証のguardを指定
     }
 
     /**

@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Shop;
 
+use App\Shop;
 use App\Conveni;
 use App\Prefecture;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreShop;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
@@ -15,6 +17,12 @@ class ShopController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth:shop');
+    }
+
     public function index()
     {
         //

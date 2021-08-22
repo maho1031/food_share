@@ -39,9 +39,7 @@
 </head>
 <body>
     @include('shop.layouts.header')
-
-      @yield('content')
-
+    @yield('content')
     @include('layouts.footer')
 </body>
 </html>

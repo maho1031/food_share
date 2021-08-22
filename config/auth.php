@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'user',
+        'guard' => 'user', //webからuserに変更
         'passwords' => 'users',
     ],
 

@@ -8,7 +8,7 @@ use Illuminate\Auth\Middleware\Authenticate as Middleware;
 class Authenticate extends Middleware
 {
     // 追加
-    protected $user_route = 'user.login';
+    protected $user_route = 'login';
     protected $shop_route = 'shop.login';
 
     /**

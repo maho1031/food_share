@@ -93,10 +93,6 @@
                 <div class="p-btnContainer u-mt20">
                     <button type="submit" class="c-btn p-btnContainer__btn">店舗新規登録</button>
                 </div>
-
-
-
-
             </form>
 
             <div class="p-btnContainer">

@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/shop/home';
+    protected $redirectTo = '/shop/show';
 
     public function showRegisterForm()
 {
@@ -85,6 +85,6 @@ class RegisterController extends Controller
 
     protected function guard()
 {
-    return Auth::guard('shop'); //管理者認証のguardを指定
+    return \Auth::guard('shop'); //管理者認証のguardを指定
 }
 }

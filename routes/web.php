@@ -17,7 +17,6 @@ Auth::routes();
 // =======================================================
 // TOP画面
 Route::get('/', 'HomeController@index')->name('home');
-
 // 商品一覧
 Route::get('/products', 'ProductController@index')->name('products.index');
 // 商品一覧(Ajax)
@@ -97,11 +96,11 @@ Route::group(['prefix' => 'shop', 'middleware' => 'auth:shop'], function(){
     Route::get('home', 'Shop\HomeController@index')->name('shop.home');
 
     // コンビニマイページ
-    Route::get('show', 'ShopController@show')->name('shop.show');
+    Route::get('show', 'Shop\ShopController@show')->name('shop.show');
     // コンビニプロフィール編集
-    Route::get('/shop/edit', 'ShopController@edit')->name('shop.edit');
+    Route::get('/shop/edit', 'Shop\ShopController@edit')->name('shop.edit');
     // コンビニプロフィール更新
-    Route::post('/shop/update', 'ShopController@update')->name('shop.update');
+    Route::post('/shop/update', 'Shop\ShopController@update')->name('shop.update');
 
     // 商品新規作成画面
     Route::get('/products/create', 'ProductController@create')->name('products.create');
