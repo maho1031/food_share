@@ -9,7 +9,7 @@
             <p class="p-auth__title">店舗情報編集</p>
         </div>
         <div class="p-auth__inner">
-            <form method="POST" action="{{ route('shop.update') }}" class="p-auth__form">
+            <form method="POST" action="{{ route('shop.update', ['id' => auth()->user()->id ]) }}" class="p-auth__form">
                 @csrf
                 <div class="c-inputField u-mb30">
                     <label for="email" class="p-auth__text u-mb10">Email</label>
@@ -23,7 +23,7 @@
 
                 <div  class="c-inputField u-mb30">
                     <label for="password" class="p-auth__text u-mb10">パスワード</label>
-                    <input type="password" name="password" id="password" value="{{ old('password', auth()->user()->password) }}" class="c-inputField__input @error('password') is-error @enderror" autocomplete="current-password" autofocus="autofocus" required>
+                    <input type="password" name="password" id="password" class="c-inputField__input @error('password') is-error @enderror" autocomplete="current-password" autofocus="autofocus" required>
                     <span class="c-inputField__detail">半角英数字で8文字以上</span>
                     @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
@@ -34,7 +34,7 @@
 
                 <div class="c-inputField u-mb30">
                     <label for="password" class="p-auth__text u-mb10">パスワード(確認)</label>
-                    <input type="password" name="password_confirmation"  value="{{ old('password', auth()->user()->password) }}" id="password_confirmation" class="c-inputField__input @error('password') is-error @enderror" autocomplete="new-password" autofocus="autofocus" required>
+                    <input type="password" name="password_confirmation" id="password_confirmation" class="c-inputField__input @error('password') is-error @enderror" autocomplete="new-password" autofocus="autofocus" required>
                             @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -95,9 +95,6 @@
                 <div class="p-btnContainer u-mt20">
                     <button type="submit" class="c-btn p-btnContainer__btn">編集する</button>
                 </div>
-
-
-
 
             </form>
 

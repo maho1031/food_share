@@ -96,11 +96,11 @@ Route::group(['prefix' => 'shop', 'middleware' => 'auth:shop'], function(){
     Route::get('home', 'Shop\HomeController@index')->name('shop.home');
 
     // コンビニマイページ
-    Route::get('show', 'Shop\ShopController@show')->name('shop.show');
+    Route::get('/show', 'Shop\ShopController@show')->name('shop.show');
     // コンビニプロフィール編集
-    Route::get('/shop/edit', 'Shop\ShopController@edit')->name('shop.edit');
+    Route::get('/edit', 'Shop\ShopController@edit')->name('shop.edit');
     // コンビニプロフィール更新
-    Route::post('/shop/update', 'Shop\ShopController@update')->name('shop.update');
+    Route::post('/update', 'Shop\ShopController@update')->name('shop.update');
 
     // 商品新規作成画面
     Route::get('/products/create', 'ProductController@create')->name('products.create');

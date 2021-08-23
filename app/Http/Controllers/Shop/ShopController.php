@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreShop;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ShopController extends Controller
 {
@@ -48,6 +49,7 @@ class ShopController extends Controller
      */
     public function show()
     {
+
         return view('shop.show');
     }
 
@@ -59,6 +61,15 @@ class ShopController extends Controller
      */
     public function edit()
     {
+
+        // $id = Auth::user()->id;
+
+        // $shop = Shop::findOrFail($id);
+
+        // if($shop->id !== auth()->id()){
+        //     abort(403);  //認証情報
+        // }
+
         $convenis = Conveni::all();
         $prefectures = Prefecture::all();
 
@@ -77,7 +88,7 @@ class ShopController extends Controller
         $user = Auth::user();
 
         $user->email = $request->email;
-        $user->password = bcrypt($request->password);
+        $user->password = Hash::make($request->password);
         $user->conveni_id = $request->conveni_id;
         $user->name = $request->name;
         $user->prefecture_id = $request->prefecture_id;
