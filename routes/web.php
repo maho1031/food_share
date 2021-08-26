@@ -101,6 +101,8 @@ Route::group(['prefix' => 'shop', 'middleware' => 'auth:shop'], function(){
     Route::get('/edit', 'Shop\ShopController@edit')->name('shop.edit');
     // コンビニプロフィール更新
     Route::post('/update', 'Shop\ShopController@update')->name('shop.update');
+    // 商品一覧
+    Route::get('/productList', 'Shop\ShopController@productList')->name('shop.productList');
 
     // 商品新規作成画面
     Route::get('/products/create', 'ProductController@create')->name('products.create');

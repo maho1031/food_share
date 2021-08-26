@@ -28,9 +28,18 @@ class StoreProduct extends FormRequest
             'price' => 'required|integer',
             'exp_date' => 'required',
             'comment' => 'required|string|max:255',
-            'pic1' => 'file|image|mimes:jpeg,png,jpg,gif|max:1024',
+            'pic1' => 'file|image|mimes:jpeg,png,jpg,gif|max:2048',
             'buyer_id' => 'integer|nullable'
 
+        ];
+    }
+
+    public function messages(){
+        
+        return [
+            'image' => '指定されたファイルが画像ではありません。',
+            'mines' => '指定された拡張子が(jpg/jpeg/png)ではありません。',
+            'max' => 'ファイルサイズは2MB以内にして下さい。'
         ];
     }
 

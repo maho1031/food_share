@@ -11,7 +11,11 @@
                     <h1>{{$product->name}}</h1>
                 </div>
                 <div class="p-productDetail__img">
-                    <img src="{{asset('img/pro1.jpg')}}" alt="">
+                    @if($product->pic1)
+                    <img src="{{asset('storage/uploads/'. $product->pic1) }}" alt="" >
+                    @else
+                    <img src="{{asset('img/sample-img.jpg')}}" alt="sampleIcon" class="">
+                    @endif
                 </div>
             </div>
             <div class="p-productDetail__basicInfo">

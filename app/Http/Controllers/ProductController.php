@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProduct;
 use Illuminate\Support\Facades\Auth;
+use InterventionImage;
 
 class ProductController extends Controller
 {
@@ -59,7 +60,7 @@ class ProductController extends Controller
         $product_img = $request->file('pic1');
         
 
-        if($product_img){
+        if(!is_null($product_img) && $product_img->isValid() ){
             // 元のファイルから拡張子を取ってくる
             $file_ext = $product_img->getClientOriginalExtension();
 
@@ -72,15 +73,18 @@ class ProductController extends Controller
             });
 
             //画像名をランダムな文字列に変換
-            $img_path = Str::random(30).'.'.$file_ext;  
+            // $img_path = Str::random(30).'.'.$file_ext;  
+            $img_path = uniqid(rand().'_');
+            $imgNameToStore = $img_path.'.'.$file_ext;
+
 
             // 画像のパスを取得
-            $save_path = storage_path('app/public/uploads/'.$img_path);
+            $save_path = storage_path('app/public/uploads/'.$imgNameToStore);
             // storageへ保存
             $img->save($save_path);
 
             // DBへ保存
-            $product->pic1 = $img_path;
+            $product->pic1 = $imgNameToStore;
 
         }
 
@@ -135,15 +139,15 @@ class ProductController extends Controller
             return redirect('/')->with('flash_message', __('Invalid operation was performed.'));
         }
 
-        $product = Product::find($product_id);
+        $product = Product::findOrFail($product_id);
 
         //自分が作成した商品のみ編集できる様にする
-        $this->authorize('edit', $product);
+        // $this->authorize('edit', $product);
 
         // 認証情報の確認
-        // if($product->shop_id !== auth()->id()){
-        //     abort(403);  
-        // }
+        if($product->shop_id !== Auth::user()->id){
+            abort(403);
+        }
 
         return view('products.edit',compact('product'));
     }
@@ -161,13 +165,13 @@ class ProductController extends Controller
         if(!ctype_digit($product_id)){
             return redirect('/');
         }
-
-        $product = Product::find($product_id);
+        $product = Product::findOrFail($product_id);
 
         // 認証情報
-        if($product->shop_id !== auth()->id()){
-            abort(403);  //認証情報
+        if($product->shop_id !== Auth::user()->id){
+            abort(403);
         }
+
 
         $product->name = $request->name;
         $product->price = $request->price;
@@ -178,7 +182,7 @@ class ProductController extends Controller
          $product_img = $request->file('pic1');
         
 
-         if($product_img){
+         if(!is_null($product_img) && $product_img->isValid() ){
              // 元のファイルから拡張子を取ってくる
              $file_ext = $product_img->getClientOriginalExtension();
  
@@ -191,15 +195,17 @@ class ProductController extends Controller
              });
  
              //画像名をランダムな文字列に変換
-             $img_path = Str::random(30).'.'.$file_ext;  
+            //  $img_path = Str::random(30).'.'.$file_ext; 
+            $img_path = uniqid(rand().'_');
+            $imgNameToStore = $img_path.'.'.$file_ext; 
  
              // 画像のパスを取得
-             $save_path = storage_path('app/public/uploads/'.$img_path);
+             $save_path = storage_path('app/public/uploads/'.$imgNameToStore);
              // storageへ保存
              $img->save($save_path);
  
              // DBへ保存
-             $product->pic1 = $img_path;
+             $product->pic1 = $imgNameToStore;
  
          }
  
@@ -209,7 +215,8 @@ class ProductController extends Controller
 
          return redirect()->route('shop.show');
 
-    }
+    // }
+}
 
     /**
      * Remove the specified resource from storage.

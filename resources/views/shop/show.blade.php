@@ -60,7 +60,7 @@
 
 
                     <div class="p-btnContainer u-mt60">
-                                <a href="" class="c-btn p-btnContainer__btn is-more">もっと見る</a>
+                                <a href="{{ route('shop.productList')}}" class="c-btn p-btnContainer__btn is-more">もっと見る</a>
                     </div>
                 </div>
         </div>

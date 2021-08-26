@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Shop;
 
 use App\Shop;
 use App\Conveni;
+use App\Product;
 use App\Prefecture;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreShop;
@@ -22,6 +23,21 @@ class ShopController extends Controller
     public function __construct()
     {
         $this->middleware('auth:shop');
+
+        $this->middleware(function ($request, $next) {
+            $id = $request->route()->parameter('id');
+            if(!is_null($id)){
+                $shop_id = Shop::findOrFail($id)->id;
+                $shopId = (int)$shop_id;
+                $authId = Auth::id();
+
+                if($shopId !== $authId){
+                    abort(404);
+                }
+            }
+        
+            return $next($request);
+        });
     }
 
     public function index()
@@ -31,8 +47,11 @@ class ShopController extends Controller
 
     public function productList(){
 
+        // $shop_id = Auth::id();
+        $products = Product::where('shop_id', Auth::id())->get();
 
-        return view('shops.productList');
+
+        return view('shops.productList', compact('products'));
     }
 
     public function soldList(){
@@ -61,14 +80,6 @@ class ShopController extends Controller
      */
     public function edit()
     {
-
-        // $id = Auth::user()->id;
-
-        // $shop = Shop::findOrFail($id);
-
-        // if($shop->id !== auth()->id()){
-        //     abort(403);  //認証情報
-        // }
 
         $convenis = Conveni::all();
         $prefectures = Prefecture::all();

@@ -7,29 +7,20 @@
     <div class="c-container p-productForm">
         <div class="p-productFrom__header">
             <p class="c-title__sub">商品情報編集</p>
+            @include('error')
         </div>
 
         <div class="p-productForm__inner">
-            <form action="{{route('products.update', ['id' => $product->id]) }}" method="POST" class="p-productForm__form" enctype="multipart/form-data">
+            <form action="{{route('products.update', ['product_id' => $product->id]) }}" method="POST" class="p-productForm__form" enctype="multipart/form-data">
             @csrf
                 <div class="c-inputField u-mb30">
                     <label for="name" class="p-productForm__text u-mb10">商品名</label>
                     <input type="name" name="name" id="name" value="{{ old('name',$product->name) }}" class="c-inputField__input @error('name') is-error @enderror" autocomplete="name" autofocus="autofocus" required>
-                    @if ($errors->has('name'))
-                                    <span class="c-inputField__errorMsg" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                     @endif
                 </div>
 
                 <div class="c-inputField u-mb30">
                     <label for="price" class="p-productForm__text u-mb10">価格</label>
                     <input type="number" name="price" id="price" value="{{ old('price', $product->price) }}" class="c-inputField__input @error('price') is-error @enderror" autocomplete="price" autofocus="autofocus" required placeholder="例100">
-                    @if ($errors->has('price'))
-                                    <span class="c-inputField__errorMsg" role="alert">
-                                        <strong>{{ $errors->first('price') }}</strong>
-                                    </span>
-                     @endif
                 </div>
 
                 <div class="c-inputField u-mb30">
@@ -46,11 +37,6 @@
                     <label for="comment" class="p-productForm__text u-mb10">商品詳細</label>
                     <textarea type="text" name="comment" id="comment" cols="30" rows="10" class="c-inputField__input @error('comment') is-error @enderror" autocomplete="comment" autofocus="autofocus" required>{{ old('comment', $product->comment) }}</textarea>
                     <span class="c-inputField__detail">200文字以内</span>
-                    @if ($errors->has('comment'))
-                                    <span class="c-inputField__errorMsg" role="alert">
-                                        <strong>{{ $errors->first('comment') }}</strong>
-                                    </span>
-                     @endif
                 </div>
 
                 <div class="c-inputField u-mb30">
@@ -66,11 +52,6 @@
                         @endif
                         </label>
                     </div>
-                    @if ($errors->has('pic1'))
-                                    <span class="c-inputField__errorMsg" role="alert">
-                                        <strong>{{ $errors->first('pic1') }}</strong>
-                                    </span>
-                     @endif
                 </div>
 
                 <div class="p-btnContainer">
