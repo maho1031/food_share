@@ -26,11 +26,6 @@
                 <div class="c-inputField u-mb30">
                     <label for="exp_date" class="p-productForm__text u-mb10">賞味期限</label>
                     <input type="date" name="exp_date" id="exp_date" value="{{ old('exp_date',$product->exp_date->format('Y-m-d')) }}" class="c-inputField__input @error('exp_date') is-error @enderror" autocomplete="exp_date" autofocus="autofocus" required>
-                    @if ($errors->has('exp_date'))
-                                    <span class="c-inputField__errorMsg" role="alert">
-                                        <strong>{{ $errors->first('exp_date') }}</strong>
-                                    </span>
-                     @endif
                 </div>
 
                 <div class="c-inputField u-mb30">
@@ -43,7 +38,7 @@
                     <label for="pic1" class="p-productForm__text u-mb10">商品画像</label>
                     <div class="c-inputField__imgContainer">
                         <label class="c-inputField__areaDrop js-pic">
-                            <input type="file" class="c-inputField__icon js-input-file" name="pic1" value="{{old('pic1',$product->pic1)}}" accept="image/jpeg,image/gif,image/png" />
+                            <input type="file" class="c-inputField__icon js-input-file" name="pic1" value="{{old('pic1',$product->pic1)}}" accept="image/jpeg,image,jpg/image/gif,image/png" multiple/>
                             @if($product->pic1)
                             <img src="/storage/uploads/{{$product->pic1}}" alt="userIcon" class="js-prev">
                       

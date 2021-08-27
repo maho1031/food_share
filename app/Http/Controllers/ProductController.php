@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreProduct;
 use Illuminate\Support\Facades\Auth;
 use InterventionImage;
+use App\Services\ImageService;
 
 class ProductController extends Controller
 {
@@ -61,27 +62,29 @@ class ProductController extends Controller
         
 
         if(!is_null($product_img) && $product_img->isValid() ){
+            
+            $imgNameToStore = ImageService::upload($product_img);
             // 元のファイルから拡張子を取ってくる
-            $file_ext = $product_img->getClientOriginalExtension();
+            // $file_ext = $product_img->getClientOriginalExtension();
 
-            // 画像のサイズを変更
-            $img = \Image::make($product_img);
-            // \InterventionImage
-            $width = 500;
-            $img->resize($width, null, function($constraint){
-                $constraint->aspectRatio();
-            });
+            // // 画像のサイズを変更
+            // $img = InterventionImage::make($product_img);
+            // // \InterventionImage
+            // $width = 500;
+            // $img->resize($width, null, function($constraint){
+            //     $constraint->aspectRatio();
+            // });
 
-            //画像名をランダムな文字列に変換
-            // $img_path = Str::random(30).'.'.$file_ext;  
-            $img_path = uniqid(rand().'_');
-            $imgNameToStore = $img_path.'.'.$file_ext;
+            // //画像名をランダムな文字列に変換
+            // // $img_path = Str::random(30).'.'.$file_ext;  
+            // $img_path = uniqid(rand().'_');
+            // $imgNameToStore = $img_path.'.'.$file_ext;
 
 
-            // 画像のパスを取得
-            $save_path = storage_path('app/public/uploads/'.$imgNameToStore);
-            // storageへ保存
-            $img->save($save_path);
+            // // 画像のパスを取得
+            // $save_path = storage_path('app/public/uploads/'.$imgNameToStore);
+            // // storageへ保存
+            // $img->save($save_path);
 
             // DBへ保存
             $product->pic1 = $imgNameToStore;
@@ -173,6 +176,7 @@ class ProductController extends Controller
         }
 
 
+        
         $product->name = $request->name;
         $product->price = $request->price;
         $product->exp_date = $request->exp_date;
@@ -180,29 +184,32 @@ class ProductController extends Controller
 
          // 送信された画像を格納
          $product_img = $request->file('pic1');
+        //  var_dump($product_img);
         
 
-         if(!is_null($product_img) && $product_img->isValid() ){
+         if(!is_null($product_img && $product_img->isValid())){
+
+            $imgNameToStore = ImageService::upload($product_img);
              // 元のファイルから拡張子を取ってくる
-             $file_ext = $product_img->getClientOriginalExtension();
+            //  $file_ext = $product_img->getClientOriginalExtension();
  
-             // 画像のサイズを変更
-             $img = \Image::make($product_img);
-             // \InterventionImage
-             $width = 500;
-             $img->resize($width, null, function($constraint){
-                 $constraint->aspectRatio();
-             });
+            //  // 画像のサイズを変更
+            //  $img = InterventionImage::make($product_img);
+            //  // \InterventionImage
+            //  $width = 500;
+            //  $img->resize($width, null, function($constraint){
+            //      $constraint->aspectRatio();
+            //  });
  
-             //画像名をランダムな文字列に変換
-            //  $img_path = Str::random(30).'.'.$file_ext; 
-            $img_path = uniqid(rand().'_');
-            $imgNameToStore = $img_path.'.'.$file_ext; 
+            //  //画像名をランダムな文字列に変換
+            // //  $img_path = Str::random(30).'.'.$file_ext; 
+            // $img_path = uniqid(rand().'_');
+            // $imgNameToStore = $img_path.'.'.$file_ext; 
  
-             // 画像のパスを取得
-             $save_path = storage_path('app/public/uploads/'.$imgNameToStore);
-             // storageへ保存
-             $img->save($save_path);
+            //  // 画像のパスを取得
+            //  $save_path = storage_path('app/public/uploads/'.$imgNameToStore);
+            //  // storageへ保存
+            //  $img->save($save_path);
  
              // DBへ保存
              $product->pic1 = $imgNameToStore;

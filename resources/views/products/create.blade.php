@@ -38,7 +38,7 @@
                     <label for="pic1" class="p-productForm__text u-mb10">商品画像</label>
                     <div class="c-inputField__imgContainer">
                         <label class="c-inputField__areaDrop js-pic">
-                            <input type="file" class="c-inputField__icon js-input-file" name="pic1" value="{{old('pic1')}}" accept="image/jpeg,image/gif,image/png" />
+                            <input type="file" class="c-inputField__icon js-input-file" name="pic1" value="{{old('pic1')}}" accept="image/jpeg,image/gif,image/png,image/jpg" />
                             <img src="{{asset('img/sample-img.jpg')}}" alt="sampleIcon" class="c-inputField__image js-prev">
                         </label>
                     </div>
