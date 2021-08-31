@@ -19,7 +19,7 @@ class AddShopIdToProducts extends Migration
           DB::statement('DELETE FROM products');
           $table->unsignedBigInteger('shop_id')->after('delete_flg');
           $table->unsignedBigInteger('buyer_id')->nullable()->after('shop_id');
-          $table->foreign('shop_id')->references('id')->on('shops');
+          $table->foreign('shop_id')->references('id')->on('shops')->constrained()->onUpdate('cascade')->onDelete('cascade');
           $table->foreign('buyer_id')->references('id')->on('users');
         });
     }

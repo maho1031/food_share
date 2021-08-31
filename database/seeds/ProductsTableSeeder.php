@@ -14,13 +14,44 @@ class ProductsTableSeeder extends Seeder
     public function run()
     {
         DB::table('products')->insert([
+            [
             'name' => 'ケーキ',
             'price' => '200',
             'exp_date' => '2021/06/07',
             'comment' => '美味しいケーキです。',
+            'pic1' => 'pro1.jpg',
             'shop_id' => 1,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
+
+
+            ],
+
+            [
+                'name' => 'ケーキ',
+                'price' => '200',
+                'exp_date' => '2021/06/07',
+                'comment' => '美味しいケーキです。',
+                'pic1' => 'pro2.jpg',
+                'shop_id' => 1,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+    
+    
+                ],
+
+                [
+                    'name' => 'ケーキ',
+                    'price' => '200',
+                    'exp_date' => '2021/06/07',
+                    'comment' => '美味しいケーキです。',
+                    'pic1' => 'pro3.jpg',
+                    'shop_id' => 1,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+        
+        
+                    ],
         ]);
     }
 }

@@ -30,7 +30,7 @@
 
                 <div class="c-inputField u-mb30">
                     <label for="comment" class="p-productForm__text u-mb10">商品詳細</label>
-                    <textarea type="text" name="comment" id="comment" cols="30" rows="10" class="c-inputField__input @error('comment') is-error @enderror" autocomplete="comment" autofocus="autofocus" required>{{ old('comment', $product->comment) }}</textarea>
+                    <textarea name="comment" id="comment" cols="30" rows="10" class="c-inputField__input @error('comment') is-error @enderror" autocomplete="comment" autofocus="autofocus" required>{{ old('comment', $product->comment) }}</textarea>
                     <span class="c-inputField__detail">200文字以内</span>
                 </div>
 
@@ -39,12 +39,7 @@
                     <div class="c-inputField__imgContainer">
                         <label class="c-inputField__areaDrop js-pic">
                             <input type="file" class="c-inputField__icon js-input-file" name="pic1" value="{{old('pic1',$product->pic1)}}" accept="image/jpeg,image,jpg/image/gif,image/png" multiple/>
-                            @if($product->pic1)
-                            <img src="/storage/uploads/{{$product->pic1}}" alt="userIcon" class="js-prev">
-                      
-                        @else
-                        <img src="{{asset('img/sample-img.jpg')}}" alt="sampleIcon" class="js-prev">
-                        @endif
+                            @include('thumbnail')
                         </label>
                     </div>
                 </div>

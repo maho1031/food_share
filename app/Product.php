@@ -4,8 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
+
 class Product extends Model
 {
+
+
     protected $fillable = ['name', 'price', 'exp_date', 'comment', 'pic1'];
 
     protected $dates = ['exp_date'];
@@ -16,7 +20,7 @@ public function shop(){
 }
 
 public function buyers(){
-    return $this->belongsTo('App\User');
+    return $this->belongsTo('App\User', 'buyer_id', 'id');
 }
 
 public function conveni(){

@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import Vue from 'vue'
+import MicroModal from 'micromodal'; 
 import ProductList from './components/ProductList.vue'
 import ProductItem from './components/ProductItem.vue'
 /**
@@ -62,6 +63,11 @@ $fileInput.on('change', function(e){
 
   // 6. 画像読み込み
   fileReader.readAsDataURL(file);
+});
+
+// Micromodal
+MicroModal.init({
+  disableScroll: true
 });
 
 

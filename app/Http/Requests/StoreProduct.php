@@ -29,7 +29,8 @@ class StoreProduct extends FormRequest
             'exp_date' => 'required',
             'comment' => 'required|string|max:255',
             'pic1' => 'nullable|file|mimes:jpeg,png,jpg,gif|max:1024',  //imageを削除
-            'buyer_id' => 'integer|nullable',
+            'shop_id' => 'exists:shops,id',
+            'buyer_id' => 'integer|nullable|exists.users,id',
          
     
         ];

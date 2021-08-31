@@ -6,12 +6,13 @@ use Image;
 use App\Conveni;
 // use Faker\Provider\Image;
 use App\Product;
+use InterventionImage;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Services\ImageService;
 use App\Http\Requests\StoreProduct;
 use Illuminate\Support\Facades\Auth;
-use InterventionImage;
-use App\Services\ImageService;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -62,8 +63,11 @@ class ProductController extends Controller
         
 
         if(!is_null($product_img) && $product_img->isValid() ){
-            
+
+            // 画像アップロードはサービスに切り離し
             $imgNameToStore = ImageService::upload($product_img);
+
+
             // 元のファイルから拡張子を取ってくる
             // $file_ext = $product_img->getClientOriginalExtension();
 
@@ -93,6 +97,8 @@ class ProductController extends Controller
 
         // ユーザーID
         $product->shop_id = Auth::user()->id;
+
+        // 全て保存
         $product->save();
 
 
@@ -112,7 +118,7 @@ class ProductController extends Controller
             return redirect('/');
         }
 
-        $product = Product::find($product_id);
+        $product = Product::findOrFail($product_id);
 
         return view('products.show',compact('product'));
     }
@@ -124,7 +130,7 @@ class ProductController extends Controller
             return redirect('/');
         }
 
-        $product = Product::find($product_id);
+        $product = Product::findOrFail($product_id);
 
         return view('products.sshow',compact('product'));
     }
@@ -174,8 +180,6 @@ class ProductController extends Controller
         if($product->shop_id !== Auth::user()->id){
             abort(403);
         }
-
-
         
         $product->name = $request->name;
         $product->price = $request->price;
@@ -212,12 +216,19 @@ class ProductController extends Controller
             //  $img->save($save_path);
  
              // DBへ保存
-             $product->pic1 = $imgNameToStore;
+            //  $product->pic1 = $imgNameToStore;
  
+         }
+
+         // DBへ保存
+         if(!is_null($product_img && $product_img->isValid())){
+            $product->pic1 = $imgNameToStore;
          }
  
          // ユーザーID
          $product->shop_id = Auth::user()->id;
+
+        //  保存する
          $product->save();
 
          return redirect()->route('shop.show');
@@ -237,11 +248,19 @@ class ProductController extends Controller
             return redirect('/');
         }
 
-        $product = Product::find($product_id);
+        $product = Product::findOrFail($product_id);
 
         if($product->shop_id !== auth()->id()){
             abort(403);  //認証情報
         }
+
+        // storageの中も削除
+        $filePath = 'app/public/uploads/' . $product->pic1;
+
+        if(Storage::exists($filePath)){
+            Storage::delete($filePath);
+        }
+
         $product->delete();
 
         return redirect()->route('shop.show');

@@ -156,7 +156,7 @@
                 <div class="p-btnContainer">
                     <ul class="p-btnContainer__list">
                         <li class="p-btnContainer__item">
-                            <a href="" class="c-btn p-btnContainer__btn">もっと見る</a>
+                            <a href="{{route('products.index')}}" class="c-btn p-btnContainer__btn">もっと見る</a>
                         </li>
                     </ul>
                 </div>

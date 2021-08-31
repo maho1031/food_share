@@ -28,6 +28,8 @@
                                 <img src="{{asset('storage/uploads/' .$product->pic1)}}" alt="">
                             @else
                                 <img src="{{asset('img/sample-img.jpg')}}">
+                            @endif
+                            @if($product->sold_flg === 1)
                                 <div class="p-product__soldOutBadge">
                                     <span class="p-product__soldOutBadgeText">SOLD</span>
                                 </div>

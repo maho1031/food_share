@@ -48,7 +48,18 @@ class ShopController extends Controller
     public function productList(){
 
         // $shop_id = Auth::id();
-        $products = Product::where('shop_id', Auth::id())->get();
+        // $products = Product::where('shop_id', Auth::id())->paginate(6);
+        // $products = Shop::findOrFail(Auth::id())->products;
+        // $shops = Shop::with('products')->where('id', Auth::id())->get();
+         $products = Product::with('shop')->where('shop_id', Auth::id())->get();
+        // dd($products);
+
+        // foreach($products as $product){
+        //     // dd($product->products);
+        //     foreach($product->products as $p){
+        //         dd($p->shop->conveni->name);
+        //     }
+        // }
 
 
         return view('shops.productList', compact('products'));

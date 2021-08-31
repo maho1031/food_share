@@ -30,7 +30,7 @@
 
                 <div class="c-inputField u-mb30">
                     <label for="comment" class="p-productForm__text u-mb10">商品詳細</label>
-                    <textarea name="comment" id="comment" cols="30" rows="10" value="{{old('comment')}}" class="c-inputField__input @error('comment') is-error @enderror" autocomplete="comment" autofocus="autofocus" required></textarea>
+                    <textarea name="comment" id="comment" cols="30" rows="10" value="{{old('comment')}}" class="c-inputField__input @error('comment') is-error @enderror" autocomplete="comment" autofocus="autofocus" required>{{old('comment')}}</textarea>
                     <span class="c-inputField__detail">200文字以内</span>
                 </div>
 

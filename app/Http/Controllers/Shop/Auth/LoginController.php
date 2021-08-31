@@ -58,11 +58,14 @@ class LoginController extends Controller
     // }
     public function logout(Request $request)
     {
-        $this->guard()->logout();
+        $this->guard('shop')->logout();
 
         $request->session()->invalidate();
 
-        return $this->loggedOut($request) ?: redirect('/shop/login');  // ログアウト後のリダイレクト先
+        $request->session()->regenerateToken();
+
+        // return $this->loggedOut($request) ?: redirect('/shop/login');  // ログアウト後のリダイレクト先
+        return redirect('/shop/login');
     }
 
 }
