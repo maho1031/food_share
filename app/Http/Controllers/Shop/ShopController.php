@@ -67,8 +67,9 @@ class ShopController extends Controller
 
     public function soldList(){
 
-        
-        return view('shops.soldList');
+        $products = Product::with('shop')->where('shop_id', Auth::id())->where('sold_flg', 1 )->with('shop')->get();
+
+        return view('shops.soldList', compact('products'));
     }
 
     /**
@@ -79,8 +80,12 @@ class ShopController extends Controller
      */
     public function show()
     {
+        // $shop = Shop::findOrFail(Auth::id())->take(8)->with('products')->get();
+        // $products = $shop->products;
+        $products = Product::take(8)->where('shop_id', auth()->id())->with('shop')->get();
+        $sold_products = Product::take(8)->where('shop_id', auth()->id())->where('sold_flg', 1 )->with('shop')->get();
 
-        return view('shop.show');
+        return view('shop.show', compact('products','sold_products'));
     }
 
     /**

@@ -17,11 +17,12 @@
                         @else
                         <img src="{{asset('img/sample-img.jpg')}}" alt="sampleIcon" class="">
                         @endif
+                        @if($product->sold_flg === 1)
                                 <div class="p-product__soldOutBadge">
                                     <span class="p-product__soldOutBadgeText">SOLD</span>
                                 </div>
-                            </div>
-                            
+                            @endif
+                        </div>
                             <div class="p-product__data">
                                 <ul class="p-product__name">
                                     <li class="p-product__infomations">

@@ -265,5 +265,22 @@ class ProductController extends Controller
 
         return redirect()->route('shop.show');
     }
+
+    public function add(Request $request, $product_id){
+
+        // GETパラメータが数字かどうかチェックする
+        if(!ctype_digit($product_id)){
+            return redirect('/');
+        }
+        $product = Product::findOrFail($product_id);
+
+        $product->buyer_id = Auth::user()->id;
+        $product->sold_flg = 1;
+
+        //  保存する
+        $product->save();
+
+        return redirect('/');
+    }
     
 }

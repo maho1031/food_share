@@ -20,27 +20,34 @@
                     <p class="c-title u-mt60">購入した商品</p>
                 </div>
                 <div class="p-product__list">
+                    @foreach($products as $product)
                     <div class="p-product__item">
                             <div class="p-product__image">
-                                <img src="{{asset('img/pro1.jpg')}}" alt="">
+                            @if($product->pic1)
+                                <img src="{{asset('storage/uploads/'. $product->pic1) }}" alt="" >
+                                @else
+                                <img src="{{asset('img/sample-img.jpg')}}" alt="sampleIcon" class="">
+                            @endif
+                            @if($product->sold_flg === 1)
                                 <div class="p-product__soldOutBadge">
                                     <span class="p-product__soldOutBadgeText">SOLD</span>
                                 </div>
+                            @endif
                             </div>
                             
                             <div class="p-product__data">
                                 <ul class="p-product__name">
                                     <li class="p-product__infomations">
-                                        <span class="p-product__sentense">商品名：なめらかプリンチョコ</span>
+                                        <span class="p-product__sentense">商品名：{{$product->name}}</span>
                                     </li>
                                     <li class="p-product__infomations">
-                                        <span class="p-product__sentense">価格：100円(税込)</span>
+                                        <span class="p-product__sentense">価格：{{$product->price}}円(税込)</span>
                                     </li>
                                     <li class="p-product__infomations">
-                                        <span class="p-product__sentense">コンビニ名：セブンイレブン</span>
+                                        <span class="p-product__sentense">コンビニ名：{{$product->shop->conveni->name}}</span>
                                     </li>
                                     <li class="p-product__infomations">
-                                        <span class="p-product__sentense">支店名：東京都目黒区支店</span>
+                                        <span class="p-product__sentense">支店名：{{$product->shop->name}}</span>
                                     </li>
                                 </ul>
                             </div>
@@ -50,120 +57,12 @@
 
                             </div>
                             <div class="p-btnContainer u-mb30">
-                                <a href="" class="c-btn p-btnContainer__btn is-detail">詳細を見る</a>
+                                <a href="{{route('products.show', ['id' => $product->id]) }}" class="c-btn p-btnContainer__btn is-detail">詳細を見る</a>
                             </div>
                     </div>
 
-                    <div class="p-product__item">
-                        <!-- <div class="p-product__contents"> -->
-                            <div class="p-product__image">
-                                <img src="{{asset('img/pro1.jpg')}}" alt="">
-                                <div class="p-product__soldOutBadge">
-                                    <span class="p-product__soldOutBadgeText">SOLD</span>
-                                </div>
-                            </div>
-                            
-                            <div class="p-product__data">
-                                <ul class="p-product__name">
-                                    <li class="p-product__infomations">
-                                        <span class="p-product__sentense">商品名：なめらかプリンチョコ</span>
-                                    </li>
-                                    <li class="p-product__infomations">
-                                        <span class="p-product__sentense">価格：100円(税込)</span>
-                                    </li>
-                                    <li class="p-product__infomations">
-                                        <span class="p-product__sentense">コンビニ名：セブンイレブン</span>
-                                    </li>
-                                    <li class="p-product__infomations">
-                                        <span class="p-product__sentense">支店名：東京都目黒区支店</span>
-                                    </li>
-                                </ul>
-                            </div>
 
-                            <div class="p-btnContainer">
-                                <a href="" class="p-btnContainer__btn is-cansel">購入をキャンセルする</a>
-
-                            </div>
-                            <div class="p-btnContainer u-mb30">
-                                <a href="" class="p-btnContainer__btn is-detail">詳細を見る</a>
-                            </div>
-                        <!-- </div> -->
-                    </div>
-
-                    <div class="p-product__item">
-                        <!-- <div class="p-product__contents"> -->
-                            <div class="p-product__image">
-                                <img src="{{asset('img/pro2.jpg')}}" alt="">
-                                <div class="p-product__soldOutBadge">
-                                    <span class="p-product__soldOutBadgeText">SOLD</span>
-                                </div>
-                            </div>
-                            
-                            <div class="p-product__data">
-                                <ul class="p-product__name">
-                                    <li class="p-product__infomations">
-                                        <span class="p-product__sentense">商品名：なめらかプリンチョコ</span>
-                                    </li>
-                                    <li class="p-product__infomations">
-                                        <span class="p-product__sentense">価格：100円(税込)</span>
-                                    </li>
-                                    <li class="p-product__infomations">
-                                        <span class="p-product__sentense">コンビニ名：セブンイレブン</span>
-                                    </li>
-                                    <li class="p-product__infomations">
-                                        <span class="p-product__sentense">支店名：東京都目黒区支店</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-
-                            <div class="p-btnContainer">
-                                <a href="" class="p-btnContainer__btn is-cansel">購入をキャンセルする</a>
-
-                            </div>
-                            <div class="p-btnContainer u-mb30">
-                                <a href="" class="p-btnContainer__btn is-detail">詳細を見る</a>
-                            </div>
-                        <!-- </div> -->
-                    </div>
-
-                    <div class="p-product__item">
-                        <!-- <div class="p-product__contents"> -->
-                            <div class="p-product__image">
-                                <img src="{{asset('img/pro3.jpg')}}" alt="">
-                                <div class="p-product__soldOutBadge">
-                                    <span class="p-product__soldOutBadgeText">SOLD</span>
-                                </div>
-                            </div>
-                            
-                            <div class="p-product__data">
-                                <ul class="p-product__name">
-                                    <li class="p-product__infomations">
-                                        <span class="p-product__sentense">商品名：なめらかプリンチョコ</span>
-                                    </li>
-                                    <li class="p-product__infomations">
-                                        <span class="p-product__sentense">価格：100円(税込)</span>
-                                    </li>
-                                    <li class="p-product__infomations">
-                                        <span class="p-product__sentense">コンビニ名：セブンイレブン</span>
-                                    </li>
-                                    <li class="p-product__infomations">
-                                        <span class="p-product__sentense">支店名：東京都目黒区支店</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-
-                            <div class="p-btnContainer">
-                                <a href="" class="p-btnContainer__btn is-cansel">購入をキャンセルする</a>
-
-                            </div>
-                            <div class="p-btnContainer u-mb30">
-                                <a href="" class="p-btnContainer__btn is-detail">詳細を見る</a>
-                            </div>
-                        <!-- </div> -->
-                    </div>
-
+                @endforeach
                 </div>
     </section>
 </div>

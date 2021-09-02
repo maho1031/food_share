@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use App\Models\Product;
+use App\Product;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Intervention\Image\Image;
@@ -21,8 +21,12 @@ class UserController extends Controller
      */
     public function show()
     {
-        
-        return view('users.show');
+        //  $products = Auth::user()->products;
+        $products = Product::where('buyer_id', auth()->id())->get();
+
+        //  dd($products);
+
+        return view('users.show', compact('products'));
     
     }
 

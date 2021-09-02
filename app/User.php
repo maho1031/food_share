@@ -7,6 +7,7 @@ use App\Notifications\PasswordResetNotification;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Product;
 
 class User extends Authenticatable
 {
@@ -42,6 +43,14 @@ class User extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new PasswordResetNotification($token, new BareMail()));
+    }
+
+    public function products(){
+        return $this->HasMany('App\Product');
+    }
+
+    public function buy_products(){
+        return $this->belongsToMany('App\Product', 'carts')->withPivot(['id']);
     }
 
 }

@@ -30,8 +30,10 @@
                 </div>
             </div>
 
-            <form method="POST" action="">
+            <form method="POST" action="{{route('products.add', ['product_id' => $product->id]) }}">
+                @csrf
                  <div class="p-btnContainer">
+                     <input type="hidden" name="product_id" value="{{$product->id}}">
                     <button type="submit" class="c-btn p-btnContainer__btn">購入予約をする</button>
                 </div>
             </form>

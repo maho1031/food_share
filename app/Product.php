@@ -15,16 +15,21 @@ class Product extends Model
     protected $dates = ['exp_date'];
 
 
-public function shop(){
-    return $this->belongsTo('App\Shop', 'shop_id', 'id');
-}
+    public function shop(){
+        return $this->belongsTo('App\Shop', 'shop_id', 'id');
+    }
 
-public function buyers(){
-    return $this->belongsTo('App\User', 'buyer_id', 'id');
-}
+    public function buyers(){
+        return $this->belongsTo('App\User', 'buyer_id', 'id');
+    }
 
-public function conveni(){
-    return $this->belongsTo('App\Conveni','App\Shop');
+    public function conveni(){
+        return $this->belongsTo('App\Conveni','App\Shop');
     // return $this->belongsTo('App\Conveni');
-}
+    }
+
+    public function users(){
+        return $this->belongToMany('App\Cart', 'product_id')->withPivot(['id']);
+    }
+
 }

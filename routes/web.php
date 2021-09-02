@@ -37,8 +37,11 @@ Route::group(['middleware' => 'auth:user'], function() {
     // ユーザー情報更新
     Route::post('/users/update', 'UserController@update')->name('users.update');
 
+    // 商品購入
+    Route::post('/product/{product_id}/show/add', 'ProductController@add')->name('products.add');
+
     // 商品詳細画面
-    Route::get('/products/{product_id}/show', 'ProductController@show')->name('products.show');
+    // Route::get('/products/{product_id}/show', 'ProductController@show')->name('products.show');
 
     // 商品詳細画面
     // Route::get('/products/{product_id}/show', 'ProductController@show')->name('products.show');
@@ -103,6 +106,8 @@ Route::group(['prefix' => 'shop', 'middleware' => 'auth:shop'], function(){
     Route::post('/update', 'Shop\ShopController@update')->name('shop.update');
     // 商品一覧
     Route::get('/productList', 'Shop\ShopController@productList')->name('shop.productList');
+     // 商品一覧
+     Route::get('/soldList', 'Shop\ShopController@soldList')->name('shop.soldList');
 
     // 商品新規作成画面
     Route::get('/products/create', 'ProductController@create')->name('products.create');
