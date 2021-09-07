@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Product::take(6)->with('shop')->get();
+        $products = Product::take(8)->with('shop')->get()->sortByDesc('created_at');
 
         return view('home',compact('products'));
     }

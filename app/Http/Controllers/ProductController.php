@@ -22,14 +22,34 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all()->sortByDesc('created_at');
+        // $query = SortOrder($request->sort);
+        
+        // dd($request->sort);
+        $products = Product::with('shop.conveni')
+        ->SearchKeyWords($request->keyword)
+        ->SortOrder($request->sort_date)
+        ->SortOrder($request->sort_price)
+        ->orderBy('created_at', 'desc')->get();
+        // $products = Product::all()->SortOrder();
+
+        // $sort_price = $request->sort_price;
+        // dd($sort_price);
+        // $query = Product::SortOrder($request->sort);
+// 
+        // dd($request);
+
+        // $sort_id = $request->sort;
+        // dd($sort_id);
+        
+
+        // $products = $query;
         $convenis = Conveni::all();
 
         // dd($products);
 
-        return view('products.index', compact('convenis', 'products'));
+        return view('products.index1', compact('convenis','products'));
     }
 
     /**
@@ -280,7 +300,37 @@ class ProductController extends Controller
         //  保存する
         $product->save();
 
-        return redirect('/');
+        return redirect()->route('users.show');
+    }
+
+    public function cancel(Request $request, $product_id){
+
+         // GETパラメータが数字かどうかチェックする
+         if(!ctype_digit($product_id)){
+            return redirect('/');
+        }
+
+        // $user = User::findOrFail(Auth::id());
+        
+
+        $product = Product::findOrFail($product_id);
+
+        // dd($product);
+
+        if($product->buyer_id === Auth::id()){
+        $product->buyer_id = null;
+        $product->sold_flg = 0;
+
+        //  保存する
+        $product->save();
+
+        }else{
+            abort(403);  //認証情報
+        }
+        
+
+
+        return redirect()->route('users.show');
     }
     
 }

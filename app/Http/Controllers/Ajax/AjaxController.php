@@ -13,9 +13,30 @@ use App\Http\Requests\StoreProduct;
 
 class AjaxController extends Controller
 {
+    // TOPページ
+    public function home(){
+        return Product::take(8)->with('shop')->with('shop.conveni')->orderBy(Product::CREATED_AT, 'desc')->get();
+    }
+
     // 商品一覧ページ
-    public function index(){
- 
-        return Product::with('shop')->with('shop.conveni')->orderBy(Product::CREATED_AT, 'desc')->get();
+    public function index(Request $request){
+        // $sort_id = $request->sort;
+
+        // $query = Product::SortOrder($request->sort);
+        // dd($query);
+        $query = Product::query()->with('shop')->with('shop.conveni');
+
+        $sort_id = $request->input('sort');
+
+
+        if((int)$sort_id === 1){
+            $products = $query->PriceSort();
+        }
+        
+        
+        $products = $query->orderBy('created_at', 'desc')->get();
+
+        // return Product::SortOrder($request->sort)->with('shop')->with('shop.conveni')->orderBy(Product::CREATED_AT, 'desc')->get();
+        return $products;
     }
 }

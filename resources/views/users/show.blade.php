@@ -51,11 +51,15 @@
                                     </li>
                                 </ul>
                             </div>
+                            
+                            <form method="POST" action="{{route('products.cancel', ['product_id' => $product->id]) }}">
+                            @csrf
+                                <div class="p-btnContainer">
+                                    <input type="hidden" name="product_id" value="{{$product->id}}">
+                                    <button type="submit" class="c-btn p-btnContainer__btn is-cansel">購入をキャンセルする</button>
+                                </div>
+                            </form>
 
-                            <div class="p-btnContainer">
-                                <a href="" class="c-btn p-btnContainer__btn is-cansel">購入をキャンセルする</a>
-
-                            </div>
                             <div class="p-btnContainer u-mb30">
                                 <a href="{{route('products.show', ['id' => $product->id]) }}" class="c-btn p-btnContainer__btn is-detail">詳細を見る</a>
                             </div>

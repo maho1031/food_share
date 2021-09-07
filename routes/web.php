@@ -20,7 +20,7 @@ Route::get('/', 'HomeController@index')->name('home');
 // 商品一覧
 Route::get('/products', 'ProductController@index')->name('products.index');
 // 商品一覧(Ajax)
-Route::get('/ajax/products', 'Ajax\AjaxController@index')->name('ajaxs.index');
+// Route::get('/ajax/products', 'Ajax\AjaxController@index')->name('ajaxs.index');
 // 商品詳細画面
 Route::get('/products/{product_id}/show', 'ProductController@show')->name('products.show');
 
@@ -39,6 +39,8 @@ Route::group(['middleware' => 'auth:user'], function() {
 
     // 商品購入
     Route::post('/product/{product_id}/show/add', 'ProductController@add')->name('products.add');
+    // 商品のキャンセル
+    Route::post('/product/{product_id}/show/cancel', 'ProductController@cancel')->name('products.cancel');
 
     // 商品詳細画面
     // Route::get('/products/{product_id}/show', 'ProductController@show')->name('products.show');

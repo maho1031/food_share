@@ -15,31 +15,65 @@
                         <li class="p-searchForm__item">
                             <p class="p-searchForm__text">都道府県で探す</p>
                             <div class="p-searchForm__select c-select">
-                                <select name="place_id" id="">
-                                    <option value="0">東京都</option>
-                                    <option value="0">東京都</option>
-                                    <option value="0">東京都</option>
+                                <select name="prefecture_id" class="c-inputField__input">
+                                    <option value="0"
+                                    @if(\Request::get('prefecture_id') == '0')
+                                    selected
+                                    @endif
+                                    >全て</option>
+                                    @foreach(config('prefecture') as $key => $score)
+                                    <option value="{{ $key }}"
+                                    @if(\Request::get('prefecture_id') == $key)
+                                    selected
+                                    @endif
+                                    >{{ $score }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </li>
                         <li class="p-searchForm__item">
                             <p class="p-searchForm__text">価格順で探す</p>
                             <div class="p-searchForm__select c-select">
-                                <select name="price" id="">
-                                    <option value="0">価格の高い順</option>
-                                    <option value="0">価格の安い順</option>
+                                <select name="sort_price" id="">
+                                    <option value="0">指定なし</option>
+                                    <option value="{{ \Constant::SORT_ORDER['higherPrice'] }}"
+                                     @if(\Request::get('sort_price') === \Constant::SORT_ORDER['higherPrice'])
+                                        selected
+                                        @endif
+                                    >価格の高い順</option>
+                                    <option value="{{ \Constant::SORT_ORDER['lowerPrice'] }}"
+                                    @if(\Request::get('sort_price') === \Constant::SORT_ORDER['lowerPrice'])
+                                    selected
+                                    @endif
+                                    >価格の安い順</option>
                                 </select>
                             </div>
                         </li>
                         <li class="p-searchForm__item">
-                            <p class="p-searchForm__text">賞味期限が切れているもので探す</p>
+                            <p class="p-searchForm__text">登録日で探す</p>
                             <div class="p-searchForm__select c-select">
-                                <select name="exp" id="">
-                                    <option value="0">賞味期限切れ</option>
-                                    <option value="1">賞味期限間近</option>
+                                <select name="sort_date" id="">
+                                    <option value="0">指定なし</option>
+                                    <option value="{{ \Constant::SORT_ORDER['later'] }}"
+                                    @if(\Request::get('sort_date') === \Constant::SORT_ORDER['later'])
+                                    selected
+                                     @endif
+                                    >新着順</option>
+                                    <option value="{{ \Constant::SORT_ORDER['older'] }}"
+                                    @if(\Request::get('sort_date') === \Constant::SORT_ORDER['older'])
+                                    selected
+                                     @endif
+                                    >古い順</option>
                                 </select>
                             </div>
                         </li>
+                        <li class="p-searchForm__item">
+                        <p class="p-searchForm__text">検索ワード</p>
+                            <div class="p-searchForm__select c-select">
+                                <input type="text" name="keyword" class="c-inputField__input">
+                            </div>
+                        </li>
+
                     </ul>
 
                     <div class="p-btnContainer">
@@ -74,10 +108,13 @@
                                         <span class="p-product__sentense">価格：{{$product->price}}円(税込)</span>
                                     </li>
                                     <li class="p-product__infomations">
-                                        <span class="p-product__sentense">コンビニ名：{{$product->shop->convenis->name}}</span>
+                                        <span class="p-product__sentense">コンビニ名：{{$product->shop->conveni->name}}</span>
                                     </li>
                                     <li class="p-product__infomations">
                                         <span class="p-product__sentense">支店名：{{$product->shop->name}}</span>
+                                    </li>
+                                    <li class="p-product__infomations">
+                                        <span class="p-product__sentense">登録日：{{$product->created_at->format('Y/m/d')}}</span>
                                     </li>
                                 </ul>
                             </div>
