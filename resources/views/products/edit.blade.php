@@ -19,6 +19,15 @@
                 </div>
 
                 <div class="c-inputField u-mb30">
+                    <label for="category_id" class="p-productForm__text u-mb10">カテゴリー</label>
+                    <select type="text" name="category_id" class="c-inputField__input">
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                    </select>
+                </div>
+
+                <div class="c-inputField u-mb30">
                     <label for="price" class="p-productForm__text u-mb10">価格</label>
                     <input type="number" name="price" id="price" value="{{ old('price', $product->price) }}" class="c-inputField__input @error('price') is-error @enderror" autocomplete="price" autofocus="autofocus" required placeholder="例100">
                 </div>

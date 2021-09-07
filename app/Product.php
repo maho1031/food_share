@@ -33,6 +33,10 @@ class Product extends Model
         return $this->belongToMany('App\Cart', 'product_id')->withPivot(['id']);
     }
 
+    public function categories(){
+        return $this->belongsTo('App\Category', 'category_id', 'id');
+    }
+
     public function scopeSortOrder($query, $sortOrder)
     {
         // if($sortOrder === null || $sortOrder === \Constant::SORT_ORDER['recommend']){

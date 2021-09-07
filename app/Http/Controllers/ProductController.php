@@ -6,6 +6,7 @@ use Image;
 use App\Conveni;
 // use Faker\Provider\Image;
 use App\Product;
+use App\Category;
 use InterventionImage;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -59,8 +60,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
-        return view('products.create');
+        $categories = Category::all();
+        
+        return view('products.create', compact('categories'));
     }
 
     /**
@@ -73,6 +75,7 @@ class ProductController extends Controller
     {
         $product = new Product;
         $product->name = $request->name;
+        $product->category_id = $request->category_id;
         $product->price = $request->price;
         $product->exp_date = $request->exp_date;
         $product->comment = $request->comment;
@@ -137,6 +140,8 @@ class ProductController extends Controller
         if(!ctype_digit($product_id)){
             return redirect('/');
         }
+
+        $categories = Category::all();
 
         $product = Product::findOrFail($product_id);
 

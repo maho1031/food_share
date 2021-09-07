@@ -8,6 +8,7 @@ $factory->define(App\Product::class, function (Faker $faker) {
         //
         'name' => $faker->name,
         'price' => $faker->numberBetween(100,999),
+        'category_id' => $faker->numberBetween(1,7),
         'exp_date' => $faker->dateTime,
         'comment' => $faker->realText,
         'pic1' => 'pro1.jpg',

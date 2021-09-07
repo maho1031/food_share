@@ -16,6 +16,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert([
             [
             'name' => 'ケーキ',
+            'category_id' => 5,
             'price' => '200',
             'exp_date' => '2021/06/07',
             'comment' => '美味しいケーキです。',
@@ -29,6 +30,7 @@ class ProductsTableSeeder extends Seeder
 
             [
                 'name' => 'ケーキ',
+                'category_id' => 5,
                 'price' => '200',
                 'exp_date' => '2021/06/07',
                 'comment' => '美味しいケーキです。',
@@ -42,6 +44,7 @@ class ProductsTableSeeder extends Seeder
 
                 [
                     'name' => 'ケーキ',
+                    'category_id' => 5,
                     'price' => '200',
                     'exp_date' => '2021/06/07',
                     'comment' => '美味しいケーキです。',
