@@ -65,7 +65,7 @@ class Product extends Model
 
     public function scopeSelectCategory($query, $categoryId){
         if($categoryId !== '0'){
-            return $query->where('prefecture_id',$categoryId);
+            return $query->where('category_id',$categoryId);
         }else{
             return;
         }

@@ -13,20 +13,20 @@
                 <form method="GET" action="">
                     <ul class="p-searchFrom__list">
                         <li class="p-searchForm__item">
-                            <p class="p-searchForm__text">都道府県で探す</p>
+                            <p class="p-searchForm__text">カテゴリーで探す</p>
                             <div class="p-searchForm__select c-select">
-                                <select name="prefecture_id" class="c-inputField__input">
+                                <select name="category_id" class="c-inputField__input">
                                     <option value="0"
-                                    @if(\Request::get('prefecture_id') == '0')
+                                    @if(\Request::get('category_id') == '0')
                                     selected
                                     @endif
                                     >全て</option>
-                                    @foreach(config('prefecture') as $key => $score)
-                                    <option value="{{ $key }}"
-                                    @if(\Request::get('prefecture_id') == $key)
+                                    @foreach($categories as $category)
+                                    <option value="{{ $category->id }}"
+                                    @if(\Request::get('category_id') == $category->id)
                                     selected
                                     @endif
-                                    >{{ $score }}</option>
+                                    >{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

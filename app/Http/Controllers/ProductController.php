@@ -29,9 +29,11 @@ class ProductController extends Controller
         
         // dd($request->sort);
         $products = Product::with('shop.conveni')
+        ->with('category')
         ->SearchKeyWords($request->keyword)
         ->SortOrder($request->sort_date)
         ->SortOrder($request->sort_price)
+        ->SelectCategory($request->category_id ?? '0') //値がnullだったら０を入れる
         ->orderBy('created_at', 'desc')->get();
         // $products = Product::all()->SortOrder();
 
@@ -47,10 +49,11 @@ class ProductController extends Controller
 
         // $products = $query;
         $convenis = Conveni::all();
+        $categories = Category::all();
 
         // dd($products);
 
-        return view('products.index1', compact('convenis','products'));
+        return view('products.index1', compact('convenis','products', 'categories'));
     }
 
     /**
