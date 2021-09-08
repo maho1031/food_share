@@ -51,7 +51,7 @@ class ShopController extends Controller
         // $products = Product::where('shop_id', Auth::id())->paginate(6);
         // $products = Shop::findOrFail(Auth::id())->products;
         // $shops = Shop::with('products')->where('id', Auth::id())->get();
-         $products = Product::with('shop')->where('shop_id', Auth::id())->get();
+         $products = Product::with('shop')->where('shop_id', Auth::id())->orderBy('created_at', 'desc')->get();
         // dd($products);
 
         // foreach($products as $product){
@@ -67,7 +67,7 @@ class ShopController extends Controller
 
     public function soldList(){
 
-        $products = Product::with('shop')->where('shop_id', Auth::id())->where('sold_flg', 1 )->with('shop')->get();
+        $products = Product::with('shop')->where('shop_id', Auth::id())->where('sold_flg', 1 )->with('shop')->orderBy('created_at', 'desc')->get();
 
         return view('shops.soldList', compact('products'));
     }
@@ -82,8 +82,8 @@ class ShopController extends Controller
     {
         // $shop = Shop::findOrFail(Auth::id())->take(8)->with('products')->get();
         // $products = $shop->products;
-        $products = Product::take(8)->where('shop_id', auth()->id())->with('shop')->get();
-        $sold_products = Product::take(8)->where('shop_id', auth()->id())->where('sold_flg', 1 )->with('shop')->get();
+        $products = Product::take(8)->where('shop_id', auth()->id())->with('shop')->with('category')->orderBy('created_at', 'desc')->get();
+        $sold_products = Product::take(8)->where('shop_id', auth()->id())->where('sold_flg', 1 )->with('shop')->orderBy('created_at', 'desc')->get();
 
         return view('shop.show', compact('products','sold_products'));
     }

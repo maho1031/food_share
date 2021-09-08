@@ -33,7 +33,7 @@ class Product extends Model
         return $this->belongToMany('App\Cart', 'product_id')->withPivot(['id']);
     }
 
-    public function categories(){
+    public function category(){
         return $this->belongsTo('App\Category', 'category_id', 'id');
     }
 

@@ -11,6 +11,7 @@
                 <div class="p-product__list">
                     @foreach($products as $product)
                     <div class="p-product__item">
+                        <span class="c-tag">{{$product->category->name}}</span>
                             <div class="p-product__image">
                             @if($product->pic1)
                         <img src="{{asset('storage/uploads/'. $product->pic1) }}" alt="" >

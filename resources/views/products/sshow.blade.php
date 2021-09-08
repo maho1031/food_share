@@ -8,6 +8,7 @@
         <div class="p-productDetail__item">
             <div class="p-productDetail__header">
                 <div class="p-productDetail__name">
+                <span class="c-tag">{{$product->category->name}}</span>
                     <h1>{{$product->name}}</h1>
                 </div>
                 <div class="p-productDetail__img">

@@ -23,6 +23,7 @@
                 <div class="p-product__list">
                 @foreach($products as $product)
                     <div class="p-product__item">
+                        <span class="c-tag">{{$product->category->name}}</span>
                             <div class="p-product__image">
                             @if($product->pic1)
                                 <img src="{{asset('storage/uploads/' .$product->pic1)}}" alt="">
@@ -39,13 +40,13 @@
                                 <ul class="p-product__name">
                                 
                                     <li class="p-product__infomations">
-                                        <span class="p-product__sentense">商品名：{{$product->name}}</span>
+                                        <span class="p-product__sentense">{{$product->name}}</span>
                                     </li>
                                     <li class="p-product__infomations">
-                                        <span class="p-product__sentense">価格：{{$product->price}}円(税込)</span>
+                                        <span class="p-product__sentense">{{$product->price}}円(税込)</span>
                                     </li>
                                     <li class="p-product__infomations">
-                                        <span class="p-product__sentense">賞味期限：{{$product->exp_date->format('Y-m-d')}}</span>
+                                        <span class="p-product__sentense">{{$product->exp_date->format('Y-m-d')}}</span>
                                     </li>
                                 </ul>
                             </div>
@@ -73,6 +74,7 @@
                 <div class="p-product__list">
                     @foreach($sold_products as $product)
                     <div class="p-product__item">
+                        <span class="c-tag">{{$product->category->name}}</span>
                             <div class="p-product__image">
                             @if($product->pic1)
                                 <img src="{{asset('storage/uploads/' .$product->pic1)}}" alt="">

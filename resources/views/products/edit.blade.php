@@ -22,7 +22,11 @@
                     <label for="category_id" class="p-productForm__text u-mb10">カテゴリー</label>
                     <select type="text" name="category_id" class="c-inputField__input">
                     @foreach($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        <option value="{{ $category->id }}"
+                        @if($category->id === $product->category_id)
+                        selected
+                        @endif
+                        >{{ $category->name }}</option>
                     @endforeach
                     </select>
                 </div>
@@ -47,7 +51,7 @@
                     <label for="pic1" class="p-productForm__text u-mb10">商品画像</label>
                     <div class="c-inputField__imgContainer">
                         <label class="c-inputField__areaDrop js-pic">
-                            <input type="file" class="c-inputField__icon js-input-file" name="pic1" value="{{old('pic1',$product->pic1)}}" accept="image/jpeg,image,jpg/image/gif,image/png" multiple/>
+                            <input type="file" class="c-inputField__icon js-input-file" name="pic1" value="{{old('pic1',$product->pic1)}}" accept="image/jpeg,image/gif,image/png" multiple/>
                             @include('thumbnail')
                         </label>
                     </div>

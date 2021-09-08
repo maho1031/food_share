@@ -73,6 +73,9 @@ class ProductController extends Controller
      */
     public function store(StoreProduct $request)
     {
+
+        // dd($request);
+
         $product = new Product;
         $product->name = $request->name;
         $product->category_id = $request->category_id;
@@ -141,8 +144,6 @@ class ProductController extends Controller
             return redirect('/');
         }
 
-        $categories = Category::all();
-
         $product = Product::findOrFail($product_id);
 
         return view('products.show',compact('product'));
@@ -174,6 +175,7 @@ class ProductController extends Controller
         }
 
         $product = Product::findOrFail($product_id);
+        $categories = Category::all();
 
         //自分が作成した商品のみ編集できる様にする
         // $this->authorize('edit', $product);
@@ -183,7 +185,7 @@ class ProductController extends Controller
             abort(403);
         }
 
-        return view('products.edit',compact('product'));
+        return view('products.edit',compact('product', 'categories'));
     }
 
     /**
@@ -207,16 +209,18 @@ class ProductController extends Controller
         }
         
         $product->name = $request->name;
+        $product->category_id = $request->category_id;
         $product->price = $request->price;
         $product->exp_date = $request->exp_date;
         $product->comment = $request->comment;
 
          // 送信された画像を格納
          $product_img = $request->file('pic1');
+        //  dd($product_img);
         //  var_dump($product_img);
         
 
-         if(!is_null($product_img && $product_img->isValid())){
+         if(($product_img !== null  && $product_img->isValid())){
 
             $imgNameToStore = ImageService::upload($product_img);
              // 元のファイルから拡張子を取ってくる
@@ -241,14 +245,14 @@ class ProductController extends Controller
             //  $img->save($save_path);
  
              // DBへ保存
-            //  $product->pic1 = $imgNameToStore;
+             $product->pic1 = $imgNameToStore;
  
          }
 
          // DBへ保存
-         if(!is_null($product_img && $product_img->isValid())){
-            $product->pic1 = $imgNameToStore;
-         }
+        //  if(!is_null($product_img && $product_img->isValid())){
+            // $product->pic1 = $imgNameToStore;
+        //  }
  
          // ユーザーID
          $product->shop_id = Auth::user()->id;

@@ -25,6 +25,7 @@ class StoreProduct extends FormRequest
     {
         return [
             'name' => 'required|string|max:50',
+            'category_id' => 'required|integer|exists:categories,id',
             'price' => 'required|integer',
             'exp_date' => 'required',
             'comment' => 'required|string|max:255',
@@ -49,6 +50,7 @@ class StoreProduct extends FormRequest
 {
     return [
         'name' => '商品名',
+        'category_id' => 'カテゴリー',
         'price' => '金額',
         'exp_date' => '賞味期限',
         'comment' => 'コメント',

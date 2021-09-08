@@ -8,6 +8,7 @@
         <div class="p-productDetail__item">
             <div class="p-productDetail__header">
                 <div class="p-productDetail__name">
+                <span class="c-tag">{{$product->category->name}}</span>
                     <h1>{{$product->name}}</h1>
                 </div>
                 <div class="p-productDetail__img">
@@ -26,6 +27,7 @@
                     <span class="p-productDetail__foodDate-exp">賞味期限：{{$product->exp_date->format('Y-m-d')}}</span>
                 </div>
                 <div class="p-productDetail__comment">
+                    <p class="p-productDetail__comment-text">商品詳細</p>
                     <p class="p-productDetail__comment-text">{{$product->comment}}</p>
                 </div>
             </div>

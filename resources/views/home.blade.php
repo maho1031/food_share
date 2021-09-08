@@ -125,27 +125,30 @@
                 <div class="p-product__list">
                     @foreach($products as $product)
                     <div class="p-product__item u-mt16">
+                        <span class="c-tag">{{$product->category->name}}</span>
                         <a href="{{route('products.show', ['product_id' => $product->id])}}">
                             <div class="p-product__image">
                                 <img src="{{asset('storage/uploads/'.$product->pic1)}}" alt="">
+                                @if($product->sold_flg === 1)
                                 <div class="p-product__soldOutBadge">
                                     <span class="p-product__soldOutBadgeText">SOLD</span>
                                 </div>
+                                @endif
                             </div>
                         </a>                           
                         <div class="p-product__data">
                                 <ul class="p-product__name">
                                     <li class="p-product__infomations">
-                                        <span class="p-product__sentense">商品名：{{$product->name}}</span>
+                                        <span class="p-product__sentense">{{$product->name}}</span>
                                     </li>
                                     <li class="p-product__infomations">
-                                        <span class="p-product__sentense">価格：{{$product->price}}円(税込)</span>
+                                        <span class="p-product__sentense">{{$product->price}}円(税込)</span>
                                     </li>
                                     <li class="p-product__infomations">
-                                        <span class="p-product__sentense">コンビニ名：{{$product->shop->conveni->name}}</span>
+                                        <span class="p-product__sentense">{{$product->shop->conveni->name}}</span>
                                     </li>
                                     <li class="p-product__infomations">
-                                        <span class="p-product__sentense">支店名：{{$product->shop->name}}支店</span>
+                                        <span class="p-product__sentense">{{$product->shop->name}}支店</span>
                                     </li>
                                 </ul>
                         </div>

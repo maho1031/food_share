@@ -24,19 +24,19 @@ class AjaxController extends Controller
 
         // $query = Product::SortOrder($request->sort);
         // dd($query);
-        $query = Product::query()->with('shop')->with('shop.conveni');
+        // $query = Product::query()->with('shop')->with('shop.conveni');
 
-        $sort_id = $request->input('sort');
+        // $sort_id = $request->input('sort');
 
 
-        if((int)$sort_id === 1){
-            $products = $query->PriceSort();
-        }
+        // if((int)$sort_id === 1){
+        //     $products = $query->PriceSort();
+        // }
         
         
-        $products = $query->orderBy('created_at', 'desc')->get();
+        // $products = $query->orderBy('created_at', 'desc')->get();
 
-        // return Product::SortOrder($request->sort)->with('shop')->with('shop.conveni')->orderBy(Product::CREATED_AT, 'desc')->get();
-        return $products;
+        return Product::with('shop')->with('shop.conveni')->with('category')->orderBy(Product::CREATED_AT, 'desc')->get();
+        // return $products;
     }
 }

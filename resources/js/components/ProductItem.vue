@@ -1,6 +1,7 @@
 <template>
     <a :href="`/products/${product.id}/show`">
-                            <div class="p-product__image u-mt16">
+    <span class="c-tag">{{product.category.name}}</span>
+                            <div class="p-product__image">
                                 <img :src="'../../storage/uploads/' + product.pic1" v-if="product.pic1" alt="">
                                 <div class="p-product__soldOutBadge">
                                     <span class="p-product__soldOutBadgeText">SOLD</span>
@@ -10,16 +11,16 @@
                             <div class="p-product__data">
                                 <ul class="p-product__name">
                                     <li class="p-product__infomations">
-                                        <span class="p-product__sentense">商品名：{{product.name}}</span>
+                                        <span class="p-product__sentense">{{product.name}}</span>
                                     </li>
                                     <li class="p-product__infomations">
-                                        <span class="p-product__sentense">価格：{{product.price}}円(税込)</span>
+                                        <span class="p-product__sentense">{{product.price}}円(税込)</span>
                                     </li>
                                     <li class="p-product__infomations">
-                                        <span class="p-product__sentense">コンビニ名：{{product.shop.conveni.name}}</span>
+                                        <span class="p-product__sentense">{{product.shop.conveni.name}}</span>
                                     </li>
                                     <li class="p-product__infomations">
-                                        <span class="p-product__sentense">支店名：{{ product.shop.name}}</span>
+                                        <span class="p-product__sentense">{{ product.shop.name}}</span>
                                     </li>
                                 </ul>
                             </div>
