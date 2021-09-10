@@ -35,8 +35,10 @@
             <form method="POST" action="{{route('products.add', ['product_id' => $product->id]) }}">
                 @csrf
                  <div class="p-btnContainer">
+                     @if($product->sold_id === '0')
                      <input type="hidden" name="product_id" value="{{$product->id}}">
                     <button type="submit" class="c-btn p-btnContainer__btn">購入予約をする</button>
+                    @endif
                 </div>
             </form>
 

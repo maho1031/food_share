@@ -3,20 +3,23 @@
 namespace App\Http\Controllers;
 
 use Image;
-use App\Conveni;
+use App\Shop;
 // use Faker\Provider\Image;
+use App\User;
+use App\Conveni;
 use App\Product;
 use App\Category;
+use App\Mail\TestMail;
 use InterventionImage;
 use Illuminate\Support\Str;
+use App\Jobs\SendThanksMail;
+use App\Jobs\SendOrderMail;
 use Illuminate\Http\Request;
 use App\Services\ImageService;
 use App\Http\Requests\StoreProduct;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\TestMail;
-use App\Jobs\SendThanksMail;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -29,13 +32,13 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         // 非同期で送信
-        SendThanksMail::dispatch();
+        // SendThanksMail::dispatch();
 
         // 同期的に送信
         // Mail::to('test@example.com')
         // ->send(new TestMail());
 
-        
+
         // $query = SortOrder($request->sort);
         
         // dd($request->sort);
@@ -316,12 +319,19 @@ class ProductController extends Controller
             return redirect('/');
         }
         $product = Product::findOrFail($product_id);
+        $shop = Shop::findOrFail($product->shop_id);
 
         $product->buyer_id = Auth::user()->id;
         $product->sold_flg = 1;
 
         //  保存する
         $product->save();
+
+        $user = User::findOrFail(Auth::id());
+
+        SendThanksMail::dispatch($product, $user);
+        SendOrderMail::dispatch($product, $user, $shop);
+       
 
         return redirect()->route('users.show');
     }

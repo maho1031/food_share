@@ -8,26 +8,28 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\TestMail;
-use App\Mail\ThanksMail;
+use App\Mail\OrderMail;
 
-class SendThanksMail implements ShouldQueue
+class SendOrderMail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public $product;
     public $user;
+    public $shop;
 
     /**
      * Create a new job instance.
      *
-    //  * @return void
+     * @return void
      */
-    public function __construct($product, $user)
+    public function __construct($product, $user, $shop)
     {
         //
         $this->product = $product;
         $this->user = $user;
+        $this->shop = $shop;
+
     }
 
     /**
@@ -37,10 +39,9 @@ class SendThanksMail implements ShouldQueue
      */
     public function handle()
     {
-        // Mail::to('test@example.com')
-        // ->send(new TestMail());
+        // Mail::to($this->product['email'])
+        Mail::to($this->shop)
+        ->send(new OrderMail($this->product, $this->user, $this->shop));
 
-        Mail::to($this->user)
-        ->send(new ThanksMail($this->product, $this->user));
     }
 }
