@@ -3,6 +3,7 @@ import Vue from 'vue'
 import MicroModal from 'micromodal'; 
 import ProductList from './components/ProductList.vue'
 import ProductItem from './components/ProductItem.vue'
+import ProductShow from './components/ProductShow.vue'
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -85,11 +86,13 @@ window.Vue = require('vue');
 //  Vue.component('product-indexlist', require('./components/ProductIndexlist.vue').default);
 // Vue.component('product-indexitem', require('./components/ProductIndexitem.vue').default);
 
-Vue.component('product-list', require('./components/ProductList.vue').default);
+Vue.component('productList', require('./components/ProductList.vue').default);
 Vue.component("ProductList", ProductList)
 Vue.component("ProductItem", ProductItem)
 
-// Vue.component('product-item', require('./components/ProductItem.vue').default);
+Vue.component('productItem', require('./components/ProductItem.vue').default);
+Vue.component("ProductShow", ProductShow)
+
 
 const app = new Vue({
     el: '#app'

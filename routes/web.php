@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,18 +19,20 @@ Auth::routes();
 // =======================================================
 // TOP画面
 Route::get('/', 'HomeController@index')->name('home');
+
 // 商品一覧
 Route::get('/products', 'ProductController@index')->name('products.index');
 // 商品一覧(Ajax)
-// Route::get('/ajax/products', 'Ajax\AjaxController@index')->name('ajaxs.index');
-// 商品詳細画面
+Route::get('/ajax/products', 'Ajax\AjaxController@index')->name('ajax.index');
+
+// 商品詳細
 Route::get('/products/{product_id}/show', 'ProductController@show')->name('products.show');
+// 商品詳細(Ajax)
+Route::get('/ajax/productShow', 'Ajax\AjaxController@show')->name('ajax.show');
 
-// Route::get('/', function () {
-//     return view('home');
-// })->name('login');
-
-// Userログイン後
+// =======================================================
+// User 認証後
+// =======================================================
 Route::group(['middleware' => 'auth:user'], function() {
     // ユーザーマイページ
     Route::get('/users/show', 'UserController@show')->name('users.show');
@@ -42,40 +46,11 @@ Route::group(['middleware' => 'auth:user'], function() {
     // 商品のキャンセル
     Route::post('/product/{product_id}/show/cancel', 'ProductController@cancel')->name('products.cancel');
 
-    // 商品詳細画面
-    // Route::get('/products/{product_id}/show', 'ProductController@show')->name('products.show');
-
-    // 商品詳細画面
-    // Route::get('/products/{product_id}/show', 'ProductController@show')->name('products.show');
-
-    // // コンビニマイページ画面
-    // Route::get('/shops/edit', 'ShopController@edit')->name('shops.edit');
-    // // コンビニマイページ画面
-    // Route::get('/shops/create', 'ShopController@create')->name('shops.create');
-    // Route::get('/shops/show', 'ShopController@show')->name('shops.show');
-
-    // Route::get('/shops/productList', 'ShopController@productList')->name('shops.productList');
-    // Route::get('/shops/soldList', 'ShopController@soldList')->name('shops.soldList');
-
-
-    // // 商品新規登録画面
-    // Route::get('/products/create', 'ProductController@create')->name('products.create');
-    // // 商品編集画面
-    // Route::get('/products/edit', 'ProductController@edit')->name('products.edit');
-    // // 商品詳細画面
-    // Route::get('/products/show', 'ProductController@show')->name('products.show');
-
 });
 
-
-
-
-
-
-
-// Route::get('/', 'HomeController@index')->name('home');
-
-// コンビニ側
+// =======================================================
+// Shop 認証不要
+// =======================================================
 Route::group(['prefix' => 'shop', 'middleware' => 'guest:shop'], function() {
     Route::get('/', function () {
         return view('shop.home');
@@ -90,12 +65,12 @@ Route::group(['prefix' => 'shop', 'middleware' => 'guest:shop'], function() {
     Route::get('password/rest', 'Shop\Auth\ForgotPasswordController@showLinkRequestForm')->name('shop.password.request');
 
     // 商品詳細画面
-    // Route::get('/products/{product_id}/show', 'ProductController@show')->name('products.show');
-
-     
-
+    // Route::get('/products/{product_id}/show', 'ProductController@show')->name('products.show');  
  });
 
+ // =======================================================
+// Shop 認証後
+// =======================================================
 Route::group(['prefix' => 'shop', 'middleware' => 'auth:shop'], function(){
     Route::post('logout', 'Shop\Auth\LoginController@logout')->name('shop.logout');
     Route::get('home', 'Shop\HomeController@index')->name('shop.home');

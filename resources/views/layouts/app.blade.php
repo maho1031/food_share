@@ -43,9 +43,9 @@
     @else
     @include('layouts.header')
     @endif
-    <div id="app">
+    <!-- <div id="app"> -->
       @yield('content')
-    </div>
+    <!-- </div> -->
     @include('layouts.footer')
 
 <!-- JQuery -->

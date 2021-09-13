@@ -31,17 +31,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        // 非同期で送信
-        // SendThanksMail::dispatch();
 
-        // 同期的に送信
-        // Mail::to('test@example.com')
-        // ->send(new TestMail());
-
-
-        // $query = SortOrder($request->sort);
-        
-        // dd($request->sort);
         $products = Product::with('shop.conveni')
         ->with('category')
         ->SearchKeyWords($request->keyword)
@@ -49,25 +39,13 @@ class ProductController extends Controller
         ->SortOrder($request->sort_price)
         ->SelectCategory($request->category_id ?? '0') //値がnullだったら０を入れる
         ->orderBy('created_at', 'desc')->get();
-        // $products = Product::all()->SortOrder();
-
-        // $sort_price = $request->sort_price;
-        // dd($sort_price);
-        // $query = Product::SortOrder($request->sort);
-// 
-        // dd($request);
-
-        // $sort_id = $request->sort;
-        // dd($sort_id);
         
-
-        // $products = $query;
         $convenis = Conveni::all();
         $categories = Category::all();
 
         // dd($products);
 
-        return view('products.index1', compact('convenis','products', 'categories'));
+        return view('products.index', compact('convenis','products', 'categories'));
     }
 
     /**
@@ -161,9 +139,11 @@ class ProductController extends Controller
             return redirect('/');
         }
 
-        $product = Product::findOrFail($product_id);
+        // $product = Product::findOrFail($product_id);
+        // $productid = $product_id;
+        // dd($product_id);
 
-        return view('products.show',compact('product'));
+        return view('products.show',compact('product_id'));
     }
 
     public function sshow($product_id)
@@ -329,7 +309,9 @@ class ProductController extends Controller
 
         $user = User::findOrFail(Auth::id());
 
+        // 購入したユーザーにメールを送信
         SendThanksMail::dispatch($product, $user);
+        // 購入された商品のオーナーにメールを送信
         SendOrderMail::dispatch($product, $user, $shop);
        
 

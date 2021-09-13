@@ -1,9 +1,10 @@
 <template>
     <a :href="`/products/${product.id}/show`">
+    
     <span class="c-tag">{{product.category.name}}</span>
                             <div class="p-product__image">
                                 <img :src="'../../storage/uploads/' + product.pic1" v-if="product.pic1" alt="">
-                                <div class="p-product__soldOutBadge">
+                                <div class="p-product__soldOutBadge" v-if="product.sold_flg === 1 ">
                                     <span class="p-product__soldOutBadgeText">SOLD</span>
                                 </div>
                             </div>
@@ -29,6 +30,9 @@
 <script>
   export default {
     name: 'ProductItem',
-    props: ['product']
+    props:{
+    product:{ type: Object, required: true }
   }
+  }
+
 </script>

@@ -17,9 +17,6 @@ import ProductItem from './ProductItem.vue'
 
 export default {
     name: 'product-list',
-    props:{
-        sort_id:{type: Number}
-    },
     components: {
         ProductItem
     },
@@ -30,11 +27,7 @@ export default {
     },
 
     mounted: function() {
-      axios.get('/ajax/products', {
-          params:{
-              sort_id:this.sort_id
-          }
-      })
+      axios.get('/ajax/products')
       .then(response => {
         this.products = response.data;
         console.log(this.products);

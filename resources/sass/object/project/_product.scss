@@ -1,8 +1,12 @@
 .p-product__wrapper{
     width: 100%;
     margin: 0 auto;
+    min-height: 600px;
+    position: relative;
+    // z-index: -1;
     // max-width: 600px;
 }
+
 .p-product__list{
     width: 100%;
     margin: 0 auto;
