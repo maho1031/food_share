@@ -38,6 +38,7 @@
     width: 100%;
     height: 200px;
     margin-bottom: 10px;
+    position: relative;
 
     @include _mq-up(){
         height: 430px;

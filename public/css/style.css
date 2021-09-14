@@ -12516,7 +12516,7 @@ pre {
   font-size: 13px;
   padding: 3px 12px;
   display: inline-block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .c-title {
@@ -13232,6 +13232,7 @@ pre {
   width: 100%;
   height: 200px;
   margin-bottom: 10px;
+  position: relative;
 }
 
 @media screen and (min-width: 768px) {

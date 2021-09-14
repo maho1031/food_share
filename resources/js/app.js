@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import Vue from 'vue'
 import MicroModal from 'micromodal'; 
+import VueMoment from 'vue-moment';
 import ProductList from './components/ProductList.vue'
 import ProductItem from './components/ProductItem.vue'
 import ProductShow from './components/ProductShow.vue'
@@ -71,10 +72,12 @@ MicroModal.init({
   disableScroll: true
 });
 
-
-
+// vue-moment
+const vueMoment = window['vueMoment'];
+Vue.use(vueMoment);
 
 window.Vue = require('vue');
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -85,6 +88,7 @@ window.Vue = require('vue');
 //  Vue.component('product-index', require('./components/ProductIndex.vue').default);
 //  Vue.component('product-indexlist', require('./components/ProductIndexlist.vue').default);
 // Vue.component('product-indexitem', require('./components/ProductIndexitem.vue').default);
+
 
 Vue.component('productList', require('./components/ProductList.vue').default);
 Vue.component("ProductList", ProductList)

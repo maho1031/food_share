@@ -81,15 +81,18 @@ Route::group(['prefix' => 'shop', 'middleware' => 'auth:shop'], function(){
     Route::get('/edit', 'Shop\ShopController@edit')->name('shop.edit');
     // コンビニプロフィール更新
     Route::post('/update', 'Shop\ShopController@update')->name('shop.update');
-    // 商品一覧
+    // 登録した商品一覧
     Route::get('/productList', 'Shop\ShopController@productList')->name('shop.productList');
-     // 商品一覧
+    // 購入された商品一覧
      Route::get('/soldList', 'Shop\ShopController@soldList')->name('shop.soldList');
 
     // 商品新規作成画面
     Route::get('/products/create', 'ProductController@create')->name('products.create');
     // 商品新規作成
      Route::post('/products/store', 'ProductController@store')->name('products.store');
+    // 商品新規作成(Ajax)
+    Route::post('/ajax/store', 'Ajax\StepController@store');
+
     // 商品編集画面
     Route::get('/products/{product_id}/edit', 'ProductController@edit')->name('products.edit');
     // 商品更新
