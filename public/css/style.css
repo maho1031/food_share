@@ -12220,6 +12220,7 @@ ul,
 ol,
 li {
   list-style-type: none;
+  list-style: none;
 }
 
 /**
@@ -12437,7 +12438,7 @@ pre {
 .c-error__item {
   color: #842029;
   font-size: 14px;
-  list-style: disc;
+  text-align: left;
 }
 
 .c-inputField {
@@ -12452,10 +12453,11 @@ pre {
 }
 
 .c-inputField__detail {
-  display: inline-block;
+  display: block;
   margin-top: 8px;
   font-size: 12px;
   color: #a3a3a3;
+  text-align: right;
 }
 
 .c-inputField__imgContainer {
@@ -12465,14 +12467,13 @@ pre {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .c-inputField__areaDrop {
   display: block;
-  background-color: #f4f0e9;
   width: 400px;
-  height: 230px;
+  height: 250px;
   overflow: hidden;
 }
 
@@ -13329,9 +13330,10 @@ pre {
 
 .p-productForm__text {
   color: #1f1f1f;
-  display: inline-block;
+  display: block;
   font-size: 14px;
   line-height: 1.5em;
+  text-align: left;
 }
 
 .p-prof {

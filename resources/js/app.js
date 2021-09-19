@@ -2,9 +2,11 @@ import $ from 'jquery';
 import Vue from 'vue'
 import MicroModal from 'micromodal'; 
 import VueMoment from 'vue-moment';
+import Vuelidate from 'vuelidate'
 import ProductList from './components/ProductList.vue'
 import ProductItem from './components/ProductItem.vue'
 import ProductShow from './components/ProductShow.vue'
+import FormCreate from './components/FormCreate.vue'
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -76,8 +78,9 @@ MicroModal.init({
 const vueMoment = window['vueMoment'];
 Vue.use(vueMoment);
 
-window.Vue = require('vue');
 
+window.Vue = require('vue');
+Vue.use(Vuelidate);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -96,6 +99,7 @@ Vue.component("ProductItem", ProductItem)
 
 Vue.component('productItem', require('./components/ProductItem.vue').default);
 Vue.component("ProductShow", ProductShow)
+Vue.component("FormCreate", FormCreate)
 
 
 const app = new Vue({

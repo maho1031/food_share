@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Ajax;
 
-use Illuminate\Http\Request;
-use App\Product;
 use App\Shop;
 use App\Conveni;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Controller;
+use App\Product;
+use Illuminate\Http\Request;
+use App\Services\ImageService;
 use App\Http\Requests\StoreProduct;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 
 class AjaxController extends Controller
@@ -29,5 +30,38 @@ class AjaxController extends Controller
 
         return Product::with('shop')->with('shop.conveni')->with('category')->where('id',$productid)->get();
    
+    }
+
+    // 商品新規登録
+    public function store(StoreProduct $request){
+        $product = new Product;
+        $product->name = $request->name;
+        $product->category_id = $request->category_id;
+        $product->price = $request->price;
+        $product->exp_date = $request->exp_date;
+        $product->comment = $request->comment;
+
+
+        // 送信された画像を格納
+        $product_img = $request->file('pic1');
+        
+
+        if(!is_null($product_img) && $product_img->isValid() ){
+
+            // 画像アップロードはサービスに切り離し
+            $imgNameToStore = ImageService::upload($product_img);
+
+            // DBへ保存
+            $product->pic1 = $imgNameToStore;
+        }
+
+         // ユーザーID
+         $product->shop_id = Auth::id();
+
+         // 全て保存
+         $product->save();
+ 
+ 
+         return redirect()->route('shop.show');
     }
 }

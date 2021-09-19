@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "micromodal": "^0.4.6",
-        "vue-moment": "^4.1.0"
+        "vue-moment": "^4.1.0",
+        "vuelidate": "^0.7.6"
     }
 }

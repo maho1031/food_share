@@ -89,9 +89,9 @@ Route::group(['prefix' => 'shop', 'middleware' => 'auth:shop'], function(){
     // 商品新規作成画面
     Route::get('/products/create', 'ProductController@create')->name('products.create');
     // 商品新規作成
-     Route::post('/products/store', 'ProductController@store')->name('products.store');
+    //  Route::post('/products/store', 'ProductController@store')->name('products.store');
     // 商品新規作成(Ajax)
-    Route::post('/ajax/store', 'Ajax\StepController@store');
+    Route::post('/ajax/store', 'Ajax\AjaxController@store');
 
     // 商品編集画面
     Route::get('/products/{product_id}/edit', 'ProductController@edit')->name('products.edit');
