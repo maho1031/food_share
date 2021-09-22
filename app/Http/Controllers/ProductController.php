@@ -182,7 +182,7 @@ class ProductController extends Controller
             abort(403);
         }
 
-        return view('products.edit',compact('product', 'categories'));
+        return view('products.edit',compact('product_id','product', 'categories'));
     }
 
     /**

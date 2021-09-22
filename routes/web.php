@@ -95,8 +95,13 @@ Route::group(['prefix' => 'shop', 'middleware' => 'auth:shop'], function(){
 
     // 商品編集画面
     Route::get('/products/{product_id}/edit', 'ProductController@edit')->name('products.edit');
+    // 商品編集画面(Ajax)
+    Route::get('/ajax/edit', 'Ajax\AjaxController@edit');
+
     // 商品更新
     Route::post('/products/{product_id}/update', 'ProductController@update')->name('products.update');
+    Route::post('/ajax/update', 'Ajax\AjaxController@update');
+
     // 商品詳細画面
     Route::get('/products/{product_id}/show', 'ProductController@sshow')->name('products.sshow');
 

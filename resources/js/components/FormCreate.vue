@@ -64,11 +64,11 @@
             @blur="$v.exp_date.$touch()"
             class="c-inputField__input @error('exp_date') is-error @enderror">
 
-            <!-- <ul v-if="$v.exp_date.$error" class="c-error__list u-mt10">
+            <ul v-if="$v.exp_date.$error" class="c-error__list u-mt10">
                 <li v-if="!$v.exp_date.required" class="c-error__item">
                     <strong>賞味期限が設定されていません。</strong>
                 </li>
-            </ul> -->
+            </ul>
         </div>
 
         <div class="c-inputField u-mb30">

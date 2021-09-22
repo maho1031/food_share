@@ -12441,6 +12441,20 @@ pre {
   text-align: left;
 }
 
+.c-flash-message {
+  background-color: #d1e7dd;
+  border-color: #badbcc;
+  color: #0f5132;
+  padding: 16px;
+  font-size: 1.4rem;
+  position: absolute;
+  width: 100%;
+  display: block;
+  -webkit-transform: all 0.5s;
+          transform: all 0.5s;
+  z-index: 50;
+}
+
 .c-inputField {
   display: block;
 }

@@ -46,7 +46,7 @@
                                         <span class="p-product__sentense">{{$product->price}}円(税込)</span>
                                     </li>
                                     <li class="p-product__infomations">
-                                        <span class="p-product__sentense">{{$product->exp_date->format('Y-m-d')}}</span>
+                                        <span class="p-product__sentense">賞味期限：{{$product->exp_date->format('Y-m-d')}}</span>
                                     </li>
                                 </ul>
                             </div>

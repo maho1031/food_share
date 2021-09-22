@@ -7,6 +7,7 @@ import ProductList from './components/ProductList.vue'
 import ProductItem from './components/ProductItem.vue'
 import ProductShow from './components/ProductShow.vue'
 import FormCreate from './components/FormCreate.vue'
+import FormEdit from './components/FormEdit.vue'
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -100,6 +101,7 @@ Vue.component("ProductItem", ProductItem)
 Vue.component('productItem', require('./components/ProductItem.vue').default);
 Vue.component("ProductShow", ProductShow)
 Vue.component("FormCreate", FormCreate)
+Vue.component("FormEdit", FormEdit)
 
 
 const app = new Vue({
