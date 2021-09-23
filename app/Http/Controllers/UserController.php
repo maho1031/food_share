@@ -22,7 +22,7 @@ class UserController extends Controller
     public function show()
     {
         //  $products = Auth::user()->products;
-        $products = Product::with('shop')->with('category')->where('buyer_id', auth()->id())->get();
+        $products = Product::with('shop')->with('category')->where('buyer_id', auth()->id())->orderBy('created_at', 'desc')->get();
 
         //  dd($products);
 

@@ -5,7 +5,7 @@
                 <a href="" class="p-footer__link">使い方</a>
             </li>
             <li class="p-footer__item">
-                <a href="" class="p-footer__link">出品者(コンビニエンスストア様)はこちら</a>
+                <a href="" class="p-footer__link">出品者(コンビニエンスストア様)のログインはこちら</a>
             </li>
             <li class="p-footer__item">
                 <a href="" class="p-footer__link">Haiki Shareとは？</a>

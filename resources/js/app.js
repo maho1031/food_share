@@ -3,6 +3,7 @@ import Vue from 'vue'
 import MicroModal from 'micromodal'; 
 import VueMoment from 'vue-moment';
 import Vuelidate from 'vuelidate'
+import Paginate from 'vuejs-paginate'
 import ProductList from './components/ProductList.vue'
 import ProductItem from './components/ProductItem.vue'
 import ProductShow from './components/ProductShow.vue'
@@ -89,7 +90,7 @@ Vue.use(Vuelidate);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
+Vue.component('paginate',Paginate)
 //  Vue.component('product-index', require('./components/ProductIndex.vue').default);
 //  Vue.component('product-indexlist', require('./components/ProductIndexlist.vue').default);
 // Vue.component('product-indexitem', require('./components/ProductIndexitem.vue').default);

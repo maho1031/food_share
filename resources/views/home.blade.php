@@ -105,7 +105,7 @@
                                     <img src="{{asset('img/flow3.png')}}" alt="">
                                 </div>
                                 <div class="p-flow__cardDescription">
-                                    レジにて購入予約時に発行された予約番号を確認し、
+                                    レジにて購入予約時に送信されたメールを確認し、
                                     商品代金を支払い
                                 </div>
                             </div>
@@ -150,6 +150,9 @@
                                     <li class="p-product__infomations">
                                         <span class="p-product__sentense">{{$product->shop->name}}支店</span>
                                     </li>
+                                    <li class="p-product__infomations">
+                                        <span class="p-product__sentense">賞味期限：{{$product->exp_date->format('Y/m/d')}}</span>
+                                    </li>
                                 </ul>
                         </div>
                     </div>
@@ -181,7 +184,7 @@
 
                 <div class="p-question__item">
                     <p class="p-question__q">Q.利用料金はかかりますか？</p>
-                    <p class="p-question__a">A.こちら全て無料となっております。</p>
+                    <p class="p-question__a">A.全て無料となっております。</p>
                 </div>
 
                 <div class="p-question__item">

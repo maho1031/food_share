@@ -12510,8 +12510,52 @@ pre {
      object-fit: cover;
 }
 
-.c-select {
-  z-index: -1;
+.c-pagination {
+  margin-top: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.c-pagination > li {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border: 1px solid #dbdbdb;
+  cursor: pointer;
+}
+
+.c-pagination > li a {
+  text-decoration: none;
+  color: #dbdbdb;
+  display: block;
+}
+
+.c-pagination > li:hover {
+  background-color: #fabe00;
+  border: none;
+}
+
+.c-pagination > li:hover a {
+  color: #fff;
+}
+
+.c-pagination > li.active {
+  background-color: #fabe00;
+  border: none;
+}
+
+.c-pagination > li.active a {
+  color: #fff;
+}
+
+.c-pagination > li + li {
+  margin-left: 10px;
 }
 
 .c-select > select {
@@ -12562,6 +12606,10 @@ pre {
   display: block;
   color: #76babb;
   text-align: center;
+}
+
+.c-title__pagi {
+  font-size: 13px;
 }
 
 .p-about {
@@ -13201,7 +13249,6 @@ pre {
   margin: 0 auto;
   min-height: 600px;
   position: relative;
-  z-index: -1;
 }
 
 .p-productDetail {
@@ -13639,6 +13686,19 @@ pre {
   line-height: 2em;
 }
 
+.c-searchForm__input {
+  border: 1px solid #F4F4F4;
+  background: #F4F4F4;
+  border-radius: 8px;
+  padding: 10px 45px 10px 10px;
+  font-size: 13px;
+  width: 100%;
+}
+
+.p-searchForm__select {
+  font-size: 13px;
+}
+
 .p-top {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -13657,6 +13717,12 @@ pre {
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .p-top {
+    height: 450px;
   }
 }
 

@@ -26,7 +26,7 @@ class Product extends Model
 
     public function conveni(){
         return $this->belongsTo('App\Conveni','App\Shop');
-    // return $this->belongsTo('App\Conveni');
+   
     }
 
     public function users(){
@@ -37,6 +37,8 @@ class Product extends Model
         return $this->belongsTo('App\Category', 'category_id', 'id');
     }
 
+    // 検索機能
+    // 並び替え
     public function scopeSortOrder($query, $sortOrder)
     {
         // if($sortOrder === null || $sortOrder === \Constant::SORT_ORDER['recommend']){
@@ -59,9 +61,6 @@ class Product extends Model
             return $query->orderBy('created_at', 'asc');
         }
     }
-    // public function scopePriceSort($query){
-    //     return $query->orderBy('price', 'desc');
-    // }
 
     public function scopeSelectCategory($query, $categoryId){
         if($categoryId !== '0'){
@@ -72,6 +71,7 @@ class Product extends Model
 
     }
 
+    // キーワード検索
     public function scopeSearchKeyWords($query, $keyword)
     {
         if(!is_null($keyword)){

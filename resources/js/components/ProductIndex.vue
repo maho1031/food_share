@@ -10,11 +10,11 @@
                     <ul class="p-searchFrom__list u-mb30">
                         <li class="p-searchForm__item">
                             <p class="p-searchForm__text">カテゴリーで探す</p>
-                            <div class="p-searchForm__select c-select">
+                            <div class="c-select">
                                 <select 
                                     id="search.category_id"
                                     v-model="search.category_id"
-                                    class="c-inputField__input">
+                                    class="p-searchForm__select">
                                     <option value="0">全て</option>
                                     <option v-for="category in categories"
                                     :key="category.id"
@@ -25,10 +25,11 @@
                         </li>
                         <li class="p-searchForm__item">
                             <p class="p-searchForm__text">価格順で探す</p>
-                            <div class="p-searchForm__select c-select">
+                            <div class="c-select">
                                 <select 
                                 id="search.sort_price"
                                 v-model="search.sort_price"
+                                class="p-searchForm__select"
                                 >
                                     <option
                                     v-for="sort_price in sort_prices"
@@ -40,10 +41,12 @@
                         </li>
                         <li class="p-searchForm__item">
                             <p class="p-searchForm__text">登録日で探す</p>
-                            <div class="p-searchForm__select c-select">
+                            <div class="c-select">
                                 <select 
                                 id="search.sort_date" 
-                                v-model="search.sort_date">
+                                v-model="search.sort_date"
+                                class="p-searchForm__select"
+                                >
                                     <option
                                     v-for="sort_date in sort_dates"
                                     :value="sort_date.id"
@@ -54,12 +57,12 @@
                         </li>
                         <li class="p-searchForm__item">
                         <p class="p-searchForm__text">検索ワード</p>
-                            <div class="p-searchForm__select c-select">
+                            <div class="c-select">
                                 <input 
                                 type="text"
                                 id="search.keyword"
                                 v-model="search.keyword"
-                                class="c-inputField__input">
+                                class="c-searchForm__input">
                             </div>
                         </li>
                     </ul>
@@ -79,9 +82,8 @@
 
     <section class="c-container p-product">
             <div class="p-productContainer">
-                <div class="p-product__header">
+                <div class="p-product__header u-mb10">
                     <p class="c-title">商品一覧</p>
-                    <span>検索結果:件</span>
                 </div>
                 <div class="p-product__wrapper">
                     <product-list
@@ -131,8 +133,8 @@ export default{
             axios.post('ajax/search',this.search)
             .then(response => {
             this.products = response.data;
-            console.log(this.search);
-            console.log(this.products);
+            // console.log(this.search);
+            // console.log(this.products);
         })
         .catch(error => {
             console.log("ERRRR:: ",error.response.data);

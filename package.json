@@ -27,6 +27,7 @@
     "dependencies": {
         "micromodal": "^0.4.6",
         "vue-moment": "^4.1.0",
+        "vuejs-paginate": "^2.1.0",
         "vuelidate": "^0.7.6"
     }
 }

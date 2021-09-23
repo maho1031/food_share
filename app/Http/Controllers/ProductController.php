@@ -139,11 +139,11 @@ class ProductController extends Controller
             return redirect('/');
         }
 
-        // $product = Product::findOrFail($product_id);
+        $product = Product::findOrFail($product_id);
         // $productid = $product_id;
-        // dd($product_id);
+        // dd($product);
 
-        return view('products.show',compact('product_id'));
+        return view('products.show',compact('product_id', 'product'));
     }
 
     public function sshow($product_id)

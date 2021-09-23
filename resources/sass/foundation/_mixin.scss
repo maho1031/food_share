@@ -12,7 +12,12 @@
       @content;
     }
   }
-  
+
+  @mixin _xl-up($breakpoint: xl) {
+    @media #{map-get($_breakpoint-up, $breakpoint)} {
+      @content;
+    }
+  }
   
   // -----------------------------------------------------------------
   // マウスオーバーなどのイベントをまとめて指定

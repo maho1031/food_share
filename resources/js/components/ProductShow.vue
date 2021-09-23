@@ -27,24 +27,7 @@
                 </div>
             </div>
 
-            <!-- <form method="POST" action="{{route('products.add', ['product_id' => product.id]) }}">
-                @csrf
-                 <div class="p-btnContainer">
-                     @if($product->sold_id === '0')
-                     <input type="hidden"  value="{{product.id}}">
-                    <button type="submit" class="c-btn p-btnContainer__btn">購入予約をする</button>
-                    @endif
-                </div>
-            </form> -->
-
-            <div class="p-productDetail__snsShare u-mb20">
-                <a href="" class="p-productDetail__snsShare-link">
-                    <i class="fab fa-twitter sns_share_icon"></i>
-                    Tweet
-                </a>
-            </div>
-
-            <div class="p-productDetail__content">
+            <div class="p-productDetail__content u-mt30">
                 <h3 class="p-productDetail__content-title">店舗情報</h3>
                 <dl class="p-productDetail__shopInfo">
                     <div class="p-productDetail__shopInfo-line">

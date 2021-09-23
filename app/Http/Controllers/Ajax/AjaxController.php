@@ -37,7 +37,7 @@ class AjaxController extends Controller
     public function search(Request $request){
         $products = Product::with('shop.conveni')
         ->with('category')
-        // ->SearchKeyWords($request->keyword)
+        ->SearchKeyWords($request->keyword)
         ->SortOrder($request->sort_date)
         ->SortOrder($request->input('sort_price'))
         ->SelectCategory($request->category_id ?? '0') //値がnullだったら０を入れる

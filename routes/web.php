@@ -31,7 +31,7 @@ Route::post('/ajax/search', 'Ajax\AjaxController@search');
 // 商品詳細
 Route::get('/products/{product_id}/show', 'ProductController@show')->name('products.show');
 // 商品詳細(Ajax)
-Route::get('/ajax/productShow', 'Ajax\AjaxController@show')->name('ajax.show');
+Route::get('/ajax/productShow', 'Ajax\AjaxController@show');
 
 // =======================================================
 // User 認証後

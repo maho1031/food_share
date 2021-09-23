@@ -1,0 +1,40 @@
+.c-pagination{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    >li{
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      border: 1px solid #dbdbdb;
+      cursor: pointer;
+      a{
+        text-decoration: none;
+        color: #dbdbdb;
+        display: block;
+      }
+      &:hover{
+        background-color: #fabe00;
+        border: none;
+        a{
+          color: #fff;
+        }
+      }
+      &.active{
+        background-color: #fabe00;
+        border: none;
+        a{
+          color: #fff;
+        }
+      }
+      + li{
+        margin-left: 10px;
+      }
+      &.disabled{
+        // display: none;
+      }
+    }
+  }
+  

@@ -8,6 +8,9 @@
     @include _mq-up(){
         flex-direction: row;
     }
+    @include _xl-up(){
+        height: 450px;
+    }
 }
 .p-top__left{
     display: flex;
