@@ -33,6 +33,19 @@ class AjaxController extends Controller
    
     }
 
+    // 商品検索
+    public function search(Request $request){
+        $products = Product::with('shop.conveni')
+        ->with('category')
+        // ->SearchKeyWords($request->keyword)
+        ->SortOrder($request->sort_date)
+        ->SortOrder($request->input('sort_price'))
+        ->SelectCategory($request->category_id ?? '0') //値がnullだったら０を入れる
+        ->orderBy('created_at', 'desc')->get();
+        
+        return $products;
+    }
+
     // 商品新規登録
     public function store(StoreProduct $request){
         $product = new Product;
@@ -63,7 +76,10 @@ class AjaxController extends Controller
          $product->save();
  
  
-         return redirect()->route('shop.show');
+         return response()->json([
+            "message" =>
+                "商品情報を登録しました",
+        ]);
     }
 
     // 商品編集
@@ -121,7 +137,7 @@ class AjaxController extends Controller
 
          return response()->json([
             "message" =>
-                "成功しました",
+                "商品情報を更新しました",
         ]);
 }
 }

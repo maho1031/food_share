@@ -13,14 +13,14 @@
             
             <ul class="p-header__list">
                 <!-- ログインなし -->
-                @guest
+                <!-- @guest
                 <li class="c-btn p-header__btn is_login">
                     <a href="{{route('login')}}" class="">ログイン</a>
                 </li>
                 <li class="c-btn p-header__btn is_signup">
                     <a href="{{'register'}}" class="">新規会員登録</a>
                 </li>
-                @endauth
+                @endauth -->
                 <!-- ログインあり・ショップ -->
                 @if(Auth::guard('shop')->check())
                     <li class="c-btn p-header__btn is_login">

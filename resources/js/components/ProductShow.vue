@@ -1,5 +1,5 @@
-<template>
-    <div class="p-productDetail__item">
+<template v-if="product">
+    <div class="p-productDetail__item" v-if="product.id">
             <div class="p-productDetail__header">
                 <div class="p-productDetail__name">
                     <span class="c-tag">{{product.category.name}}</span>
@@ -31,7 +31,7 @@
                 @csrf
                  <div class="p-btnContainer">
                      @if($product->sold_id === '0')
-                     <input type="hidden" name="product_id" value="{{product.id}}">
+                     <input type="hidden"  value="{{product.id}}">
                     <button type="submit" class="c-btn p-btnContainer__btn">購入予約をする</button>
                     @endif
                 </div>
@@ -84,6 +84,12 @@ export default {
             id: null,
             // name: null,
             exp_date: this.$moment().format(),
+            shop: {
+                name: null
+            },
+            category: {
+                name: null
+            }
         }
         }
     },

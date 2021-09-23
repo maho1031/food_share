@@ -23,7 +23,10 @@ Route::get('/', 'HomeController@index')->name('home');
 // 商品一覧
 Route::get('/products', 'ProductController@index')->name('products.index');
 // 商品一覧(Ajax)
-Route::get('/ajax/products', 'Ajax\AjaxController@index')->name('ajax.index');
+Route::get('/ajax/products', 'Ajax\AjaxController@index');
+// 商品検索(Ajax)
+Route::post('/ajax/search', 'Ajax\AjaxController@search');
+
 
 // 商品詳細
 Route::get('/products/{product_id}/show', 'ProductController@show')->name('products.show');

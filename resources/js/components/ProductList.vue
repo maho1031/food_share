@@ -16,25 +16,35 @@ import axios from 'axios';
 import ProductItem from './ProductItem.vue'
 
 export default {
-    name: 'product-list',
+    name: 'ProductList',
+    props: {
+        products:{ type: Array, required: true },
+    },
     components: {
         ProductItem
     },
     data: function(){
         return{
-            products: [],
+            product: {
+                name: null,
+                category_id: null,
+                price: null,
+                exp_date: null,
+                comment: null,
+                pic1: null,
+            },
         }
     },
 
-    mounted: function() {
-      axios.get('/ajax/products')
-      .then(response => {
-        this.products = response.data;
-        console.log(this.products);
-      })
-      .catch(error => {
-          console.log('データの取得に失敗しました。');
-      });
-    }
+    // mounted: function() {
+    //   axios.get('/ajax/products')
+    //   .then(response => {
+    //     this.products = response.data;
+    //     console.log(this.products);
+    //   })
+    //   .catch(error => {
+    //       console.log('データの取得に失敗しました。');
+    //   });
+    // }
 }
 </script>

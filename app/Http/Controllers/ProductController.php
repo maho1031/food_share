@@ -45,7 +45,7 @@ class ProductController extends Controller
 
         // dd($products);
 
-        return view('products.index', compact('convenis','products', 'categories'));
+        return view('products.index3', compact('convenis', 'categories', 'products'));
     }
 
     /**

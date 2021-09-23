@@ -1,6 +1,6 @@
 <template>
     <form>
-        <div v-if="successFlg" class="c-flash-message">
+        <div v-if="successFlg" class="c-flash-message u-mb30">
             <p>{{ this.message }}</p>
         </div>
 
@@ -186,7 +186,10 @@ export default{
         },
 
     methods: {
- 
+        // flash_messageの表示フラグ
+        isShowMessage: function(){
+            this.successFlg = !this.successFlg;
+        },
         // 画像登録処理
         onFileChange: function(e){
             this.pic = e.target.files[0];
@@ -241,9 +244,12 @@ export default{
         };
         axios.post('/shop/ajax/update', data, config)
             .then( (response) => {
-                this.successFlg = !this.successFlg;
+                console.log(response.data)
+                // flash_message
                 this.message = response.data.message;
-                console.log(response)
+                this.isShowMessage();
+                // 2秒後にメッセージを非表示にする
+                setTimeout(this.isShowMessage, 5000);
             })
             .catch(error => {
                 console.log("ERRRR:: ",error.response.data)

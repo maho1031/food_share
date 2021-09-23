@@ -1,6 +1,5 @@
 <template>
     <a :href="`/products/${product.id}/show`">
-    
     <span class="c-tag">{{product.category.name}}</span>
                             <div class="p-product__image">
                                 <img :src="'../../storage/uploads/' + product.pic1" v-if="product.pic1" alt="">

@@ -1,5 +1,9 @@
 <template>
     <form>
+        <div v-if="successFlg" class="c-flash-message u-mb30">
+            <p>{{ this.message }}</p>
+        </div>
+
         <div class="c-inputField u-mb30">
             <label for="name" class="p-productForm__text u-mb10">商品名</label>
             <input 
@@ -145,7 +149,9 @@ export default {
                 exp_date: null,
                 comment: null,
                 pic1: [],
-                errors: []
+                errors: [],
+                successFlg: false,
+                message: null
 
         }
     },
@@ -170,6 +176,11 @@ export default {
         },
   },
     methods: {
+        // flash_messageの表示フラグ
+        isShowMessage: function(){
+            this.successFlg = !this.successFlg;
+        },
+
         // 画像登録処理
         onFileChange: function(e){
             this.pic = e.target.files[0];
@@ -194,22 +205,19 @@ export default {
                 return false;
             }
             this.createImage(this.pic);
-         },
-
+        },
+        
+        // 画像プレビュー
         createImage: function(file) {
             const reader = new FileReader();
             reader.onload = e => {
                 this.pic1 = e.target.result;
-                // this.$emit('pic1', this.pic1);
             };
             reader.readAsDataURL(file);
             
     },
         // 新規登録
         submit: function(){
-            console.log(this.name);
-            console.log(this.pic);
-
             let data = new FormData;
             data.append('name', this.name);
             data.append('category_id', this.category_id);
@@ -228,10 +236,14 @@ export default {
         };
         axios.post('/shop/ajax/store', data, config)
             .then( (response) => {
-                console.log(response)
+                console.log(response);
+                // flash_message
+                this.message = response.data.message;
+                this.isShowMessage();
+                // 2秒後にメッセージを非表示にする
+                setTimeout(this.isShowMessage, 5000);
             })
             .catch(error => {
-                // console.log(response)
                 console.log("ERRRR:: ",error.response.data)
                 
             })

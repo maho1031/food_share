@@ -12384,7 +12384,6 @@ pre {
 .l-header {
   width: 100%;
   height: 80px;
-  position: relative;
 }
 
 .is-triggered {
@@ -12396,6 +12395,7 @@ pre {
 
 .l-main {
   width: 100%;
+  position: relative;
 }
 
 /* component--------------- */
@@ -12445,9 +12445,8 @@ pre {
   background-color: #d1e7dd;
   border-color: #badbcc;
   color: #0f5132;
-  padding: 16px;
-  font-size: 1.4rem;
-  position: absolute;
+  padding: 10px;
+  font-size: 14px;
   width: 100%;
   display: block;
   -webkit-transform: all 0.5s;
@@ -12880,6 +12879,7 @@ pre {
   padding: 20px;
   overflow-y: visible;
   background: #fff;
+  z-index: 1000;
 }
 
 .p-header__logo {
@@ -13073,7 +13073,6 @@ pre {
   width: 100%;
   margin: 0 auto;
   min-height: 600px;
-  position: relative;
 }
 
 .p-product__list {
