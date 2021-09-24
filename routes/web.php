@@ -67,8 +67,6 @@ Route::group(['prefix' => 'shop', 'middleware' => 'guest:shop'], function() {
     Route::post('register', 'Shop\Auth\RegisterController@register')->name('shop.register');
     Route::get('password/rest', 'Shop\Auth\ForgotPasswordController@showLinkRequestForm')->name('shop.password.request');
 
-    // 商品詳細画面
-    // Route::get('/products/{product_id}/show', 'ProductController@show')->name('products.show');  
  });
 
  // =======================================================
@@ -83,16 +81,20 @@ Route::group(['prefix' => 'shop', 'middleware' => 'auth:shop'], function(){
     // コンビニプロフィール編集
     Route::get('/edit', 'Shop\ShopController@edit')->name('shop.edit');
     // コンビニプロフィール更新
+
     Route::post('/update', 'Shop\ShopController@update')->name('shop.update');
     // 登録した商品一覧
     Route::get('/productList', 'Shop\ShopController@productList')->name('shop.productList');
+    // 登録した商品一覧(Ajax)
+    Route::get('/ajax/shopProducts', 'Ajax\AjaxController@shopProducts');
+
     // 購入された商品一覧
      Route::get('/soldList', 'Shop\ShopController@soldList')->name('shop.soldList');
+     // 購入された商品一覧(Ajax)
+    Route::get('/ajax/shopSoldProducts', 'Ajax\AjaxController@shopSoldProducts');
 
     // 商品新規作成画面
     Route::get('/products/create', 'ProductController@create')->name('products.create');
-    // 商品新規作成
-    //  Route::post('/products/store', 'ProductController@store')->name('products.store');
     // 商品新規作成(Ajax)
     Route::post('/ajax/store', 'Ajax\AjaxController@store');
 
@@ -102,14 +104,14 @@ Route::group(['prefix' => 'shop', 'middleware' => 'auth:shop'], function(){
     Route::get('/ajax/edit', 'Ajax\AjaxController@edit');
 
     // 商品更新
-    Route::post('/products/{product_id}/update', 'ProductController@update')->name('products.update');
+    // Route::post('/products/{product_id}/update', 'ProductController@update')->name('products.update');
     Route::post('/ajax/update', 'Ajax\AjaxController@update');
 
     // 商品詳細画面
-    Route::get('/products/{product_id}/show', 'ProductController@sshow')->name('products.sshow');
+    Route::get('/products/{product_id}/show', 'ProductController@detail')->name('products.detail');
+    // 商品詳細(Ajax)
+    Route::get('/ajax/shopProductShow', 'Ajax\AjaxController@detail');
 
-    // 商品詳細画面
-// Route::get('/products/{product_id}/show', 'ProductController@show')->name('products.show');
     // 商品削除
     Route::post('/products/{product_id}/destroy', 'ProductController@destroy')->name('products.destroy');
  });

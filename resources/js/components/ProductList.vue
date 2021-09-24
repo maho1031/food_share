@@ -40,14 +40,14 @@ export default {
     },
     data: function(){
         return{
-            product: {
-                name: null,
-                category_id: null,
-                price: null,
-                exp_date: null,
-                comment: null,
-                pic1: null,
-            },
+            // product: {
+            //     name: null,
+            //     category_id: null,
+            //     price: null,
+            //     exp_date: null,
+            //     comment: null,
+            //     pic1: null,
+            // },
             parPage: 20,
             currentPage: 1,
         }

@@ -140,13 +140,11 @@ class ProductController extends Controller
         }
 
         $product = Product::findOrFail($product_id);
-        // $productid = $product_id;
-        // dd($product);
 
         return view('products.show',compact('product_id', 'product'));
     }
 
-    public function sshow($product_id)
+    public function detail($product_id)
     {
         // GETパラメータが数字かどうかチェックする
         if(!ctype_digit($product_id)){
@@ -155,7 +153,7 @@ class ProductController extends Controller
 
         $product = Product::findOrFail($product_id);
 
-        return view('products.sshow',compact('product'));
+        return view('products.detail',compact('product_id','product'));
     }
 
     /**

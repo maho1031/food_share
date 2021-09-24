@@ -7,7 +7,7 @@
     <div class="c-container p-productDetail">
         <div id="app" class="p-productDetail__wrapper">
             <product-show
-            :productid="{{ $product_id }}"
+            :product_id="{{ $product_id }}"
             >
             </product-show>
             

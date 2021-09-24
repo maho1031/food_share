@@ -23,13 +23,13 @@ class AjaxController extends Controller
    
     }
 
-    //商品一覧 
+    //商品一詳細
     public function show(Request $request){
-        $productid = $request->input('productid');
+        $product_id = $request->input('product_id');
         // $product = $request->input('product');
         // dd($productid);
 
-        return Product::with('shop')->with('shop.conveni')->with('category')->where('id',$productid)->get();
+        return Product::with('shop')->with('shop.conveni')->with('category')->where('id',$product_id)->get();
    
     }
 
@@ -100,6 +100,7 @@ class AjaxController extends Controller
     public function update(StoreProduct $request)
     {
         $product_id = $request->id;
+
         // GETパラメータが数字かどうかチェックする
         if(!ctype_digit($product_id)){
             return redirect('/');
@@ -140,4 +141,22 @@ class AjaxController extends Controller
                 "商品情報を更新しました",
         ]);
 }
+
+    // shop出品した商品一覧
+    public function shopProducts(){
+
+        return Product::with('shop')->with('shop.conveni')->with('category')->where('shop_id', Auth::id())->orderBy('created_at', 'desc')->get();
+    }
+
+    // shop購入された商品一覧
+    public function shopSoldProducts(){
+        return Product::with('shop')->with('shop.conveni')->with('category')->where('shop_id', Auth::id())->where('sold_flg', 1 )->with('shop')->orderBy('created_at', 'desc')->get();
+    }
+
+    // shop商品詳細
+    public function detail(Request $request){
+        $product_id = $request->input('product_id');
+
+        return Product::with('shop')->with('shop.conveni')->with('category')->where('id',$product_id)->get();
+    }
 }

@@ -7,8 +7,8 @@
                 </div>
             </div>
                 <div class="p-productDetail__img">
-                    <img :src="'../../storage/uploads/' + product.pic1" v-if="product.pic1" alt="">
-                    <img :src="'../../storage/uploads/' + product.pic1" v-else alt="sampleIcon" class="">
+                    <img :src="'../../../storage/uploads/' + product.pic1" v-if="product.pic1" alt="">
+                    <img v-else :src="'../../../img/sample-img.jpg'" alt="sampleIcon" class="c-inputField__image">
                     <div class="p-product__soldOutBadge" v-if="product.sold_flg === 1 ">
                         <span class="p-product__soldOutBadgeText">SOLD</span>
                     </div>
@@ -59,7 +59,7 @@ export default {
     name: 'ProductShow',
     props: {
         // product: { type: Object, required: true },
-        productid: {type: Number, required: true},
+        product_id: {type: Number, required: true},
     },
     data: function(){
         return{
@@ -80,16 +80,16 @@ export default {
     mounted: function() {
       axios.get('/ajax/productShow', {
           params: {
-              productid: this.productid,
+              product_id: this.product_id,
           }
       })
       .then(response => {
         this.product = response.data[0];
         console.log(this.product);
-        console.log(this.productid);
+        console.log(this.product_id);
       })
       .catch(error => {
-          console.log('データの取得に失敗しました。');
+         console.log("ERRRR:: ",error.response.data);
       });
     }
 }

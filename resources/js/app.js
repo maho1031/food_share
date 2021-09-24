@@ -10,6 +10,10 @@ import ProductShow from './components/ProductShow.vue'
 import FormCreate from './components/FormCreate.vue'
 import FormEdit from './components/FormEdit.vue'
 import ProductIndex from './components/ProductIndex.vue'
+import ShopProductList from './components/ShopProductList.vue'
+import ShopSoldProduct from './components/ShopSoldProductList.vue'
+import ShopProductItem from './components/ShopProductItem.vue'
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -91,20 +95,16 @@ Vue.use(Vuelidate);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 Vue.component('paginate',Paginate)
-//  Vue.component('product-index', require('./components/ProductIndex.vue').default);
-//  Vue.component('product-indexlist', require('./components/ProductIndexlist.vue').default);
-// Vue.component('product-indexitem', require('./components/ProductIndexitem.vue').default);
-
-
-// Vue.component('productList', require('./components/ProductList.vue').default);
 Vue.component("ProductList", ProductList)
 Vue.component("ProductItem", ProductItem)
-
-// Vue.component('productItem', require('./components/ProductItem.vue').default);
 Vue.component("ProductShow", ProductShow)
 Vue.component("FormCreate", FormCreate)
 Vue.component("FormEdit", FormEdit)
 Vue.component("ProductIndex", ProductIndex)
+Vue.component("ShopProductList",ShopProductList)
+Vue.component("ShopSoldProduct",ShopSoldProduct)
+Vue.component("ShopProductItem",ShopProductItem)
+
 
 
 const app = new Vue({

@@ -55,7 +55,7 @@
                                 <a href="{{route('products.edit', ['id' => $product->id]) }}" class="c-btn p-btnContainer__btn">商品の編集</a>
                             </div>
                             <div class="p-btnContainer u-mb30">
-                                <a href="{{route('products.sshow', ['id' => $product->id]) }}" class="c-btn p-btnContainer__btn is-detail">詳細を見る</a>
+                                <a href="{{route('products.detail', ['id' => $product->id]) }}" class="c-btn p-btnContainer__btn is-detail">詳細を見る</a>
                             </div>
                            
                     </div>
@@ -106,7 +106,7 @@
                             </div>
 
                             <div class="p-btnContainer u-mb30">
-                                <a href="{{route('products.sshow', ['id' => $product->id]) }}" class="c-btn p-btnContainer__btn is-detail">詳細を見る</a>
+                                <a href="{{route('products.detail', ['id' => $product->id]) }}" class="c-btn p-btnContainer__btn is-detail">詳細を見る</a>
                             </div>
                     </div>
 

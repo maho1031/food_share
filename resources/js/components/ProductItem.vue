@@ -3,6 +3,7 @@
     <span class="c-tag">{{product.category.name}}</span>
                             <div class="p-product__image">
                                 <img :src="'../../storage/uploads/' + product.pic1" v-if="product.pic1" alt="">
+                                <img v-else :src="'../../../img/sample-img.jpg'" alt="sampleIcon" class="c-inputField__image">
                                 <div class="p-product__soldOutBadge" v-if="product.sold_flg === 1 ">
                                     <span class="p-product__soldOutBadgeText">SOLD</span>
                                 </div>
@@ -29,9 +30,7 @@
 <script>
   export default {
     name: 'ProductItem',
-    props:{
-    product:{ type: Object, required: true }
-  }
+    props:['product']
   }
 
 </script>

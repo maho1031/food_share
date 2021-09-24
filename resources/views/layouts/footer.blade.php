@@ -5,13 +5,13 @@
                 <a href="" class="p-footer__link">使い方</a>
             </li>
             <li class="p-footer__item">
-                <a href="" class="p-footer__link">出品者(コンビニエンスストア様)のログインはこちら</a>
+                <a href="{{ route('shop.login')}}" class="p-footer__link">出品者(コンビニエンスストア様)のログインはこちら</a>
             </li>
             <li class="p-footer__item">
                 <a href="" class="p-footer__link">Haiki Shareとは？</a>
             </li>
             <li class="p-footer__item">
-                <a href="" class="p-footer__link">商品一覧</a>
+                <a href="{{route('products.index')}}" class="p-footer__link">商品一覧</a>
             </li>
         </ul>
         <div class="p-footer__right">
