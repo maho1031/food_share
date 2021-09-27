@@ -51,9 +51,11 @@
                                 </ul>
                             </div>
 
+                            @if($product->sold_flg === 0)
                             <div class="p-btnContainer">
                                 <a href="{{route('products.edit', ['id' => $product->id]) }}" class="c-btn p-btnContainer__btn">商品の編集</a>
                             </div>
+                            @endif
                             <div class="p-btnContainer u-mb30">
                                 <a href="{{route('products.detail', ['id' => $product->id]) }}" class="c-btn p-btnContainer__btn is-detail">詳細を見る</a>
                             </div>

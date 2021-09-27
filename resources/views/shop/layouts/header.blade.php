@@ -2,10 +2,8 @@
     <div class="p-header">
         
         <div class="p-header__logo">
-            <a href="/">
             <h1 class="p-header__title">Haiki Share</h1>
             <span></span>
-            </a>
         </div>
 
         <!-- PC向けメニュー -->

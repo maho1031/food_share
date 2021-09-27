@@ -12268,6 +12268,10 @@ a:focus {
   color: #ffd348;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 input,
 select {
   vertical-align: middle;
@@ -12695,6 +12699,9 @@ pre {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 100%;
   height: auto;
   margin: 16px 0 16px 0;
@@ -12940,6 +12947,7 @@ pre {
 .p-header__title {
   font-size: 24px;
   font-weight: bold;
+  color: #e6bb44;
 }
 
 .p-header__logoImage {
@@ -13242,6 +13250,10 @@ pre {
   font-weight: 600;
   top: 23px;
   font-size: 22px;
+}
+
+.p-product__txt {
+  text-align: center;
 }
 
 .p-productDetail__wrapper {

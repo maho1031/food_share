@@ -74,6 +74,9 @@ html {
       text-decoration: underline;
       color: $_color-link--hover;
     }
+    &:hover{
+      text-decoration: none;
+    }
   }
   
   input, select{

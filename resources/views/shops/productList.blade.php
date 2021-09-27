@@ -15,7 +15,7 @@
                 </div>
 
             
-            <p class="p-productForm__txt"><a class="p-productForm__txt-link" href="{{route('shop.show')}}">マイページへ戻る</a></p>
+            <p class="p-product__txt u-mt30"><a class="p-productForm__txt-link" href="{{route('shop.show')}}">マイページへ戻る</a></p>
             </div>
 </section>
 @endsection

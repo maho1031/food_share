@@ -30,10 +30,10 @@ class LoginController extends Controller
     // protected $redirectTo = '/shop/home';
     protected $redirectTo = '/shop/show';
 
-    public function __construct()
-    {
-        $this->middleware('guest:shop')->except('logout'); //変更
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('guest:shop')->except('logout'); //変更
+    // }
 
 
     // ログイン画面
