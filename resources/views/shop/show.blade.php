@@ -64,9 +64,15 @@
                     @endforeach
 
 
+                    
                     <div class="p-btnContainer u-mt60">
-                                <a href="{{ route('shop.productList')}}" class="c-btn p-btnContainer__btn is-more">もっと見る</a>
+                    @empty($products)
+                        <a href="{{ route('shop.productList')}}" class="c-btn p-btnContainer__btn is-more">もっと見る</a>
+                    @else
+                        <p>出品した商品はありません。</p>
+                    @endif
                     </div>
+                    
                 </div>
         </div>
         <div class="p-productContainer">
@@ -115,9 +121,15 @@
                 @endforeach
                 </div>
 
+                
                 <div class="p-btnContainer u-mt60">
-                                <a href="{{ route('shop.soldList')}}" class="c-btn p-btnContainer__btn is-more">もっと見る</a>
-                    </div>
+                @empty($sold_products)
+                    <a href="{{ route('shop.soldList')}}" class="c-btn p-btnContainer__btn is-more">もっと見る</a>
+                @else
+                    <p class="u-mb16">購入された商品はありません。</p>
+                @endif
+                </div>
+
         </div>
     </section>
 </div>

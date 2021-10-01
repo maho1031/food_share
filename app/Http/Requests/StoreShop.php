@@ -27,11 +27,11 @@ class StoreShop extends FormRequest
     {
         return [
             'email' => ['required', 'email',Rule::unique('users')->ignore(Auth::id())],
-            'password' => 'required|string|min:8|confirmed',
+            'password' => 'required|string|min:8|confirmed|regex:/^[!-~]+$/',
             'conveni_id' => 'required|integer',
-            'name' => 'required|string|max:50',
+            'name' => 'required|string|max:255',
             'prefecture_id' => 'required|integer',
-            'address' => 'required|string|max:50',
+            'address' => 'required|string|max:255',
         ];
     }
 

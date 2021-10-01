@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Intervention\Image\Image;
 use App\Http\Requests\StoreUser;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -21,10 +22,8 @@ class UserController extends Controller
      */
     public function show()
     {
-        //  $products = Auth::user()->products;
-        $products = Product::with('shop')->with('category')->where('buyer_id', auth()->id())->orderBy('created_at', 'desc')->get();
+        $products = Product::with('shop.conveni')->with('category')->where('buyer_id', auth()->id())->orderBy('created_at', 'desc')->get();
 
-        //  dd($products);
 
         return view('users.show', compact('products'));
     
@@ -54,13 +53,16 @@ class UserController extends Controller
     
 
         $user = Auth::user();
+        // $old_pass = $user->password;
 
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = bcrypt($request->password);
+
+        // if($old_pass === )
+        $user->password = Hash::make($request->password);
 
         $user->save();
-
+	
 
         return redirect('/users/show/');
     }

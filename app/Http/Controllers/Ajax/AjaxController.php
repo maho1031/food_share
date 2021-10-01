@@ -11,6 +11,7 @@ use App\Services\ImageService;
 use App\Http\Requests\StoreProduct;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\JsonResponse;
 
 
 class AjaxController extends Controller
@@ -48,7 +49,9 @@ class AjaxController extends Controller
 
     // 商品新規登録
     public function store(StoreProduct $request){
+    
         $product = new Product;
+        // $product = $request->validated();
         $product->name = $request->name;
         $product->category_id = $request->category_id;
         $product->price = $request->price;
@@ -79,6 +82,8 @@ class AjaxController extends Controller
          return response()->json([
             "message" =>
                 "商品情報を登録しました",
+            "product" => $product
+           
         ]);
     }
 

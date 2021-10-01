@@ -120,7 +120,8 @@ return [
         'name' => '名前',
         'email' => 'メールアドレス',
         'password' => 'パスワード',
-        'token' => 'トークン'
+        'token' => 'トークン',
+        'address' => '住所'
     ],
 
 ];

@@ -11,6 +11,7 @@
         </div>
 
         <div id="app" class="p-productForm__inner">
+        
             <form-create
             :categories="{{ $categories }}"
             ></form-create>

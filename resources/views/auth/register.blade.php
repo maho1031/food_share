@@ -6,9 +6,9 @@
     <div class="c-container p-auth__container">
         <div class="p-auth__header">
             <p class="p-auth__title">新規登録</p>
-            @include('error')
         </div>
         <div class="p-auth__inner">
+            @include('error')
             <form method="POST" action="{{ route('register') }}" class="p-auth__form">
                 @csrf
                 <div class="c-inputField u-mb30">

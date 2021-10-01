@@ -7,9 +7,9 @@
 <div class="c-container p-auth__container">
         <div class="p-auth__header">
             <p class="p-auth__title">店舗情報編集</p>
-            @include('error')
         </div>
         <div class="p-auth__inner">
+        @include('error')
             <form method="POST" action="{{ route('shop.update', ['id' => auth()->user()->id ]) }}" class="p-auth__form">
                 @csrf
                 <div class="c-inputField u-mb30">
@@ -19,13 +19,13 @@
 
                 <div  class="c-inputField u-mb30">
                     <label for="password" class="p-auth__text u-mb10">パスワード</label>
-                    <input type="password" name="password" id="password" class="c-inputField__input @error('password') is-error @enderror" autocomplete="current-password" autofocus="autofocus" required>
+                    <input type="password" name="password" id="password" value="{{ old('password',auth()->user()->password) }}" class="c-inputField__input @error('password') is-error @enderror" autocomplete="current-password" autofocus="autofocus" required>
                     <span class="c-inputField__detail">半角英数字で8文字以上</span>
                 </div>
 
                 <div class="c-inputField u-mb30">
                     <label for="password" class="p-auth__text u-mb10">パスワード(確認)</label>
-                    <input type="password" name="password_confirmation" id="password_confirmation" class="c-inputField__input @error('password') is-error @enderror" autocomplete="new-password" autofocus="autofocus" required>
+                    <input type="password" name="password_confirmation" id="password_confirmation" value="{{ old('password',auth()->user()->password) }}" class="c-inputField__input @error('password') is-error @enderror" autocomplete="new-password" autofocus="autofocus" required>
                 </div>
 
                 <div class="c-inputField u-mb30">

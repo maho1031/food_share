@@ -5,9 +5,10 @@
     <div class="c-container p-auth__container">
         <div class="p-auth__header">
             <p class="p-auth__title">パスワード再設定</p>
-            @include('error')
+           
         </div>
         <div class="p-auth__inner">
+        @include('error')
         @if (session('status'))
           <span class="p-form__errorMsg" role="alert">
               {{ session('status') }}

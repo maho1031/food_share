@@ -3,6 +3,7 @@
         <div v-if="successFlg" class="c-flash-message u-mb30">
             <p>{{ this.message }}</p>
         </div>
+       <div v-html="errors.category_id"></div>
 
         <div class="c-inputField u-mb30">
             <label for="name" class="p-productForm__text u-mb10">商品名</label>
@@ -18,7 +19,7 @@
                     <strong>商品名が入力されていません。</strong>
                 </li>
                 <li v-if="!$v.name.maxLength" class="c-error__item">
-                    <strong>50文字以内で入力してください。</strong>
+                    <strong>255文字以内で入力してください。</strong>
                 </li>
             </ul>
         </div>
@@ -91,7 +92,7 @@
                     <strong>コメントが入力されていません。</strong>
                 </li>
                 <li v-if="!$v.comment.maxLength" class="c-error__item">
-                    <strong>200文字以内で入力してください。</strong>
+                    <strong>255文字以内で入力してください。</strong>
                 </li>
             </ul>
         </div>
@@ -151,29 +152,31 @@ export default {
                 pic1: [],
                 errors: [],
                 successFlg: false,
-                message: null
+                message: null,
+                errors: {}
 
         }
     },
      // バリデーション
-    validations:{
-        name: {
-        required,
-        maxLength: maxLength(50)
-        },
-        category_id: {
-        required
-        },
-        price: {
-        required
-        },
-        exp_date: {
-        required
-        },
-        comment: {
-        required,
-        maxLength: maxLength(200)
-        },
+    validations:{       
+            name: {
+            required,
+            maxLength: maxLength(255)
+            },
+            category_id: {
+            required
+            },
+            price: {
+            required
+            },
+            exp_date: {
+            required
+            },
+            comment: {
+            required,
+            maxLength: maxLength(255)
+            }
+        
   },
     methods: {
         // flash_messageの表示フラグ
@@ -218,13 +221,18 @@ export default {
     },
         // 新規登録
         submit: function(){
+            console.log(this.exp_date);
+            console.log(this.comment);
             let data = new FormData;
             data.append('name', this.name);
             data.append('category_id', this.category_id);
             data.append('price', this.price);
             data.append('exp_date', this.exp_date);
             data.append('comment', this.comment);
-            data.append('pic1', this.pic);
+            if(this.pic){
+                data.append('pic1', this.pic);
+            }
+            
 
             let config = {
                 headers: {
@@ -239,18 +247,28 @@ export default {
                 console.log(response);
                 // flash_message
                 this.message = response.data.message;
+                // this.err = response.data.response;
                 this.isShowMessage();
                 // 2秒後にメッセージを非表示にする
                 setTimeout(this.isShowMessage, 5000);
             })
             .catch(error => {
                 console.log("ERRRR:: ",error.response.data)
-                
-            })
+                console.log("ERRRR:: ",error.response.data.errors)
 
-            
+            var errors = {};
 
-    }
-    }
+        for(var key in error.response.data.errors) {
+
+            errors[key] = error.response.data.errors[key].join('<br>');
+
+        }
+
+        self.errors = errors;
+        console.log(errors.category_id);
+
+
+    });
+        }}
 }
 </script>

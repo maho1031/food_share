@@ -168,7 +168,7 @@ export default{
     validations:{       
             name: {
             required,
-            maxLength: maxLength(50)
+            maxLength: maxLength(255)
             },
             category_id: {
             required
@@ -181,7 +181,7 @@ export default{
             },
             comment: {
             required,
-            maxLength: maxLength(200)
+            maxLength: maxLength(255)
             }
         },
 

@@ -26,9 +26,11 @@ class StoreUser extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:20',
-            'email' => ['required', 'email',Rule::unique('users')->ignore(Auth::id())],
-            'password' => 'required|string|min:8|confirmed',
+            'name' => 'required|string|max:255',
+            // 'email' => ['required', 'email',Rule::unique('users')->ignore(Auth::id())],
+            'email' => 'required|string|email|max:255|unique:users,email,'.Auth::user()->email.',email',
+            'password' => 'required|string|min:8|confirmed|regex:/^[!-~]+$/',
+            // 'password' => (Auth::user()) ? 'nullable|string|min:8|confirmed|regex:/^[!-~]+$/' : 'required|string|min:8|confirmed|regex:/^[!-~]+$/',
         ];
     }
 }
