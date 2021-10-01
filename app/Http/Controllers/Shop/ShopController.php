@@ -46,14 +46,14 @@ class ShopController extends Controller
          $products = Product::with('shop')->where('shop_id', Auth::id())->orderBy('created_at', 'desc')->get();
 
 
-        return view('shops.productList', compact('products'));
+        return view('shop.productList', compact('products'));
     }
 
     public function soldList(){
 
         $products = Product::with('shop')->where('shop_id', Auth::id())->where('sold_flg', 1 )->with('shop')->orderBy('created_at', 'desc')->get();
 
-        return view('shops.soldList', compact('products'));
+        return view('shop.soldList', compact('products'));
     }
 
     /**

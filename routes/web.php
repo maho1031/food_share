@@ -78,11 +78,13 @@ Route::group(['prefix' => 'shop', 'middleware' => 'auth:shop'], function(){
 
     // コンビニマイページ
     Route::get('/show', 'Shop\ShopController@show')->name('shop.show');
+
     // コンビニプロフィール編集
     Route::get('/edit', 'Shop\ShopController@edit')->name('shop.edit');
+    
     // コンビニプロフィール更新
-
     Route::post('/update', 'Shop\ShopController@update')->name('shop.update');
+
     // 登録した商品一覧
     Route::get('/productList', 'Shop\ShopController@productList')->name('shop.productList');
     // 登録した商品一覧(Ajax)
@@ -103,8 +105,7 @@ Route::group(['prefix' => 'shop', 'middleware' => 'auth:shop'], function(){
     // 商品編集画面(Ajax)
     Route::get('/ajax/edit', 'Ajax\AjaxController@edit');
 
-    // 商品更新
-    // Route::post('/products/{product_id}/update', 'ProductController@update')->name('products.update');
+    // 商品更新(Ajax)
     Route::post('/ajax/update', 'Ajax\AjaxController@update');
 
     // 商品詳細画面

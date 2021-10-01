@@ -3,7 +3,13 @@
         <div v-if="successFlg" class="c-flash-message u-mb30">
             <p>{{ this.message }}</p>
         </div>
-       <div v-html="errors.category_id"></div>
+
+         <ul v-for="error in errors" class="c-error__list">
+                    <li class="c-error__item">
+                        <strong>{{ error }}</strong>
+                    </li>
+            </ul>
+       
 
         <div class="c-inputField u-mb30">
             <label for="name" class="p-productForm__text u-mb10">商品名</label>
@@ -36,6 +42,9 @@
             @blur="$v.category_id.$touch()"
             >{{category.name}}</option>
             </select>
+
+
+            <!-- <div class="c-error__item" v-html = errors.category_id></div> -->
 
             <ul v-if="$v.category_id.$error" class="c-error__list u-mt10">
                 <li v-if="!$v.category_id.required" class="c-error__item">
@@ -116,7 +125,7 @@
                     </figure>
                 </label>
             </div>
-             <ul v-for="error in errors" class="c-error__list">
+             <ul v-for="error in pic_errors" class="c-error__list">
                     <li class="c-error__item">
                         <strong>{{ error }}</strong>
                     </li>
@@ -150,10 +159,12 @@ export default {
                 exp_date: null,
                 comment: null,
                 pic1: [],
-                errors: [],
+                pic_errors: [],
                 successFlg: false,
                 message: null,
-                errors: {}
+                errFlg : false,
+                errors: {
+                }
 
         }
     },
@@ -184,6 +195,10 @@ export default {
             this.successFlg = !this.successFlg;
         },
 
+        isShowErrMessage: function(){
+            this.errFlg = !this.errFlg;
+        },
+
         // 画像登録処理
         onFileChange: function(e){
             this.pic = e.target.files[0];
@@ -196,15 +211,15 @@ export default {
             // console.log(fileList);
 
             // バリデーション
-            this.errors = [];
+            this.pic_errors = [];
             // // 形式チェック
             if (!['image/jpeg', 'image/png', 'image/gif'].includes(this.pic.type)) {
-                this.errors.push('JPEG、PNG、GIF以外は利用できません')
+                this.pic_errors.push('JPEG、PNG、GIF以外は利用できません')
                 return false;
             }
             // // ファイルの大きさチェック
             if (this.pic.size > 1024 * 1024) {
-                this.errors.push(`ファイルサイズが大きすぎます（${Math.round(this.pic.size / 1024 )}KB）`)
+                this.pic_errors.push(`ファイルサイズが大きすぎます（${Math.round(this.pic.size / 1024 )}KB）`)
                 return false;
             }
             this.createImage(this.pic);
@@ -247,7 +262,6 @@ export default {
                 console.log(response);
                 // flash_message
                 this.message = response.data.message;
-                // this.err = response.data.response;
                 this.isShowMessage();
                 // 2秒後にメッセージを非表示にする
                 setTimeout(this.isShowMessage, 5000);
@@ -258,17 +272,27 @@ export default {
 
             var errors = {};
 
-        for(var key in error.response.data.errors) {
+            for(var key in error.response.data.errors) {
 
-            errors[key] = error.response.data.errors[key].join('<br>');
+                errors[key] = error.response.data.errors[key].join('<br>');
 
-        }
+            }
 
-        self.errors = errors;
-        console.log(errors.category_id);
+            self.errors = errors;
+
+            this.isShowErrMessage();
+
+            // console.log(self.errors);
+            this.errors = errors;
+            console.log(errors.category_id);
+            // this.errors.category_id = errors.category_id;
+            console.log(this.errors.category_id);
+            console.log(errors.name);
+            console.log(errors.price);
 
 
     });
-        }}
+        }
+    }
 }
 </script>
