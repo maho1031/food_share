@@ -8,10 +8,11 @@ use App\Product;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Services\ImageService;
+use Illuminate\Http\JsonResponse;
 use App\Http\Requests\StoreProduct;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Validator;
 
 
 class AjaxController extends Controller
@@ -106,10 +107,15 @@ class AjaxController extends Controller
     {
         $product_id = $request->id;
 
-        // GETパラメータが数字かどうかチェックする
-        if(!ctype_digit($product_id)){
-            return redirect('/');
-        }
+         // GETパラメータが数字かどうかチェックする
+         $validator = \Validator::make($product_id, [
+            'product_id' => 'integer',
+        ]);
+
+        if($validator->fail()){
+            abort(400);
+        };
+
         $product = Product::findOrFail($product_id);
 
         // 認証情報

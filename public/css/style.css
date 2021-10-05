@@ -12435,10 +12435,16 @@ pre {
   margin-bottom: 16px;
 }
 
+.c-error__list {
+  background-color: #f8d7da;
+  border-color: #f5c2c7;
+}
+
 .c-error__item {
   color: #842029;
   font-size: 14px;
   text-align: left;
+  padding: 5px;
 }
 
 .c-flash-message {

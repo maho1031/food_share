@@ -4,11 +4,13 @@
             <p>{{ this.message }}</p>
         </div>
 
-         <ul v-for="error in errors" class="c-error__list">
-                    <li class="c-error__item">
-                        <strong>{{ error }}</strong>
-                    </li>
+       
+            <ul v-show="errors" class="c-error__list u-mb16">
+                        <li  v-for="error in errors" class="c-error__item">
+                            <strong>{{ error }}</strong>
+                        </li>
             </ul>
+
        
 
         <div class="c-inputField u-mb30">
@@ -42,9 +44,6 @@
             @blur="$v.category_id.$touch()"
             >{{category.name}}</option>
             </select>
-
-
-            <!-- <div class="c-error__item" v-html = errors.category_id></div> -->
 
             <ul v-if="$v.category_id.$error" class="c-error__list u-mt10">
                 <li v-if="!$v.category_id.required" class="c-error__item">
@@ -119,7 +118,6 @@
                     class="c-inputField__icon js-input-file"
                     multiple>
                     <figure>
-                        <!-- <img v-if="pic1" :src="'../../img/sample-img.jpg'" alt="sampleIcon" class="c-inputField__image js-prev"> -->
                         <img v-show="pic1" :src="pic1" >
                         <img :src="'../../img/sample-img.jpg'" alt="sampleIcon" class="c-inputField__image js-prev">
                     </figure>
@@ -148,23 +146,21 @@ const axios = require('axios');
 export default {
     name: 'FormCreate',
     props: {
-        // value: { type: Object, required: true},
         categories: { type: Array, required: true},
     },
     data: function(){
         return{
-                name: null,
-                category_id: null,
-                price: null,
-                exp_date: null,
-                comment: null,
+                name: '',
+                category_id: '',
+                price: '',
+                exp_date: '',
+                comment: '',
                 pic1: [],
                 pic_errors: [],
                 successFlg: false,
                 message: null,
                 errFlg : false,
-                errors: {
-                }
+                errors: {}
 
         }
     },
@@ -202,13 +198,6 @@ export default {
         // 画像登録処理
         onFileChange: function(e){
             this.pic = e.target.files[0];
-            // 選択されたfileの情報を保存しておく
-            // const fileList = e.target.files || e.dataTransfer.files;
-            // const files = [];
-            // for(let i = 0; i < fileList.length; i++){
-            //     files.push(fileList[i]);
-            // }
-            // console.log(fileList);
 
             // バリデーション
             this.pic_errors = [];
@@ -236,6 +225,7 @@ export default {
     },
         // 新規登録
         submit: function(){
+            console.log(this.name);
             console.log(this.exp_date);
             console.log(this.comment);
             let data = new FormData;
@@ -257,6 +247,8 @@ export default {
                     // 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         };
+
+        console.log(data.get('name'));
         axios.post('/shop/ajax/store', data, config)
             .then( (response) => {
                 console.log(response);
@@ -286,7 +278,7 @@ export default {
             this.errors = errors;
             console.log(errors.category_id);
             // this.errors.category_id = errors.category_id;
-            console.log(this.errors.category_id);
+            // console.log(this.errors.category_id);
             console.log(errors.name);
             console.log(errors.price);
 

@@ -2,10 +2,12 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Http\JsonResponse;
 
 class StoreProduct extends FormRequest
 {
@@ -26,6 +28,8 @@ class StoreProduct extends FormRequest
         $response['summary'] = 'Failed validation.';
         $response['errors']  = $validator->errors()->toArray();
 
+        \Log::info(Request::all());
+
         throw new HttpResponseException(
             response()->json( $response, 422 )
         );
@@ -42,7 +46,7 @@ class StoreProduct extends FormRequest
             'name' => 'required|string|max:255',
             'category_id' => 'required|integer|exists:categories,id',
             'price' => 'required|integer',
-            'exp_date' => 'required',
+            'exp_date' => 'required|date',
             'comment' => 'required|string|max:255',
             'pic1' => 'nullable|file|mimes:jpeg,png,jpg,gif|max:1024',  //imageを削除
             'shop_id' => 'exists:shops,id',
@@ -52,21 +56,6 @@ class StoreProduct extends FormRequest
         ];
     }
 
-    // Override
-    // protected function failedValidation(Validator $validator)
-    // {
-    //     $errors = collect($validator->errors());
-    //     $messages = $errors->map(function($error_messages){
-
-    //         return $error_messages[0];
-
-    //     });
-
-    //     throw new HttpResponseException(response(
-    //         $messages,
-    //         422
-    //     ));
-    // }
 
 
     public function messages(){
@@ -74,7 +63,6 @@ class StoreProduct extends FormRequest
         return [
             'image' => '指定されたファイルが画像ではありません。',
             'mines' => '指定された拡張子が(jpg/jpeg/png)ではありません。',
-            'max' => 'ファイルサイズは2MB以内にして下さい。'
         ];
     }
 
@@ -85,7 +73,7 @@ class StoreProduct extends FormRequest
         'category_id' => 'カテゴリー',
         'price' => '金額',
         'exp_date' => '賞味期限',
-        'comment' => 'コメント',
+        'comment' => '商品詳細',
         'pic1' => '商品',
     ];
 }

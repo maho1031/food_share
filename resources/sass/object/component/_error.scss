@@ -4,12 +4,14 @@
     padding: 16px;
     margin-bottom: 16px;
 }
-// .c-error__list{
-//     // padding-left: 1rem;
-// }
+.c-error__list{
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+    // padding: 16px;
+}
 .c-error__item{
     color: #842029;
     font-size: 14px;
     text-align: left;
-    // list-style: disc;
+    padding: 5px;
 }
