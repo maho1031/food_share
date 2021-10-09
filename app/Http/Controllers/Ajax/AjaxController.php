@@ -12,7 +12,7 @@ use Illuminate\Http\JsonResponse;
 use App\Http\Requests\StoreProduct;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
+use Validator;
 
 
 class AjaxController extends Controller
@@ -108,11 +108,11 @@ class AjaxController extends Controller
         $product_id = $request->id;
 
          // GETパラメータが数字かどうかチェックする
-         $validator = \Validator::make($product_id, [
-            'product_id' => 'integer',
+         $validator = Validator::make($request->all(), [
+            'id' => 'integer',
         ]);
 
-        if($validator->fail()){
+        if($validator->fails()){
             abort(400);
         };
 

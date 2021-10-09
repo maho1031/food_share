@@ -10,13 +10,13 @@
         <div class="p-auth__inner">
         @include('error')
         @if (session('status'))
-          <span class="p-form__errorMsg" role="alert">
+          <span class="c-inputField__errorMsg u-mb16" role="alert">
               {{ session('status') }}
           </span>
         @endif
         <p class="p-auth__text">ご登録いただいたメールアドレスを入力してください。</p>
         <p class="p-auth__text">メールアドレス宛にパスワードの再設定のメールをお送りします。</p>
-            <form action="{{ route('password.email') }}" method="POST" class="p-auth__form">
+            <form action="{{ route('shop.password.email') }}" method="POST" class="p-auth__form">
                 @csrf
                 <div class="c-inputField u-mb30">
                     <label for="email" class="p-auth__text u-mb10">メールアドレス</label>

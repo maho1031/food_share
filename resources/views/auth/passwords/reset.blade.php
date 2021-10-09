@@ -15,7 +15,7 @@
 
                 <div class="c-inputField u-mb30">
                     <label for="email" class="p-auth__text u-mb10">メールアドレス</label>
-                    <input type="email" name="email" id="email" value="{{ old('email') }}" class="c-inputField__input @error('email') is-error @enderror" autocomplete="email" autofocus="autofocus" required>
+                    <input type="email" name="email" id="email" value="{{ $email ?? old('email') }}" class="c-inputField__input @error('email') is-error @enderror" autocomplete="email" autofocus="autofocus" required>
                 </div>
 
                 <div class="c-inputField u-mb30">

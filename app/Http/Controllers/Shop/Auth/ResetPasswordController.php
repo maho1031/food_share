@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Shop\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Http\Request;
 
 class ResetPasswordController extends Controller
 {
@@ -19,13 +20,14 @@ class ResetPasswordController extends Controller
     */
 
     use ResetsPasswords;
+    
 
     /**
      * Where to redirect users after resetting their password.
      *
      * @var string
      */
-    protected $redirectTo = '/shop/home';
+    protected $redirectTo = '/shop/login';
 
     /**
      * Create a new controller instance.
@@ -34,6 +36,22 @@ class ResetPasswordController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest:shop');
     }
+
+    public function showResetForm(Request $request, $token = null)
+  {
+        return view('shop.auth.passwords.reset')->with(['token' => $token, 'email' => $request->email]);
+    }
+
+   protected function guard()
+   {
+      return \Auth::guard('shop');
+    }
+
+    public function broker()
+    {
+        return \Password::broker('shops');
+    }
+
 }

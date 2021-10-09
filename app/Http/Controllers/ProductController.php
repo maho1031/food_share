@@ -33,8 +33,6 @@ class ProductController extends Controller
     public function index(Request $request)
     {
 
-      
-
         return view('products.index', compact('convenis', 'categories', 'products'));
     }
 
@@ -66,13 +64,9 @@ class ProductController extends Controller
     public function show($product_id)
     {
         // GETパラメータが数字かどうかチェックする
-        $validator = \Validator::make($product_id, [
-            'product_id' => 'integer',
-        ]);
-
-        if($validator->fail()){
-            abort(400);
-        };
+        if(!ctype_digit($product_id)){
+            return redirect('/');
+        }
 
         $product = Product::findOrFail($product_id);
 
@@ -82,13 +76,9 @@ class ProductController extends Controller
     public function detail($product_id)
     {
         // GETパラメータが数字かどうかチェックする
-         $validator = \Validator::make($product_id, [
-             'product_id' => 'integer',
-         ]);
-
-         if($validator->fail()){
-             abort(400);
-         };
+        if(!ctype_digit($product_id)){
+            return redirect('/');
+        }
 
         $product = Product::findOrFail($product_id);
 
@@ -103,14 +93,10 @@ class ProductController extends Controller
      */
     public function edit($product_id)
     {
-        // GETパラメータが数字かどうかチェックする
-         $validator = \Validator::make($product_id, [
-             'product_id' => 'integer',
-         ]);
-
-         if($validator->fail()){
-             abort(400);
-         };
+         // GETパラメータが数字かどうかチェックする
+         if(!ctype_digit($product_id)){
+            return redirect('/');
+        }
 
         $product = Product::findOrFail($product_id);
         $categories = Category::all();
@@ -140,13 +126,14 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($product_id)
+    public function destroy(Request $request, $product_id)
     {
+        // GETパラメータが数字かどうかチェックする
         $validator = \Validator::make($request->all(), [
             'product_id' => 'integer',
         ]);
 
-        if($validator->fail()){
+        if($validator->fails()){
             abort(400);
         };
 
@@ -170,11 +157,12 @@ class ProductController extends Controller
 
     public function add(Request $request, $product_id){
 
+        // GETパラメータが数字かどうかチェックする
          $validator = \Validator::make($request->all(), [
              'product_id' => 'integer',
          ]);
 
-         if($validator->fail()){
+         if($validator->fails()){
              abort(400);
          };
 
@@ -197,16 +185,16 @@ class ProductController extends Controller
 
         return redirect()->route('users.show');
     }
-    
+
 
     public function cancel(Request $request, $product_id){
 
-        
+        // GETパラメータが数字かどうかチェックする
         $validator = \Validator::make($request->all(), [
             'product_id' => 'integer',
         ]);
 
-        if($validator->fail()){
+        if($validator->fails()){
             abort(400);
         };
         

@@ -28,7 +28,7 @@
                 </div>
 
                 @if (Route::has('password.request'))
-                <p class="p-auth__passReset"><a href="{{ route('password.request') }}">パスワードをお忘れですか？</a></p>
+                <p class="p-auth__passReset"><a href="{{ route('shop.password.request') }}">パスワードをお忘れですか？</a></p>
                 @endif
 
             </form>

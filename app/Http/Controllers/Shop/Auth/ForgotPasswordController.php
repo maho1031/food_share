@@ -27,6 +27,21 @@ class ForgotPasswordController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest:shop');
     }
+
+    public function showLinkRequestForm()
+    {
+            return view('shop.auth.passwords.email');
+        }
+    
+      protected function guard()
+        {
+            return \Auth::guard('shop');
+        }
+    
+        public function broker()
+        {
+            return \Password::broker('shops');
+        }
 }

@@ -159,7 +159,6 @@ export default {
                 pic_errors: [],
                 successFlg: false,
                 message: null,
-                errFlg : false,
                 errors: {}
 
         }
@@ -191,9 +190,9 @@ export default {
             this.successFlg = !this.successFlg;
         },
 
-        isShowErrMessage: function(){
-            this.errFlg = !this.errFlg;
-        },
+        // isShowErrMessage: function(){
+        //     this.errFlg = !this.errFlg;
+        // },
 
         // 画像登録処理
         onFileChange: function(e){
@@ -272,7 +271,7 @@ export default {
 
             self.errors = errors;
 
-            this.isShowErrMessage();
+            // this.isShowErrMessage();
 
             // console.log(self.errors);
             this.errors = errors;

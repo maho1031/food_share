@@ -9,7 +9,7 @@
         </div>
         <div class="p-auth__inner">
         @if (session('status'))
-          <span class="c-inputField__errorMsg" role="alert">
+          <span class="c-inputField__errorMsg u-mb16" role="alert">
               {{ session('status') }}
           </span>
         @endif

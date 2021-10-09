@@ -4,6 +4,12 @@
             <p>{{ this.message }}</p>
         </div>
 
+        <ul v-show="errors" class="c-error__list u-mb16">
+                        <li  v-for="error in errors" class="c-error__item">
+                            <strong>{{ error }}</strong>
+                        </li>
+            </ul>
+
         <div class="c-inputField u-mb30">
             <label for="name" class="p-productForm__text u-mb10">商品名</label>
                 <input 
@@ -117,7 +123,7 @@
                     </figure>
                 </label>
             </div>
-             <ul v-for="error in errors" class="c-error__list">
+             <ul v-for="error in pic_errors" class="c-error__list">
                     <li class="c-error__item">
                         <strong>{{ error }}</strong>
                     </li>
@@ -147,20 +153,18 @@ export default{
 
    data: function(){
         return{
-            // name: '',
-            // product: {
-                id: null,
-                name: null,
-                category_id: null,
-                price: null,
-                exp_date: null,
-                comment: null,
+                id: '',
+                name: '',
+                category_id: '',
+                price: '',
+                exp_date: '',
+                comment: '',
                 pic1: [],
-            // },
                 uploadedImage:'',
-                errors: [],
+                pic_errors: [],
                 successFlg: false,
-                message: ''
+                message: '',
+                errors: {}
 
         }
     },
@@ -197,12 +201,12 @@ export default{
             this.errors = [];
             // // 形式チェック
             if (!['image/jpeg', 'image/png', 'image/gif'].includes(this.pic.type)) {
-                this.errors.push('JPEG、PNG、GIF以外は利用できません')
+                this.pic_errors.push('JPEG、PNG、GIF以外は利用できません')
                 return false;
             }
             // // ファイルの大きさチェック
             if (this.pic.size > 1024 * 1024) {
-                this.errors.push(`ファイルサイズが大きすぎます（${Math.round(this.pic.size / 1024 )}KB）`)
+                this.pic_errors.push(`ファイルサイズが大きすぎます（${Math.round(this.pic.size / 1024 )}KB）`)
                 return false;
             }
             this.createImage(this.pic);
@@ -218,10 +222,6 @@ export default{
     },
         // 新規登録
         submit: function(){
-            console.log(this.name);
-            console.log(this.id);
-            console.log(this.exp_date);
-
             let data = new FormData;
             data.append('id', this.id);
             data.append('name', this.name);
@@ -233,7 +233,6 @@ export default{
                 data.append('pic1', this.pic);
             }
             
-
             let config = {
                 headers: {
                     'content-type': 'multipart/form-data',
@@ -242,6 +241,8 @@ export default{
                     // 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         };
+        // errorsを初期化
+        this.errors = {},
         axios.post('/shop/ajax/update', data, config)
             .then( (response) => {
                 console.log(response.data)
@@ -252,11 +253,25 @@ export default{
                 setTimeout(this.isShowMessage, 5000);
             })
             .catch(error => {
-                console.log("ERRRR:: ",error.response.data)
+                console.log("ERRRR:: ",error.response.data);
+                console.log("ERRRR:: ",error.response.data.errors);
                 
-            })
+                var errors = {};
+
+            for(var key in error.response.data.errors) {
+
+                errors[key] = error.response.data.errors[key].join('<br>');
+
+            }
+
+            // self.errors = errors;
+            
+            this.errors = errors;
+           
+            });
 
         },
+        // asyncを使うやり方
         // async getData() {
         //     const response = await axios.get('/shop/ajax/edit' ,{
         //     params: {
@@ -302,6 +317,7 @@ export default{
         })
         .catch(error => {
             console.log("ERRRR:: ",error.response.data);
+            
             });
     },
     computed: {

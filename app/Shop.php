@@ -6,6 +6,8 @@ use Illuminate\Support\Arr;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Mail\BareMail;
+use App\Notifications\ShopPasswordResetNotification;
 
 class Shop extends Authenticatable
 {
@@ -65,5 +67,9 @@ class Shop extends Authenticatable
 
         return Arr::get($convenis, $this->conveni_id);
 
+    }
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ShopPasswordResetNotification($token, new BareMail()));
     }
 }

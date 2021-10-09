@@ -65,7 +65,12 @@ Route::group(['prefix' => 'shop', 'middleware' => 'guest:shop'], function() {
     // コンビニ側新規登録
     Route::get('register', 'Shop\Auth\RegisterController@showRegisterForm')->name('shop.register');
     Route::post('register', 'Shop\Auth\RegisterController@register')->name('shop.register');
+
+
     Route::get('password/rest', 'Shop\Auth\ForgotPasswordController@showLinkRequestForm')->name('shop.password.request');
+    Route::post('password/rest', 'Shop\Auth\ResetPasswordController@reset')->name('shop.password.update');
+    Route::post('password/email', 'Shop\Auth\ForgotPasswordController@sendResetLinkEmail')->name('shop.password.email');
+    Route::get('password/reset/{token}', 'Shop\Auth\ResetPasswordController@showResetForm')->name('shop.password.reset');
 
  });
 
@@ -81,7 +86,7 @@ Route::group(['prefix' => 'shop', 'middleware' => 'auth:shop'], function(){
 
     // コンビニプロフィール編集
     Route::get('/edit', 'Shop\ShopController@edit')->name('shop.edit');
-    
+
     // コンビニプロフィール更新
     Route::post('/update', 'Shop\ShopController@update')->name('shop.update');
 
