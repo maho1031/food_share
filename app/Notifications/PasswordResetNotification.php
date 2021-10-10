@@ -45,10 +45,6 @@ class PasswordResetNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        // return (new MailMessage)
-        //             ->line('The introduction to the notification.')
-        //             ->action('Notification Action', url('/'))
-        //             ->line('Thank you for using our application!');
 
         return $this->mail
             ->from(config('mail.from.address'), config('mail.from.name'))

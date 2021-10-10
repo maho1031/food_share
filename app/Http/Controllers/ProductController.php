@@ -32,9 +32,9 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        // $convenis = Conveni::all();
+       
         $categories = Category::all();
-        // $products = Product::all();
+        
 
         return view('products.index', compact( 'categories'));
     }

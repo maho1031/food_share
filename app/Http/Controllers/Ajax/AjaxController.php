@@ -28,17 +28,18 @@ class AjaxController extends Controller
 
     //商品一詳細
     public function show(Request $request){
-        
-        $product_id = $request->input('product_id');
 
-         // GETパラメータが数字かどうかチェックする
-         $validator = Validator::make($request->all(), [
+        // GETパラメータが数字かどうかチェックする
+        $validator = Validator::make($request->all(), [
             'product_id' => 'integer',
         ]);
 
         if($validator->fails()){
             abort(400);
         };
+        
+        $product_id = $request->input('product_id');
+
 
         return Product::with('shop')->with('shop.conveni')->with('category')->where('id',$product_id)->get();
    
@@ -111,7 +112,6 @@ class AjaxController extends Controller
 
     // 商品編集
     public function edit(Request $request){
-        $product_id = $request->input('product_id');
 
          // GETパラメータが数字かどうかチェックする
          $validator = Validator::make($request->all(), [
@@ -121,6 +121,9 @@ class AjaxController extends Controller
         if($validator->fails()){
             abort(400);
         };
+
+        $product_id = $request->input('product_id');
+
  
         return Product::with('shop')->with('shop.conveni')->with('category')->where('id',$product_id)->get();
 
@@ -129,8 +132,6 @@ class AjaxController extends Controller
     // 商品更新
     public function update(StoreProduct $request)
     {
-        $product_id = $request->id;
-
          // GETパラメータが数字かどうかチェックする
          $validator = Validator::make($request->all(), [
             'id' => 'integer',
@@ -139,6 +140,8 @@ class AjaxController extends Controller
         if($validator->fails()){
             abort(400);
         };
+
+        $product_id = $request->id;
 
         $product = Product::findOrFail($product_id);
 
@@ -190,8 +193,6 @@ class AjaxController extends Controller
 
     // shop商品詳細
     public function detail(Request $request){
-        $product_id = $request->input('product_id');
-
          // GETパラメータが数字かどうかチェックする
          $validator = Validator::make($request->all(), [
             'product_id' => 'integer',
@@ -200,6 +201,10 @@ class AjaxController extends Controller
         if($validator->fails()){
             abort(400);
         };
+        
+        $product_id = $request->input('product_id');
+
+        
 
         return Product::with('shop')->with('shop.conveni')->with('category')->where('id',$product_id)->get();
     }

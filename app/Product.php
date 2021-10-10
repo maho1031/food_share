@@ -62,6 +62,7 @@ class Product extends Model
         }
     }
 
+    // カテゴリー検索
     public function scopeSelectCategory($query, $categoryId){
         if($categoryId !== '0'){
             return $query->where('category_id',$categoryId);
@@ -70,6 +71,7 @@ class Product extends Model
         }
 
     }
+    // 都道府県検索
     public function scopeSelectPrefecture($query, $prefectureId)
     {
         if($prefectureId !== '0'){
@@ -83,6 +85,7 @@ class Product extends Model
         }
     }
 
+    // 価格最小値検索
     public function scopeMinPrice($query,$min){
         if(!empty($min)){
             return $query->where('price', '>=', $min);
@@ -91,6 +94,7 @@ class Product extends Model
         }
     }
 
+    // 価格最大値検索
     public function scopeMaxPrice($query,$max)
     {
         if(!empty($max)){

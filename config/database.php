@@ -35,7 +35,8 @@ return [
 
         'sqlite' => [
             'driver' => 'sqlite',
-            'database' => env('DB_DATABASE', database_path('database.sqlite')),
+            // 'database' => env('DB_DATABASE', database_path('database.sqlite')),
+            'database' => database_path(env('DB_DATABASE','database.sqlite')),
             'prefix' => '',
         ],
 
@@ -46,7 +47,6 @@ return [
             'database' => env('DB_DATABASE', 'haiki_share'),
             'username' => env('DB_USERNAME', 'maho'),
             'password' => env('DB_PASSWORD', 'password'),
-            // 'unix_socket' => env('DB_SOCKET', '/var/run/mysqld/mysqld.sock'),
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',

@@ -73,19 +73,5 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function withDrawal()
-    {
-        return view('user.destroy');
-
-        // return view('user.destroy',compact('user'));
-    }
-
-    public function destroy()
-    {
-        $user = Auth::user();
-        $user->delete();
-
-
-        return redirect('/');
-    }
+   
 }

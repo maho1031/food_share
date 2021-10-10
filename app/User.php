@@ -40,10 +40,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function sendPasswordResetNotification($token)
-    {
-        $this->notify(new PasswordResetNotification($token, new BareMail()));
-    }
+    
 
     public function products(){
         return $this->HasMany('App\Product', 'id', 'buyer_id');
@@ -51,6 +48,11 @@ class User extends Authenticatable
 
     public function buy_products(){
         return $this->belongsToMany('App\Product', 'carts')->withPivot(['id']);
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new PasswordResetNotification($token, new BareMail()));
     }
 
 }

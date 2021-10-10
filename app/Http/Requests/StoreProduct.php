@@ -21,20 +21,6 @@ class StoreProduct extends FormRequest
         return true;
     }
 
-    // protected function failedValidation( Validator $validator )
-    // {
-    //     $response['data']    = [];
-    //     $response['status']  = 'NG';
-    //     $response['summary'] = 'Failed validation.';
-    //     $response['errors']  = $validator->errors()->toArray();
-
-    //     \Log::info(Request::all());
-
-    //     throw new HttpResponseException(
-    //         response()->json( $response, 422 )
-    //     );
-    // }
-
     /**
      * Get the validation rules that apply to the request.
      *
