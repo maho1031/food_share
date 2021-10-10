@@ -3,16 +3,17 @@
 namespace App\Http\Controllers\Ajax;
 
 use App\Shop;
+use Validator;
 use App\Conveni;
 use App\Product;
 use App\Category;
+use App\Prefecture;
 use Illuminate\Http\Request;
 use App\Services\ImageService;
 use Illuminate\Http\JsonResponse;
 use App\Http\Requests\StoreProduct;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Validator;
 
 
 class AjaxController extends Controller
@@ -27,9 +28,17 @@ class AjaxController extends Controller
 
     //商品一詳細
     public function show(Request $request){
+        
         $product_id = $request->input('product_id');
-        // $product = $request->input('product');
-        // dd($productid);
+
+         // GETパラメータが数字かどうかチェックする
+         $validator = Validator::make($request->all(), [
+            'product_id' => 'integer',
+        ]);
+
+        if($validator->fails()){
+            abort(400);
+        };
 
         return Product::with('shop')->with('shop.conveni')->with('category')->where('id',$product_id)->get();
    
@@ -37,22 +46,34 @@ class AjaxController extends Controller
 
     // 商品検索
     public function search(Request $request){
+
         $products = Product::with('shop.conveni')
         ->with('category')
         ->SearchKeyWords($request->keyword)
-        ->SortOrder($request->sort_date)
-        ->SortOrder($request->input('sort_price'))
+        // ->SortOrder($request->sort_price)
+        ->MinPrice($request->price_min)
+        ->MaxPrice($request->price_max)
         ->SelectCategory($request->category_id ?? '0') //値がnullだったら０を入れる
-        ->orderBy('created_at', 'desc')->get();
+        ->SelectPrefecture($request->prefecture_id ?? '0')
+        ->SortOrder($request->sort_date)->get();
+        // ->orderBy('created_at', 'desc')->get();
         
         return $products;
     }
 
     // 商品新規登録
     public function store(StoreProduct $request){
+
+         // GETパラメータが数字かどうかチェックする
+         $validator = Validator::make($request->all(), [
+            'id' => 'integer',
+        ]);
+
+        if($validator->fails()){
+            abort(400);
+        };
     
         $product = new Product;
-        // $product = $request->validated();
         $product->name = $request->name;
         $product->category_id = $request->category_id;
         $product->price = $request->price;
@@ -92,13 +113,16 @@ class AjaxController extends Controller
     public function edit(Request $request){
         $product_id = $request->input('product_id');
 
-        $product = Product::with('shop')->with('shop.conveni')->with('category')->where('id',$product_id)->get();
+         // GETパラメータが数字かどうかチェックする
+         $validator = Validator::make($request->all(), [
+            'product_id' => 'integer',
+        ]);
 
-        // dd($product);
-
-        return $product;
+        if($validator->fails()){
+            abort(400);
+        };
  
-        // return Product::with('shop')->with('shop.conveni')->with('category')->where('id',$product_id)->get();
+        return Product::with('shop')->with('shop.conveni')->with('category')->where('id',$product_id)->get();
 
     }
 
@@ -168,6 +192,21 @@ class AjaxController extends Controller
     public function detail(Request $request){
         $product_id = $request->input('product_id');
 
+         // GETパラメータが数字かどうかチェックする
+         $validator = Validator::make($request->all(), [
+            'product_id' => 'integer',
+        ]);
+
+        if($validator->fails()){
+            abort(400);
+        };
+
         return Product::with('shop')->with('shop.conveni')->with('category')->where('id',$product_id)->get();
+    }
+
+    // 都道府県取得
+    public function prefectureList(){
+        $prefectures = Prefecture::all();
+        return $prefectures;
     }
 }

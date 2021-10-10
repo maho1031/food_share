@@ -128,7 +128,7 @@
                         <span class="c-tag">{{$product->category->name}}</span>
                         <a href="{{route('products.show', ['product_id' => $product->id])}}">
                             <div class="p-product__image">
-                                <img src="{{asset('storage/uploads/'.$product->pic1)}}" alt="">
+                                @include('thumbnail')
                                 @if($product->sold_flg === 1)
                                 <div class="p-product__soldOutBadge">
                                     <span class="p-product__soldOutBadgeText">SOLD</span>
@@ -178,18 +178,18 @@
 
                 <div class="p-question__list">
                 <div class="p-question__item">
-                    <p class="p-question__q">Q.使い方を教えてください。</p>
-                    <p class="p-question__a">A.使い方はこちらです。出品者様(コンビニエンスストア様)の使い方はこちらです。</p>
-                </div>
-
-                <div class="p-question__item">
                     <p class="p-question__q">Q.利用料金はかかりますか？</p>
                     <p class="p-question__a">A.全て無料となっております。</p>
                 </div>
 
                 <div class="p-question__item">
+                    <p class="p-question__q">Q.商品の出品をしたいのですが、どうすればよいでしょうか？</p>
+                    <p class="p-question__a">A.<a href="{{route('shop.register')}}">こちら</a>より新規会員登録の上、商品をご登録ください。</p>
+                </div>
+
+                <div class="p-question__item">
                     <p class="p-question__q">Q.ログインするためのパスワードを忘れてしまいました。</p>
-                    <p class="p-question__a">A.こちらよりパスワードの再設定が行えます。</p>
+                    <p class="p-question__a">A.<a href="{{route('password.request')}}">こちら</a>よりパスワードの再設定が行えます。</p>
                 </div>
             </div>
         </section>

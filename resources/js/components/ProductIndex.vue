@@ -24,23 +24,39 @@
                             </div>
                         </li>
                         <li class="p-searchForm__item">
-                            <p class="p-searchForm__text">価格順で探す</p>
+                            <p class="p-searchForm__text">都道府県で探す</p>
                             <div class="c-select">
                                 <select 
-                                id="search.sort_price"
-                                v-model="search.sort_price"
-                                class="p-searchForm__select"
-                                >
-                                    <option
-                                    v-for="sort_price in sort_prices"
-                                    :value="sort_price.id"
-                                    :key="sort_price.id"
-                                    >{{sort_price.label}}</option>
+                                    id="search.category_id"
+                                    v-model="search.prefecture_id"
+                                    class="p-searchForm__select">
+                                    <option value="0">指定なし</option>
+                                    <option v-for="prefecture in prefectures"
+                                    :key="prefecture.id"
+                                    :value="prefecture.id"
+                                    >{{prefecture.name}}</option>
                                 </select>
                             </div>
                         </li>
                         <li class="p-searchForm__item">
-                            <p class="p-searchForm__text">登録日で探す</p>
+                            <p class="p-searchForm__text">価格で探す</p>
+                            <div class="c-select">
+                                <div class="p-searchForm__price">
+                                    <input 
+                                    type="number"
+                                    id="search.price_min"
+                                    v-model="search.price_min"
+                                    class="c-searchForm__inputPrice"><span class="p-searchForm__span">円から</span>
+                                    <input 
+                                    type="number"
+                                    id="search.price_max"
+                                    v-model="search.price_max"
+                                    class="c-searchForm__inputPrice"><span class="p-searchForm__span">円まで</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="p-searchForm__item">
+                            <p class="p-searchForm__text">賞味期限で探す</p>
                             <div class="c-select">
                                 <select 
                                 id="search.sort_date" 
@@ -113,18 +129,22 @@ export default{
                 category_id: '0',
                 sort_price: '0',
                 sort_date: '0',
+                prefecture_id: '0',
                 keyword: '',
+                price_min: '',
+                price_max: '' 
             },
             sort_prices: [
-                {id: 0, label:"指定なし"},
-                {id: 1, label: "価格の高い順"},
-                {id: 2, label: "価格の安い順"},
+                {id: '0', label:"指定なし"},
+                {id: '1', label: "価格の高い順"},
+                {id: '2', label: "価格の安い順"},
             ],
             sort_dates: [
-                {id: 0, label:"指定なし"},
-                {id: 1, label: "登録日の新しい順"},
-                {id: 2, label: "登録日の古い順"},
+                {id: '0', label:"指定なし"},
+                {id: '3', label: "賞味期限の新しい順"},
+                {id: '4', label: "賞味期限の古い順"},
             ],
+            prefectures:[],
             
         }
     },
@@ -151,6 +171,13 @@ export default{
       .catch(error => {
            console.log("ERRRR:: ",error.response.data);
       });
+
+      /*都道府県の取得*/
+            axios.get('/prefectureList/ajax')
+                .then(response => {
+                this.prefectures = response.data;
+                // console.log(response.data);
+            });
     }
 }
 </script>

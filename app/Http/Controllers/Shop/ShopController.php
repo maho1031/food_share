@@ -64,8 +64,7 @@ class ShopController extends Controller
      */
     public function show()
     {
-        // $shop = Shop::findOrFail(Auth::id())->take(8)->with('products')->get();
-        // $products = $shop->products;
+        
         $products = Product::take(8)->where('shop_id', auth()->id())->with('shop')->with('category')->orderBy('created_at', 'desc')->get();
         $sold_products = Product::take(8)->where('shop_id', auth()->id())->where('sold_flg', 1 )->with('shop')->orderBy('created_at', 'desc')->get();
 
@@ -118,8 +117,5 @@ class ShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+    
 }

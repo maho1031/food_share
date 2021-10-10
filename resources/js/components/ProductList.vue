@@ -28,6 +28,7 @@
 import axios from 'axios';
 import ProductItem from './ProductItem.vue';
 import paginate from 'vuejs-paginate'
+import moment from 'vue-moment';
 // import paginate from './paginate.vue';
 
 export default {
@@ -40,14 +41,14 @@ export default {
     },
     data: function(){
         return{
-            // product: {
+            product: {
             //     name: null,
             //     category_id: null,
             //     price: null,
-            //     exp_date: null,
+              exp_date: this.$moment().format(),
             //     comment: null,
             //     pic1: null,
-            // },
+            },
             parPage: 20,
             currentPage: 1,
         }

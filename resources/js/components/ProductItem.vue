@@ -23,14 +23,19 @@
                                     <li class="p-product__infomations">
                                         <span class="p-product__sentense">{{ product.shop.name}}</span>
                                     </li>
+                                    <li class="p-product__infomations">
+                                        <span class="p-product__sentense">賞味期限：{{product.exp_date | moment("YYYY年MM月DD日")}}</span>
+                                    </li>
                                 </ul>
                             </div>
          </a>
 </template>
 <script>
+import moment from 'vue-moment';
+
   export default {
     name: 'ProductItem',
-    props:['product']
+    props:['product'],
   }
 
 </script>

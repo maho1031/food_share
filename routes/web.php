@@ -27,6 +27,8 @@ Route::get('/ajax/products', 'Ajax\AjaxController@index');
 // 商品検索(Ajax)
 Route::post('/ajax/search', 'Ajax\AjaxController@search');
 
+//都道府県取得
+Route::get('/prefectureList/ajax', 'Ajax\AjaxController@prefectureList');
 
 // 商品詳細
 Route::get('/products/{product_id}/show', 'ProductController@show')->name('products.show');

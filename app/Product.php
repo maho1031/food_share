@@ -41,9 +41,9 @@ class Product extends Model
     // 並び替え
     public function scopeSortOrder($query, $sortOrder)
     {
-        // if($sortOrder === null || $sortOrder === \Constant::SORT_ORDER['recommend']){
-        //     return $query->orderBy('sort_order', 'asc');
-        // }
+        if($sortOrder === null || $sortOrder === \Constant::SORT_ORDER['recommend']){
+            return;
+        }
 
         if($sortOrder == \Constant::SORT_ORDER['higherPrice']){
             return $query->orderBy('price', 'desc');
@@ -54,11 +54,11 @@ class Product extends Model
         }
 
         if($sortOrder === \Constant::SORT_ORDER['later']){
-            return $query->orderBy('created_at', 'desc');
+            return $query->orderBy('exp_date', 'desc');
         }
 
         if($sortOrder === \Constant::SORT_ORDER['older']){
-            return $query->orderBy('created_at', 'asc');
+            return $query->orderBy('exp_date', 'asc');
         }
     }
 
@@ -69,6 +69,35 @@ class Product extends Model
             return;
         }
 
+    }
+    public function scopeSelectPrefecture($query, $prefectureId)
+    {
+        if($prefectureId !== '0'){
+        return $query->whereHas('shop', function($query) use ($prefectureId)
+        {
+            $query->where('prefecture_id', '=', $prefectureId);
+        });
+    
+        }else{
+            return;
+        }
+    }
+
+    public function scopeMinPrice($query,$min){
+        if(!empty($min)){
+            return $query->where('price', '>=', $min);
+        }else{
+            return;
+        }
+    }
+
+    public function scopeMaxPrice($query,$max)
+    {
+        if(!empty($max)){
+            return $query->where('price', '<=', $max);
+        }else{
+            return;
+        }
     }
 
     // キーワード検索
