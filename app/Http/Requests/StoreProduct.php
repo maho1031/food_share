@@ -29,7 +29,7 @@ class StoreProduct extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:30',
             'category_id' => 'required|integer|exists:categories,id',
             'price' => 'required|integer',
             'exp_date' => 'required|date',

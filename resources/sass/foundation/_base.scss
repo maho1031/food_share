@@ -71,11 +71,12 @@ html {
       outline: none;
     }
     @include _on-event {
-      text-decoration: underline;
+      text-decoration: none;
       color: $_color-link--hover;
     }
     &:hover{
       text-decoration: none;
+      color: #dbdbdb;
     }
   }
   

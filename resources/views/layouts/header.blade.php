@@ -96,19 +96,16 @@
                 
                 <ul class="p-header-spActiveMenu js-open-menuTarget">
                     <li class="p-header-spActiveMenu__link">
-                        <a href="">Haiki Shareとは？</a>
+                        <a href="{{route('shop.login')}}">出品者ログイン</a>
                     </li>
                     <li class="p-header-spActiveMenu__link">
-                        <a href="">メリット</a>
+                        <a href="{{route('shop.register')}}">出品者会員登録</a>
                     </li>
                     <li class="p-header-spActiveMenu__link">
-                        <a href="">使い方</a>
+                        <a href="{{route('products.index')}}">商品一覧</a>
                     </li>
                     <li class="p-header-spActiveMenu__link">
-                        <a href="">利用規約</a>
-                    </li>
-                    <li class="p-header-spActiveMenu__link">
-                        <a href="">プライバシーポリシー</a>
+                        <a href="/">トップページ</a>
                     </li>
             
                 </ul>

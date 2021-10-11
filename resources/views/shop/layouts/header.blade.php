@@ -65,27 +65,6 @@
                     @endif
                     
                 </ul>
-                        
-
-                
-                <ul class="p-header-spActiveMenu js-open-menuTarget">
-                    <li class="p-header-spActiveMenu__link">
-                        <a href="">Haiki Shareとは？</a>
-                    </li>
-                    <li class="p-header-spActiveMenu__link">
-                        <a href="">メリット</a>
-                    </li>
-                    <li class="p-header-spActiveMenu__link">
-                        <a href="">使い方</a>
-                    </li>
-                    <li class="p-header-spActiveMenu__link">
-                        <a href="">利用規約</a>
-                    </li>
-                    <li class="p-header-spActiveMenu__link">
-                        <a href="">プライバシーポリシー</a>
-                    </li>
-            
-                </ul>
             </nav>
         </div>
 

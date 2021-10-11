@@ -12264,12 +12264,13 @@ a:focus {
 a:hover,
 a:active,
 a:focus {
-  text-decoration: underline;
+  text-decoration: none;
   color: #ffd348;
 }
 
 a:hover {
   text-decoration: none;
+  color: #dbdbdb;
 }
 
 input,
@@ -12755,6 +12756,15 @@ pre {
   background: #76babb;
 }
 
+.is-stand {
+  width: 280px;
+  border-radius: 30px;
+  padding: 20px 50px;
+  -webkit-box-shadow: 0 8px 0 #e41212;
+          box-shadow: 0 8px 0 #e41212;
+  background: #F15252;
+}
+
 .p-flow__cardList {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -13224,7 +13234,7 @@ pre {
   line-height: 1.7em;
   background-color: #f6f5f1;
   font-size: 14px;
-  min-height: 75px;
+  max-height: 145px;
 }
 
 .p-product__soldOutBadge::after {

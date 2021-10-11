@@ -18,7 +18,10 @@
 <meta property="og:title" content="haiki_share" />
 <meta property="og:description" content="yield('description')" />
 <meta property="og:image" content="" />
-<link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
+<link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
+<link rel="apple-touch-icon" sizes="57x57" href="{{ asset('/apple-touch-icon-57x57.png') }}">
+<link rel="icon" type="image/png" sizes="256x256" href="{{ asset('/android-chrome-256x256.png') }}">
+
 <link rel="apple-touch-icon-precomposed" href="">
 
  <!-- Font Awesome -->

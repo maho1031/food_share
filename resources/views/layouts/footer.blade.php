@@ -2,13 +2,10 @@
     <div class="p-footer">
         <ul class="p-footer__list">
             <li class="p-footer__item">
-                <a href="" class="p-footer__link">使い方</a>
+                <a href="{{ route('shop.login')}}" class="p-footer__link">出品者ログイン</a>
             </li>
             <li class="p-footer__item">
-                <a href="{{ route('shop.login')}}" class="p-footer__link">出品者(コンビニエンスストア様)のログインはこちら</a>
-            </li>
-            <li class="p-footer__item">
-                <a href="" class="p-footer__link">Haiki Shareとは？</a>
+                <a href="{{ route('shop.register')}}" class="p-footer__link">出品者会員登録</a>
             </li>
             <li class="p-footer__item">
                 <a href="{{route('products.index')}}" class="p-footer__link">商品一覧</a>

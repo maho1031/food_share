@@ -27,7 +27,7 @@
                     <strong>商品名が入力されていません。</strong>
                 </li>
                 <li v-if="!$v.name.maxLength" class="c-error__item">
-                    <strong>255文字以内で入力してください。</strong>
+                    <strong>30文字以内で入力してください。</strong>
                 </li>
             </ul>
         </div>
@@ -167,7 +167,7 @@ export default {
     validations:{       
             name: {
             required,
-            maxLength: maxLength(255)
+            maxLength: maxLength(30)
             },
             category_id: {
             required

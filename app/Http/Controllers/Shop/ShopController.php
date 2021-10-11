@@ -66,6 +66,7 @@ class ShopController extends Controller
     {
         
         $products = Product::take(8)->where('shop_id', auth()->id())->with('shop')->with('category')->orderBy('created_at', 'desc')->get();
+        \Log::info($products);
         $sold_products = Product::take(8)->where('shop_id', auth()->id())->where('sold_flg', 1 )->with('shop')->orderBy('created_at', 'desc')->get();
 
         return view('shop.show', compact('products','sold_products'));

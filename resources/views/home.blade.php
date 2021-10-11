@@ -30,7 +30,7 @@
         </seciton>
 
         <!-- about -->
-        <section class="p-about c-container">
+        <section class="p-about c-container" id="about">
             <div class="p-aboutContainer">
                 <div class="p-about__header">
                     <p class="c-title">Haiki Shareとは？</p>
@@ -38,7 +38,7 @@
                 <div class="p-about__inner">
                     <p class="p-about__title">Haiki Shareはコンビニエンスストアの廃棄食品をおトクな金額で購入予約できるサービスです。</p>
                     <p class="p-about__sentence">
-                        コンビニエンスストアでは毎日大量の廃棄食品が出ています。「食品ロス/フードロス」は日本にとっても大きな問題であり、
+                        コンビニエンスストアでは毎日大量の商品が廃棄されています。「食品ロス/フードロス」は日本にとっても大きな問題であり、
                         私たち1人1人が考えていかなければなりません。
                         Haiki Shareでは品質に問題はないのに廃棄されてしまう食品をおトクな金額で販売し、利用者の皆様、そして出品者の皆様を結ぶ
                         フードシェアリングプラットホームを目指しています。
@@ -184,13 +184,26 @@
 
                 <div class="p-question__item">
                     <p class="p-question__q">Q.商品の出品をしたいのですが、どうすればよいでしょうか？</p>
-                    <p class="p-question__a">A.<a href="{{route('shop.register')}}">こちら</a>より新規会員登録の上、商品をご登録ください。</p>
+                    <p class="p-question__a">A.<a href="{{route('shop.register')}}">こちら</a>より新規会員登録の上、商品をご登録ください。登録された商品が購入予約されましたらメールが届きます。そちらをご確認の上、商品のご用意をお願いします。</p>
                 </div>
 
                 <div class="p-question__item">
                     <p class="p-question__q">Q.ログインするためのパスワードを忘れてしまいました。</p>
                     <p class="p-question__a">A.<a href="{{route('password.request')}}">こちら</a>よりパスワードの再設定が行えます。</p>
                 </div>
+            </div>
+        </section>
+
+        <section class="c-container">
+            <div class="p-btnContainer">
+                    <ul class="p-btnContainer__list">
+                        <li class="p-btnContainer__item">
+                            <a href="{{route('register')}}" class="c-btn p-btnContainer__btn is-stand u-mb16">会員登録はこちら</a>
+                        </li>
+                        <li class="p-btnContainer__item">
+                            <a href="{{route('shop.register')}}" class="c-btn p-btnContainer__btn is-stand">出品者会員登録はこちら</a>
+                        </li>
+                    </ul>
             </div>
         </section>
 </main>

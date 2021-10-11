@@ -66,11 +66,11 @@
 
                     
                     <div class="p-btnContainer u-mt60">
-                    @empty($products)
+                    @empty($product)
                         <p>出品した商品はありません。</p>
                     @else
                         <a href="{{ route('shop.productList')}}" class="c-btn p-btnContainer__btn is-more">もっと見る</a>
-                    @endif
+                    @endempty
                     </div>
                     
                 </div>
@@ -123,11 +123,11 @@
 
                 
                 <div class="p-btnContainer u-mt60">
-                @empty($sold_products)
+                @empty($sold_product)
                     <p class="u-mb16">購入された商品はありません。</p>
                 @else
                     <a href="{{ route('shop.soldList')}}" class="c-btn p-btnContainer__btn is-more">もっと見る</a>
-                @endif
+                @endempty
                 </div>
 
         </div>
