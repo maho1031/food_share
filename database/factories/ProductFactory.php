@@ -13,7 +13,7 @@ $factory->define(App\Product::class, function (Faker $faker) {
         'comment' => $faker->realText,
         'pic1' => 'pro1.jpg',
         'sold_flg' => $faker->numberBetween(0,1),
-        'shop_id' => $faker->numberBetween(1,2),
+        'shop_id' => $faker->numberBetween(1,5),
         'created_at' => $faker->datetime($max = 'now', $timezone = date_default_timezone_get()),
         'updated_at' => $faker->datetime($max = 'now', $timezone = date_default_timezone_get())
 

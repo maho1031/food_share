@@ -90,7 +90,7 @@
     line-height: 1.7em;
     background-color: #f6f5f1;
     font-size: 14px;
-    max-height: 145px;
+    height: 190px;
 }
 .p-product__soldOutBadge{
     
@@ -122,4 +122,8 @@
 }
 .p-product__txt{
     text-align: center;
+}
+.p-product__sentense-name{
+    font-weight: bold;
+    font-size: 16px;
 }

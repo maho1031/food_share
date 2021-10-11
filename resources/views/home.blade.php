@@ -138,8 +138,8 @@
                         </a>                           
                         <div class="p-product__data">
                                 <ul class="p-product__name">
-                                    <li class="p-product__infomations">
-                                        <span class="p-product__sentense">{{$product->name}}</span>
+                                    <li class="p-product__infomations u-mb2">
+                                        <span class="p-product__sentense-name">{{$product->name}}</span>
                                     </li>
                                     <li class="p-product__infomations">
                                         <span class="p-product__sentense">{{$product->price}}円(税込)</span>
